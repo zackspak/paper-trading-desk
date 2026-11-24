@@ -905,7 +905,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T16:38:47-05:00",
+          "ts": "2026-11-24T17:04:32-05:00",
           "equity": 200.0
         }
       ],
@@ -916,21 +916,11 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T16:38:47-05:00",
+        "ts": "2026-11-24T17:04:32-05:00",
         "candidates": 12,
-        "picks": [
-          {
-            "q": "Will Bitcoin dip to $55,000 in November?",
-            "outcome": "Yes",
-            "est": 0.32,
-            "mkt": 0.2685,
-            "edge": 0.049,
-            "decision": "reject",
-            "reason": "edge +0.049 < 0.08"
-          }
-        ],
-        "taken": [],
-        "packet": "pc-20261124-1636"
+        "settled": [],
+        "picks": [],
+        "packet": "pc-20261124-1704"
       },
       "rules": [
         "Paper only. Markets resolving in 1-30 days with real volume; at most 2 new picks per cycle.",
