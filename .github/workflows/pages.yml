@@ -1,4 +1,11 @@
 # Deploy the static site at the repo root to GitHub Pages.
+# Build and deploy MUST be separate jobs. When upload-pages-artifact and
+# deploy-pages share one job, deploy-pages often lists artifacts a few
+# hundred milliseconds after upload and gets "Found 0 artifact(s)" /
+# "No artifacts named github-pages" (actions/deploy-pages#451). Re-running
+# only the failed job then uploads a second artifact and fails with
+# "Multiple artifacts named github-pages". A later job with needs: build
+# gives the artifact API time to catch up and cannot be re-run in isolation.
 name: Deploy static content to Pages
 
 on:
@@ -10,16 +17,14 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,6 +39,14 @@ jobs:
           path: '.'
           # .nojekyll is a dotfile; v5 excludes hidden files unless this is set.
           include-hidden-files: true
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
