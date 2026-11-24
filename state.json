@@ -602,6 +602,14 @@
       "author": "maker",
       "agent": "maker",
       "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92. daily stop (today realized $-39.08)"
+    },
+    {
+      "ts": "2026-11-24T18:11:40-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 2 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1006,6 +1014,28 @@
           "decision": "reject",
           "reasoning": "BTC spot ~$59,840 at 4:38 PM ET Nov 24; $55,000 is ~8.1% below with ~6.3 days left (Binance 1m low through Nov 30 11:59 PM ET). Driftless barrier model on 14 days of Coinbase hourly returns (realized vol ~69% annualized) gives ~35% touch odds; 1m wicks add a little, but realized vol includes the Nov 12-21 crash and may overstate the next week, so team estimate 32%. Bear case for Yes: BTC already bounced off ~$55.1K on Nov 21 without printing $55K, and buyers defended that zone. Market ~27%: edge",
           "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-november-2026"
+        },
+        {
+          "ts": "2026-11-24T18:11:40-05:00",
+          "question": "Will the Fed increase interest rates by 25 bps after the December 2026 meeting?",
+          "outcome": "Yes",
+          "estProb": 0.95,
+          "mktProb": 0.935,
+          "edge": 0.0094,
+          "decision": "reject",
+          "reasoning": "CME FedWatch shows ~95.1-95.9% for a 25bp hike at Dec 8-9; Williams did not rule out consecutive moves. Market ask 0.94 so no edge. Bear case: Waller wants 50bp (4-5% tail), which would resolve to a different bracket.",
+          "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632"
+        },
+        {
+          "ts": "2026-11-24T18:11:40-05:00",
+          "question": "Israel x Iran ceasefire continues through November 30?",
+          "outcome": "Yes",
+          "estProb": 0.88,
+          "mktProb": 0.925,
+          "edge": -0.05,
+          "decision": "reject",
+          "reasoning": "Reports say US-Iran exchange limited strikes and Hormuz tankers are being hit, but the market needs a direct Israel<->Iran air/missile strike by Nov 30; Iran threatens retaliation if struck. Estimate slightly below market 0.92-0.93, below the edge threshold. Bear case: escalation or a qualifying strike in the 6 days left.",
+          "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963"
         }
       ],
       "fills": [],
@@ -1021,7 +1051,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T18:11:16-05:00",
+          "ts": "2026-11-24T18:11:40-05:00",
           "equity": 200.0
         }
       ],
@@ -1032,11 +1062,30 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T17:33:56-05:00",
+        "ts": "2026-11-24T18:11:40-05:00",
         "candidates": 12,
-        "settled": [],
-        "picks": [],
-        "packet": "pc-20261124-1733"
+        "picks": [
+          {
+            "q": "Will the Fed increase interest rates by 25 bps after the December 2026 meeting?",
+            "outcome": "Yes",
+            "est": 0.95,
+            "mkt": 0.935,
+            "edge": 0.0094,
+            "decision": "reject",
+            "reason": "edge +0.009 < 0.08"
+          },
+          {
+            "q": "Israel x Iran ceasefire continues through November 30?",
+            "outcome": "Yes",
+            "est": 0.88,
+            "mkt": 0.925,
+            "edge": -0.05,
+            "decision": "reject",
+            "reason": "edge -0.050 < 0.08"
+          }
+        ],
+        "taken": [],
+        "packet": "pc-20261124-1811"
       },
       "rules": [
         "Paper only. Markets resolving in 1-30 days with real volume; at most 2 new picks per cycle.",
