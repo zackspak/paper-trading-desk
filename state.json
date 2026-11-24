@@ -3,7 +3,7 @@
   "paper": true,
   "mode": "paper",
   "evaluation": "A risky profile, clock restarted 2026-11-24 ET (A-strict shadowed); B/C running, Grok-only",
-  "updatedAt": "2026-11-24T16:51:13-05:00",
+  "updatedAt": "2026-11-24T16:52:29-05:00",
   "timezone": "America/New_York",
   "note": "Paper ledger is empty because no paper fills were found in existing journals. Live trades were not copied. Nothing here is a live book.",
   "agents": [
@@ -13,7 +13,7 @@
       "model": "Grok Bot",
       "role": "Orchestrate cycles, tally independent votes, journal, digest to Zack. Does not pick tokens and does not overrule a reject.",
       "status": "idle",
-      "lastAction": "c0003: risky top-N. 0 paper fill(s), 12 skipped/rejected."
+      "lastAction": "c0003: risky top-N. 4 paper fill(s), 8 skipped/rejected."
     },
     {
       "id": "scout",
@@ -37,7 +37,7 @@
       "model": "Grok (Simulator seat)",
       "role": "Paper marks and fills from fresh size-specific quotes only. Never invent a fill.",
       "status": "idle",
-      "lastAction": "c0003: 0 paper fill(s); book equity $200.00."
+      "lastAction": "c0003: 4 paper fill(s); book equity $200.00."
     },
     {
       "id": "social",
@@ -97,12 +97,106 @@
   "paperLedger": {
     "startBalance": 200.0,
     "balance": 200.0,
-    "cash": 200.0,
+    "cash": 160.0,
     "currency": "USD",
-    "open": [],
+    "open": [
+      {
+        "sym": "Huss",
+        "mint": "CUg7AzWL5p8imZVqqdjEPgRhUsXAkBMW5JxkSJ9fpump",
+        "size_usd": 10.0,
+        "tokens": 11671497100.0,
+        "entry_px": 8.567734408296259e-10,
+        "entry_ts": "2026-11-24T16:52:27-05:00",
+        "stop_px": 6.425800806222194e-10,
+        "tp_px": 1.2851601612444389e-09,
+        "time_stop": "2026-11-25T16:52:27-05:00",
+        "fees_entry_usd": 0.2612,
+        "cycle_id": "c0003"
+      },
+      {
+        "sym": "LUNO",
+        "mint": "EVbsBwxqdbMqadwAsVZ6KP9SJiaNmLSHAAb4W2mUpump",
+        "size_usd": 10.0,
+        "tokens": 29512469818.0,
+        "entry_px": 3.3993151646973416e-10,
+        "entry_ts": "2026-11-24T16:52:28-05:00",
+        "stop_px": 2.549486373523006e-10,
+        "tp_px": 5.098972747046012e-10,
+        "time_stop": "2026-11-25T16:52:28-05:00",
+        "fees_entry_usd": 0.1371,
+        "cycle_id": "c0003"
+      },
+      {
+        "sym": "Singularity",
+        "mint": "7R4MP6VX7n3RMNhL9zsk5Zu5ibZvwq8npUYnRq7epump",
+        "size_usd": 10.0,
+        "tokens": 80884781643.0,
+        "entry_px": 1.236259817592693e-10,
+        "entry_ts": "2026-11-24T16:52:28-05:00",
+        "stop_px": 9.271948631945197e-11,
+        "tp_px": 1.8543897263890395e-10,
+        "time_stop": "2026-11-25T16:52:28-05:00",
+        "fees_entry_usd": 0.3253,
+        "cycle_id": "c0003"
+      },
+      {
+        "sym": "FIONA",
+        "mint": "B34nXKzCgsJb9ChLuSHPRpXLE3WFSWyeT8Cqkzzmpump",
+        "size_usd": 10.0,
+        "tokens": 3047742437.0,
+        "entry_px": 3.281034354675687e-09,
+        "entry_ts": "2026-11-24T16:52:29-05:00",
+        "stop_px": 2.4607757660067656e-09,
+        "tp_px": 4.921551532013531e-09,
+        "time_stop": "2026-11-25T16:52:29-05:00",
+        "fees_entry_usd": 0.1195,
+        "cycle_id": "c0003"
+      }
+    ],
     "realizedPnl": 0.0,
     "unrealizedPnl": 0.0,
-    "trades": [],
+    "trades": [
+      {
+        "ts": "2026-11-24T16:52:27-05:00",
+        "symbol": "Huss",
+        "mint": "CUg7AzWL5p8imZVqqdjEPgRhUsXAkBMW5JxkSJ9fpump",
+        "side": "buy",
+        "size": 10.0,
+        "pnl": null,
+        "status": "open",
+        "reason": "paper fill after risky hard gates + score 84.0 + fresh quote (impact 1.61% < 3%); Risk vote advisory=reject"
+      },
+      {
+        "ts": "2026-11-24T16:52:28-05:00",
+        "symbol": "LUNO",
+        "mint": "EVbsBwxqdbMqadwAsVZ6KP9SJiaNmLSHAAb4W2mUpump",
+        "side": "buy",
+        "size": 10.0,
+        "pnl": null,
+        "status": "open",
+        "reason": "paper fill after risky hard gates + score 82.31 + fresh quote (impact 0.37% < 3%); Risk vote advisory=reject"
+      },
+      {
+        "ts": "2026-11-24T16:52:28-05:00",
+        "symbol": "Singularity",
+        "mint": "7R4MP6VX7n3RMNhL9zsk5Zu5ibZvwq8npUYnRq7epump",
+        "side": "buy",
+        "size": 10.0,
+        "pnl": null,
+        "status": "open",
+        "reason": "paper fill after risky hard gates + score 82.24 + fresh quote (impact 2.25% < 3%); Risk vote advisory=reject"
+      },
+      {
+        "ts": "2026-11-24T16:52:29-05:00",
+        "symbol": "FIONA",
+        "mint": "B34nXKzCgsJb9ChLuSHPRpXLE3WFSWyeT8Cqkzzmpump",
+        "side": "buy",
+        "size": 10.0,
+        "pnl": null,
+        "status": "open",
+        "reason": "paper fill after risky hard gates + score 82.13 + fresh quote (impact 0.20% < 3%); Risk vote advisory=reject"
+      }
+    ],
     "equitySeries": [
       {
         "ts": "2026-11-24T00:00:00-05:00",
@@ -121,11 +215,14 @@
         "equity": 200.0
       },
       {
-        "ts": "2026-11-24T16:51:13-05:00",
+        "ts": "2026-11-24T16:52:29-05:00",
+        "equity": 200.0
+      },
+      {
+        "ts": "2026-11-24T16:52:29-05:00",
         "equity": 200.0
       }
-    ],
-    "emptyReason": "No paper fills yet. Live history was not copied."
+    ]
   },
   "journal": [
     {
@@ -243,6 +340,46 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0003 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $200.00. Realized $0.00."
+    },
+    {
+      "ts": "2026-11-24T16:52:27-05:00",
+      "type": "fill",
+      "kind": "fill",
+      "author": "simulator",
+      "agent": "simulator",
+      "text": "Paper fill Huss $10 @ 8.5677344e-10 (quote in $9.9998 out $9.8386, impact 1.61%, plus 1% haircut $0.261). Source: gmgn order quote (read-only; --from is Token Program, not a user wallet). Exits: -25% / +50% / 24h. A-strict would_fill=False."
+    },
+    {
+      "ts": "2026-11-24T16:52:28-05:00",
+      "type": "fill",
+      "kind": "fill",
+      "author": "simulator",
+      "agent": "simulator",
+      "text": "Paper fill LUNO $10 @ 3.3993152e-10 (quote in $10.0322 out $9.9955, impact 0.37%, plus 1% haircut $0.137). Source: gmgn order quote (read-only; --from is Token Program, not a user wallet). Exits: -25% / +50% / 24h. A-strict would_fill=False."
+    },
+    {
+      "ts": "2026-11-24T16:52:28-05:00",
+      "type": "fill",
+      "kind": "fill",
+      "author": "simulator",
+      "agent": "simulator",
+      "text": "Paper fill Singularity $10 @ 1.2362598e-10 (quote in $9.9995 out $9.7742, impact 2.25%, plus 1% haircut $0.325). Source: gmgn order quote (read-only; --from is Token Program, not a user wallet). Exits: -25% / +50% / 24h. A-strict would_fill=False."
+    },
+    {
+      "ts": "2026-11-24T16:52:29-05:00",
+      "type": "fill",
+      "kind": "fill",
+      "author": "simulator",
+      "agent": "simulator",
+      "text": "Paper fill FIONA $10 @ 3.2810344e-09 (quote in $9.9997 out $9.9802, impact 0.20%, plus 1% haircut $0.120). Source: gmgn order quote (read-only; --from is Token Program, not a user wallet). Exits: -25% / +50% / 24h. A-strict would_fill=False."
+    },
+    {
+      "ts": "2026-11-24T16:52:26-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "coordinator",
+      "agent": "coordinator",
+      "text": "c0003 decide (risky): 4 paper fill(s), 8 skipped/rejected after score/quotes. Equity $200.00. Realized $0.00."
     }
   ],
   "postsReviewed": [
@@ -302,7 +439,7 @@
       "chatgpt",
       "jev"
     ],
-    "updatedAt": "2026-11-24T16:51:13-05:00",
+    "updatedAt": "2026-11-24T16:52:29-05:00",
     "strategyA": {
       "restartedAt": "2026-11-24T16:50:17-05:00",
       "restartReason": "Zack asked for riskier paper rules so trades actually happen; strict profile kept as shadow",
@@ -548,55 +685,72 @@
     ],
     "vetoed": [
       {
-        "symbol": "Huss",
-        "note": "quote missing impact; no invented fill"
-      },
-      {
-        "symbol": "LUNO",
-        "note": "quote missing impact; no invented fill"
-      },
-      {
-        "symbol": "Singularity",
-        "note": "quote missing impact; no invented fill"
-      },
-      {
-        "symbol": "FIONA",
-        "note": "quote missing impact; no invented fill"
-      },
-      {
         "symbol": "BOUNCER",
-        "note": "quote missing impact; no invented fill"
+        "note": "already took 4 new entries this cycle"
       },
       {
         "symbol": "RUGSEM",
-        "note": "quote missing impact; no invented fill"
+        "note": "already took 4 new entries this cycle"
       },
       {
         "symbol": "cCAT",
-        "note": "quote missing impact; no invented fill"
+        "note": "already took 4 new entries this cycle"
       },
       {
         "symbol": "Cudie",
-        "note": "quote missing impact; no invented fill"
+        "note": "already took 4 new entries this cycle"
       },
       {
         "symbol": "CSI",
-        "note": "quote missing impact; no invented fill"
+        "note": "already took 4 new entries this cycle"
       },
       {
         "symbol": "ATX",
-        "note": "quote missing impact; no invented fill"
+        "note": "already took 4 new entries this cycle"
       },
       {
         "symbol": "GOYBEAM",
-        "note": "quote missing impact; no invented fill"
+        "note": "already took 4 new entries this cycle"
       },
       {
         "symbol": "JIMMY",
-        "note": "quote missing impact; no invented fill"
+        "note": "already took 4 new entries this cycle"
       }
     ],
-    "paperTraded": []
+    "paperTraded": [
+      {
+        "symbol": "Huss",
+        "note": "paper fill $10"
+      },
+      {
+        "symbol": "LUNO",
+        "note": "paper fill $10"
+      },
+      {
+        "symbol": "Singularity",
+        "note": "paper fill $10"
+      },
+      {
+        "symbol": "FIONA",
+        "note": "paper fill $10"
+      },
+      {
+        "symbol": "Huss",
+        "note": "open paper position"
+      },
+      {
+        "symbol": "LUNO",
+        "note": "open paper position"
+      },
+      {
+        "symbol": "Singularity",
+        "note": "open paper position"
+      },
+      {
+        "symbol": "FIONA",
+        "note": "open paper position"
+      }
+    ]
   },
   "strategies": {
     "C": {
@@ -869,14 +1023,108 @@
       "equity": 200.0,
       "realizedPnl": 0.0,
       "unrealizedPnl": 0.0,
-      "open": [],
-      "trades": 0,
+      "open": [
+        {
+          "sym": "Huss",
+          "mint": "CUg7AzWL5p8imZVqqdjEPgRhUsXAkBMW5JxkSJ9fpump",
+          "size_usd": 10.0,
+          "tokens": 11671497100.0,
+          "entry_px": 8.567734408296259e-10,
+          "entry_ts": "2026-11-24T16:52:27-05:00",
+          "stop_px": 6.425800806222194e-10,
+          "tp_px": 1.2851601612444389e-09,
+          "time_stop": "2026-11-25T16:52:27-05:00",
+          "fees_entry_usd": 0.2612,
+          "cycle_id": "c0003"
+        },
+        {
+          "sym": "LUNO",
+          "mint": "EVbsBwxqdbMqadwAsVZ6KP9SJiaNmLSHAAb4W2mUpump",
+          "size_usd": 10.0,
+          "tokens": 29512469818.0,
+          "entry_px": 3.3993151646973416e-10,
+          "entry_ts": "2026-11-24T16:52:28-05:00",
+          "stop_px": 2.549486373523006e-10,
+          "tp_px": 5.098972747046012e-10,
+          "time_stop": "2026-11-25T16:52:28-05:00",
+          "fees_entry_usd": 0.1371,
+          "cycle_id": "c0003"
+        },
+        {
+          "sym": "Singularity",
+          "mint": "7R4MP6VX7n3RMNhL9zsk5Zu5ibZvwq8npUYnRq7epump",
+          "size_usd": 10.0,
+          "tokens": 80884781643.0,
+          "entry_px": 1.236259817592693e-10,
+          "entry_ts": "2026-11-24T16:52:28-05:00",
+          "stop_px": 9.271948631945197e-11,
+          "tp_px": 1.8543897263890395e-10,
+          "time_stop": "2026-11-25T16:52:28-05:00",
+          "fees_entry_usd": 0.3253,
+          "cycle_id": "c0003"
+        },
+        {
+          "sym": "FIONA",
+          "mint": "B34nXKzCgsJb9ChLuSHPRpXLE3WFSWyeT8Cqkzzmpump",
+          "size_usd": 10.0,
+          "tokens": 3047742437.0,
+          "entry_px": 3.281034354675687e-09,
+          "entry_ts": "2026-11-24T16:52:29-05:00",
+          "stop_px": 2.4607757660067656e-09,
+          "tp_px": 4.921551532013531e-09,
+          "time_stop": "2026-11-25T16:52:29-05:00",
+          "fees_entry_usd": 0.1195,
+          "cycle_id": "c0003"
+        }
+      ],
+      "trades": 4,
       "note": "Side strategy. Risky profile since 2026-11-24 (clock restarted); A-strict is a shadow score only. Book is paperLedger / ledger.jsonl.",
       "profile": "risky",
       "shadow": "A-strict",
-      "cash": 200.0,
-      "openCount": 0,
-      "tradeList": []
+      "cash": 160.0,
+      "openCount": 4,
+      "tradeList": [
+        {
+          "ts": "2026-11-24T16:52:27-05:00",
+          "symbol": "Huss",
+          "mint": "CUg7AzWL5p8imZVqqdjEPgRhUsXAkBMW5JxkSJ9fpump",
+          "side": "buy",
+          "size": 10.0,
+          "pnl": null,
+          "status": "open",
+          "reason": "paper fill after risky hard gates + score 84.0 + fresh quote (impact 1.61% < 3%); Risk vote advisory=reject"
+        },
+        {
+          "ts": "2026-11-24T16:52:28-05:00",
+          "symbol": "LUNO",
+          "mint": "EVbsBwxqdbMqadwAsVZ6KP9SJiaNmLSHAAb4W2mUpump",
+          "side": "buy",
+          "size": 10.0,
+          "pnl": null,
+          "status": "open",
+          "reason": "paper fill after risky hard gates + score 82.31 + fresh quote (impact 0.37% < 3%); Risk vote advisory=reject"
+        },
+        {
+          "ts": "2026-11-24T16:52:28-05:00",
+          "symbol": "Singularity",
+          "mint": "7R4MP6VX7n3RMNhL9zsk5Zu5ibZvwq8npUYnRq7epump",
+          "side": "buy",
+          "size": 10.0,
+          "pnl": null,
+          "status": "open",
+          "reason": "paper fill after risky hard gates + score 82.24 + fresh quote (impact 2.25% < 3%); Risk vote advisory=reject"
+        },
+        {
+          "ts": "2026-11-24T16:52:29-05:00",
+          "symbol": "FIONA",
+          "mint": "B34nXKzCgsJb9ChLuSHPRpXLE3WFSWyeT8Cqkzzmpump",
+          "side": "buy",
+          "size": 10.0,
+          "pnl": null,
+          "status": "open",
+          "reason": "paper fill after risky hard gates + score 82.13 + fresh quote (impact 0.20% < 3%); Risk vote advisory=reject"
+        }
+      ]
     }
   },
   "benchmarks": {
