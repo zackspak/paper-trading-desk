@@ -388,6 +388,14 @@
       "author": "maker",
       "agent": "maker",
       "text": "Strategy B: 0 market(s) quoted, 1 paper fill(s), 1 quote(s) expired unfilled, 0 settled. Equity $200.00."
+    },
+    {
+      "ts": "2026-11-24T17:01:57-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "maker",
+      "agent": "maker",
+      "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 1 settled. Equity $190.13."
     }
   ],
   "postsReviewed": [
@@ -841,12 +849,12 @@
       "name": "Polymarket maker (paper)",
       "status": "running",
       "startBalance": 200.0,
-      "equity": 200.0,
+      "equity": 190.13,
       "cash": 150.79,
       "reserved": 39.34,
-      "realizedPnl": 0.0,
+      "realizedPnl": -9.87,
       "unrealizedPnl": 0.0,
-      "realizedToday": 0.0,
+      "realizedToday": -9.87,
       "feesPaid": 0.0,
       "rebatesAssumed": 0.0,
       "resting": [
@@ -895,17 +903,7 @@
           "url": "https://polymarket.com/event/sol-updown-15m-1795557600"
         }
       ],
-      "open": [
-        {
-          "slug": "xrp-updown-15m-1795556700",
-          "question": "XRP Up or Down - November 24, 4:45PM-5:00PM ET",
-          "outcome": "Down",
-          "shares": 21.0,
-          "cost": 9.87,
-          "mark": null,
-          "url": "https://polymarket.com/event/xrp-updown-15m-1795556700"
-        }
-      ],
+      "open": [],
       "fills": [
         {
           "ts": "2026-11-24T17:01:02-05:00",
@@ -918,15 +916,23 @@
           "url": "https://polymarket.com/event/xrp-updown-15m-1795556700"
         }
       ],
-      "closed": [],
+      "closed": [
+        {
+          "slug": "xrp-updown-15m-1795556700",
+          "outcome": "Down",
+          "pnl": -9.87,
+          "closed": "2026-11-24T17:01:57-05:00",
+          "won": false
+        }
+      ],
       "lastCycle": {
-        "ts": "2026-11-24T17:01:02-05:00",
+        "ts": "2026-11-24T17:01:57-05:00",
         "quoted": [],
-        "fills": [
-          "xrp-updown-15m-1795556700 Down 21.00@0.47"
+        "fills": [],
+        "expired": 0,
+        "settled": [
+          "xrp-updown-15m-1795556700 Down -> 0"
         ],
-        "expired": 1,
-        "settled": [],
         "skipped": [
           "evaluation-only pass (no new quotes)"
         ]
@@ -937,20 +943,25 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T17:01:02-05:00",
-          "equity": 200.0
+          "ts": "2026-11-24T17:01:57-05:00",
+          "equity": 190.13
+        },
+        {
+          "ts": "2026-11-24T17:01:57-05:00",
+          "equity": 190.13
         }
       ],
       "stats": {
-        "n": 0,
-        "expectancy": null,
-        "expectancyDropTop": null,
-        "winRate": null
+        "n": 1,
+        "expectancy": -9.87,
+        "expectancyDropTop": -9.87,
+        "droppedTop": 0,
+        "winRate": 0.0
       },
       "counts": {
         "quotes": 6,
         "fills": 1,
-        "settled": 0
+        "settled": 1
       },
       "rules": [
         "Paper only, public read-only data. No wallet, account, keys, or orders.",
@@ -978,7 +989,7 @@
     }
   },
   "benchmarks": {
-    "asOf": "2026-11-24T17:01:06-05:00",
+    "asOf": "2026-11-24T17:02:17-05:00",
     "note": "Read-only public data. Benchmarks are context, not targets; their size, speed and rebate tiers are out of reach for a $200 paper book.",
     "rows": [
       {
@@ -986,7 +997,7 @@
         "name": "mo-money",
         "kind": "polymarket",
         "style": "crypto up/down maker, 5m-1d",
-        "asOf": "2026-11-24T17:01:02-05:00",
+        "asOf": "2026-11-24T17:01:57-05:00",
         "pnlAll": 560331.22,
         "volumeAll": 34340418.25,
         "rankPnl": 375,
@@ -1003,7 +1014,7 @@
         "name": "almach",
         "kind": "polymarket",
         "style": "short crypto markets bot",
-        "asOf": "2026-11-24T17:01:03-05:00",
+        "asOf": "2026-11-24T17:01:58-05:00",
         "pnlAll": 469398.17,
         "volumeAll": 33121475.23,
         "rankPnl": 453,
@@ -1020,7 +1031,7 @@
         "name": "RN1",
         "kind": "polymarket",
         "style": "sports market-maker",
-        "asOf": "2026-11-24T17:01:04-05:00",
+        "asOf": "2026-11-24T17:01:59-05:00",
         "pnlAll": 13586533.93,
         "volumeAll": 1549394274.02,
         "rankPnl": 4,
@@ -1037,7 +1048,7 @@
         "name": "ohioism",
         "kind": "polymarket",
         "style": "5m/15m crypto bot (sells a course)",
-        "asOf": "2026-11-24T17:01:05-05:00",
+        "asOf": "2026-11-24T17:01:59-05:00",
         "pnlAll": 108333.33,
         "volumeAll": 9300743.81,
         "rankPnl": 1868,
@@ -1054,10 +1065,10 @@
         "name": "Growi HF vault",
         "kind": "hyperliquid_vault",
         "style": "automated mean-reversion perps vault",
-        "asOf": "2026-11-24T17:01:06-05:00",
-        "pnlAll": 1499407.2,
-        "pnl30d": -1417317.8,
-        "accountValue": 10356753.19,
+        "asOf": "2026-11-24T17:02:17-05:00",
+        "pnlAll": 1500019.73,
+        "pnl30d": -1416705.27,
+        "accountValue": 10357365.72,
         "apr": -0.103,
         "source": "api.hyperliquid.xyz/info vaultDetails"
       }
@@ -1065,7 +1076,7 @@
   },
   "sideGame": {
     "source": "predictions/picks.jsonl (Zack's manual picks routine)",
-    "asOf": "2026-11-24T17:01:06-05:00",
+    "asOf": "2026-11-24T17:02:17-05:00",
     "rows": null,
     "note": "Waiting: no picks file yet."
   },
