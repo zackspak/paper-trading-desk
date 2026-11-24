@@ -2,8 +2,8 @@
   "ok": true,
   "paper": true,
   "mode": "paper",
-  "evaluation": "not_started",
-  "updatedAt": "2026-11-24T14:55:00-05:00",
+  "evaluation": "running since 2026-11-24 ET, Grok-only",
+  "updatedAt": "2026-11-24T15:35:06-05:00",
   "timezone": "America/New_York",
   "note": "Paper ledger is empty because no paper fills were found in existing journals. Live trades were not copied. Nothing here is a live book.",
   "agents": [
@@ -13,7 +13,7 @@
       "model": "Grok Bot",
       "role": "Orchestrate cycles, tally independent votes, journal, digest to Zack. Does not pick tokens and does not overrule a reject.",
       "status": "idle",
-      "lastAction": "Reviewed the Obzidian launch post at 2:55 PM ET on Nov 24, 2026. Added intake verdict. Did not join the waitlist or connect a wallet."
+      "lastAction": "c0001: tallied. 0 paper fill(s), 6 vote/quote rejects."
     },
     {
       "id": "scout",
@@ -21,7 +21,7 @@
       "model": "Grok (Scout seat)",
       "role": "Scan public lists, apply numeric prefilters, build a FACTS packet with data_ts and source per metric.",
       "status": "idle",
-      "lastAction": "Historical scout reports and raw cycles remain in the prior paper desk. No new scan this session."
+      "lastAction": "c0001: screened 71 unique, 65 prefilter rejects, 6 need Risk votes."
     },
     {
       "id": "risk",
@@ -29,7 +29,7 @@
       "model": "Grok (Risk / Skeptic seat)",
       "role": "Score the fixed checklist, write the bear case, first veto.",
       "status": "idle",
-      "lastAction": "Prior hard-reject and bear-case rules reused from the October desk. No new candidate scored this session."
+      "lastAction": "c0001: bear cases applied."
     },
     {
       "id": "simulator",
@@ -37,7 +37,7 @@
       "model": "Grok (Simulator seat)",
       "role": "Paper marks and fills from fresh size-specific quotes only. Never invent a fill.",
       "status": "idle",
-      "lastAction": "Initialized the original $200 paper book on Oct 6, 2026. No paper fills exist in that ledger. New paper ledger starts empty."
+      "lastAction": "c0001: 0 paper fill(s); book equity $200.00."
     },
     {
       "id": "social",
@@ -45,7 +45,7 @@
       "model": "Grok (Social seat)",
       "role": "Label NARRATIVE (X, KOL, meme heat) separately. runner_score is not a fact and cannot clear a hard gate.",
       "status": "idle",
-      "lastAction": "No narrative deep-dive this session. X posts were reviewed as promo or tooling, not as trade signals."
+      "lastAction": "c0001: not woken; narrative cannot pass a gate."
     },
     {
       "id": "jev",
@@ -53,7 +53,7 @@
       "model": "Jev (TypeSafe AI) — not wired",
       "role": "Optional fast typed classifier / extra veto. Not an alpha source. Key is Zack-gated.",
       "status": "not_wired",
-      "lastAction": "Documented as optional and unconfigured. No TypeSafe key requested or set up."
+      "lastAction": "skipped_not_wired — Grok-only window (Zack 2026-11-24)."
     },
     {
       "id": "gemini",
@@ -61,7 +61,7 @@
       "model": "Gemini — not wired",
       "role": "Reject-only seat. Find reasons to veto the candidate. 'No reject found' is not a buy.",
       "status": "not_wired",
-      "lastAction": "Seat designed. No Gemini API key or gemini-api-cli setup. Waiting on Zack."
+      "lastAction": "skipped_not_wired — Grok-only window (Zack 2026-11-24)."
     },
     {
       "id": "chatgpt",
@@ -69,40 +69,55 @@
       "model": "ChatGPT — not wired",
       "role": "Independent score of the same fixed checklist, votes hidden until tally.",
       "status": "not_wired",
-      "lastAction": "Seat designed. No OpenAI/ChatGPT key set up. Waiting on Zack."
+      "lastAction": "skipped_not_wired — Grok-only window (Zack 2026-11-24)."
     },
     {
       "id": "zack",
       "name": "Zack",
       "model": "human",
       "role": "Final approver. Morning journal review by default; can pause anytime. Live remains a separate explicit approval.",
-      "status": "awaiting_decision",
-      "lastAction": "Asked the team to keep designing the paper plan and dashboard, and to research X posts as they arrive. Check-in later."
+      "status": "awaiting_review",
+      "lastAction": "Paper test running (Grok-only). Morning digest ~8 AM ET."
     }
   ],
   "rules": [
     "Paper only. No real money, wallets, exchange or DEX keys, sign-ups, posts, or messages.",
-    "No unattended live execution. The October live Solana desk stays off. mode.json is not edited.",
+    "No unattended live execution. The October live Solana desk stays off.",
     "Virtual bankroll $200. Max $10 per position. Max 2 open. No leverage. No averaging down.",
     "Daily realized loss stop -$15 (America/New_York). Evaluation drawdown fail line -$40.",
     "Missing or unverified data = reject. Fresh current-cycle sources and timestamps required.",
-    "Any disagreement or missing required seat vote = reject.",
+    "Any disagreement or missing required Grok vote = reject. Gemini, ChatGPT, and Jev are skipped_not_wired for this Grok-only window (Zack approved 2026-11-24).",
     "Exits written before entry: full stop -25%, full take-profit +50%, 24h time stop. No moonbag in this evaluation.",
     "Hard rejects: honeypot; mint or freeze not renounced; rug_ratio > 0.25; bot_degen >= 0.75; failed liquidity or canonical-pool check; impersonation tickers; no quote.",
     "Bear case required. Facts vs narrative; narrative cannot pass a gate.",
     "No invented fills or marks. Corrections are new notes only.",
     "Existing routines (paper-memecoin-team-cycle, memecoin sweeps) are not modified.",
-    "Until Zack decides otherwise, unwired Gemini/ChatGPT/Jev seats are missing votes and block fills (see the paper team plan, rule 14)."
+    "Write only under the paper desk . Never call swap, buy, sell, or wallet scripts."
   ],
   "paperLedger": {
     "startBalance": 200.0,
     "balance": 200.0,
+    "cash": 200.0,
     "currency": "USD",
     "open": [],
     "realizedPnl": 0.0,
     "unrealizedPnl": 0.0,
     "trades": [],
-    "emptyReason": "The original paper book was initialized Oct 6, 2026 with $200 and no paper fills; all fills in that ledger are live and are not copied here."
+    "equitySeries": [
+      {
+        "ts": "2026-11-24T00:00:00-05:00",
+        "equity": 200.0
+      },
+      {
+        "ts": "2026-11-24T15:35:06-05:00",
+        "equity": 200.0
+      },
+      {
+        "ts": "2026-11-24T15:35:06-05:00",
+        "equity": 200.0
+      }
+    ],
+    "emptyReason": "No paper fills yet. Live history was not copied."
   },
   "journal": [
     {
@@ -140,6 +155,22 @@
       "type": "note",
       "author": "coordinator",
       "text": "X intake recorded for https://x.com/obzidian_ai/status/2125258360014655961. Real company, marketing demo, paid KOL amplification; not a trading edge. Did not join the waitlist or connect a wallet. See postsReviewed."
+    },
+    {
+      "ts": "2026-11-24T15:33:25-05:00",
+      "type": "observe",
+      "kind": "observe",
+      "author": "scout",
+      "agent": "scout",
+      "text": "c0001 scan: 71 unique names, 65 prefilter rejects, 0 deep rejects, 6 candidates needing votes."
+    },
+    {
+      "ts": "2026-11-24T15:35:06-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "coordinator",
+      "agent": "coordinator",
+      "text": "c0001 decide: 0 paper fill(s), 6 rejected after votes/quotes. Equity $200.00. Realized $0.00."
     }
   ],
   "postsReviewed": [
@@ -179,5 +210,218 @@
       "verdict": "Launch/waitlist from a real Swiss company (Moonberg AG), not a CELE8EX fake-P&L. The 46s video is a product demo with illustrative boards, invented-looking tickers, and unaudited backtest stats — not evidence of edge. Same-day paid KOL posts, referral links, and airdrop/reward talk. Terms let a Privy wallet grant Obzidian a signing key for automations. Do not join the waitlist or connect a wallet.",
       "ideaWorthTesting": "Test-first, confirm-before-arm, and rules-in-code are already on our checklist. Do not copy 24/7 auto-execution or wallet-connected automations."
     }
-  ]
+  ],
+  "evaluationDetail": {
+    "status": "running",
+    "startDate": "2026-11-24",
+    "window": "2-4 weeks",
+    "seats": "grok_only",
+    "skipped": [
+      "gemini",
+      "chatgpt",
+      "jev"
+    ],
+    "updatedAt": "2026-11-24T15:35:06-05:00"
+  },
+  "pipeline": {
+    "scanned": [
+      {
+        "symbol": "Rings",
+        "note": "candidate"
+      },
+      {
+        "symbol": "FIONA",
+        "note": "candidate"
+      },
+      {
+        "symbol": "ATX",
+        "note": "candidate"
+      },
+      {
+        "symbol": "GROKIA",
+        "note": "candidate"
+      },
+      {
+        "symbol": "Max",
+        "note": "candidate"
+      },
+      {
+        "symbol": "JIMMY",
+        "note": "candidate"
+      },
+      {
+        "symbol": "ANSEM",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "GTA 6 Coin",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "mihao",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "Gateus",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "DCTY",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "Kimchi",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "WASTED",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "NIO",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "CLAUDIA",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "pepe",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "ANSEM",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "Omonkey",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "Huss",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "cCAT",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "CSI",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "Holders",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "Memeployed",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "CUNTS",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "HUSS",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "DUVAL",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "NICKEH30",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "Mogmas",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "CHRISTMAS",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "Gabriel",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "CIA",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "Red",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "POORGOAT",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "Slingoor",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "Z3RO",
+        "note": "rejected at prefilter or deep"
+      },
+      {
+        "symbol": "MIST",
+        "note": "rejected at prefilter or deep"
+      }
+    ],
+    "scored": [
+      {
+        "symbol": "Rings",
+        "note": "mechanical pass"
+      },
+      {
+        "symbol": "FIONA",
+        "note": "mechanical pass"
+      },
+      {
+        "symbol": "ATX",
+        "note": "mechanical pass"
+      },
+      {
+        "symbol": "GROKIA",
+        "note": "mechanical pass"
+      },
+      {
+        "symbol": "Max",
+        "note": "mechanical pass"
+      },
+      {
+        "symbol": "JIMMY",
+        "note": "mechanical pass"
+      }
+    ],
+    "vetoed": [
+      {
+        "symbol": "Rings",
+        "note": "Risk reject: Launchpad is meteora_virtual_curve, the Oct 17 hard gate; the scanner only checked the exchange name, so this slipped the mechanical net. Token is "
+      },
+      {
+        "symbol": "FIONA",
+        "note": "Risk reject: ~$3.16M cap with only ~$4k interval volume and more sells than buys (48 vs 35). Bundler 36.2% sits just under the 40% hard line. Liq can absorb a $"
+      },
+      {
+        "symbol": "ATX",
+        "note": "Risk reject: Creator still holds (creator_hold). Top-10 concentration is 33.8%. Interval volume only ~$1.7k and sells already exceed buys. Most likely failure: "
+      },
+      {
+        "symbol": "GROKIA",
+        "note": "Risk reject: Only ~18 hours old, and the ticker Grokia is a Grok brand-clone (same family as the impersonation list; the mechanical list missed it). Buy-heavy t"
+      },
+      {
+        "symbol": "Max",
+        "note": "Risk reject: Creator still holds. Bundler 36.8% is just under the 40% hard line. Sells already exceed buys on a sub-$400k cap with $81k liq. Most likely failure"
+      },
+      {
+        "symbol": "JIMMY",
+        "note": "Risk reject: Only ~23 hours old. Bot-degen 44.1%. Liq ~$73k is the thinnest of the six. Volume is real (~$21k) and buys lead sells, but this is still a day-old "
+      }
+    ],
+    "paperTraded": []
+  }
 }
