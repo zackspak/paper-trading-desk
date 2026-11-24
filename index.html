@@ -377,6 +377,40 @@ body.demo .demo-banner { display: flex; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
 }
+/* ---- Strategies B/C/A, benchmarks, scoreboard (added 2026-11-24) ---- */
+.strat-panel { margin-bottom: 14px; }
+.strat-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.strat-tab { background: #1a160d; color: var(--muted); border: 1px solid var(--stroke); border-radius: 999px; padding: 4px 12px; font-size: 0.72rem; cursor: pointer; font-family: var(--font); }
+.strat-tab.on { color: #1a1206; background: var(--amber); border-color: var(--amber); font-weight: 700; }
+.strat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 10px 0; }
+.strat-card { background: #0f0d09; border: 1px solid var(--stroke-dim); border-radius: 16px; padding: 10px 12px; cursor: pointer; transition: border-color .2s, box-shadow .2s; }
+.strat-card.on { border-color: var(--amber); box-shadow: 0 0 18px #f5a62333; }
+.strat-card .sc-top { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; }
+.strat-card .sc-id { font-family: var(--mono); color: var(--amber); font-weight: 700; }
+.strat-card .sc-name { font-size: 0.75rem; color: var(--text); }
+.strat-card .sc-tag { font-size: 0.6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.strat-card .sc-eq { font-family: var(--mono); font-size: 1.35rem; margin: 4px 0 2px; }
+.strat-card .sc-meta { font-size: 0.68rem; color: var(--muted); }
+.strat-card canvas { width: 100%; height: 44px; display: block; margin-top: 6px; }
+.pos { color: var(--green); } .neg { color: var(--red); }
+.strat-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.sd-box { background: #0f0d09; border: 1px solid var(--stroke-dim); border-radius: 14px; padding: 8px 10px; min-height: 90px; }
+.sd-box h3 { margin: 0 0 6px; font-size: 0.72rem; color: var(--gold); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.sd-row { font-size: 0.72rem; padding: 4px 0; border-bottom: 1px dashed #2a2110; line-height: 1.35; }
+.sd-row:last-child { border-bottom: 0; }
+.sd-row a { color: var(--cyan); text-decoration: none; }
+.sd-row .mono { font-family: var(--mono); }
+.sd-row .why { color: var(--muted); font-size: 0.68rem; }
+.sd-rules { font-size: 0.66rem; color: var(--muted); margin: 0; padding-left: 16px; }
+.bm-table { width: 100%; border-collapse: collapse; font-size: 0.72rem; }
+.bm-table th { text-align: left; color: var(--muted); font-weight: 500; padding: 4px 6px; border-bottom: 1px solid var(--stroke); }
+.bm-table td { padding: 5px 6px; border-bottom: 1px dashed #2a2110; font-family: var(--mono); }
+.bm-table td.nm { font-family: var(--font); }
+.bm-table a { color: var(--cyan); text-decoration: none; }
+.pm-bottom { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; margin-bottom: 14px; }
+@media (max-width: 860px) {
+  .strat-grid, .strat-detail, .pm-bottom { grid-template-columns: 1fr; }
+}
   </style>
 </head>
 <body>
@@ -392,7 +426,7 @@ body.demo .demo-banner { display: flex; }
         <div class="sub"><span class="live-dot" aria-hidden="true"></span><span id="subLine">Waiting for the paper feed</span></div>
       </div>
       <div class="bal">
-        <div class="bal-label">Paper balance</div>
+        <div class="bal-label">A · memecoin paper balance</div>
         <div class="bal-value" id="balValue">—</div>
         <div class="bal-meta" id="balMeta">simulated · no real money</div>
       </div>
@@ -407,6 +441,37 @@ body.demo .demo-banner { display: flex; }
     </header>
 
     <div class="chips" id="chips"><div class="waiting-line">Waiting — no candidates in the feed.</div></div>
+
+    <section class="panel strat-panel" id="stratPanel">
+      <div class="panel-head">
+        <h2>Strategies · main desk is B + C</h2>
+        <div class="strat-tabs" id="stratTabs">
+          <button class="strat-tab on" data-s="B">B · Maker</button>
+          <button class="strat-tab" data-s="C">C · Research picks</button>
+          <button class="strat-tab" data-s="A">A · Memecoin</button>
+          <button class="strat-tab" data-s="ALL">Side by side</button>
+        </div>
+      </div>
+      <div class="strat-grid" id="stratGrid"><div class="waiting-line">Waiting — no strategy data in the feed yet.</div></div>
+      <div class="strat-detail" id="stratDetail"></div>
+    </section>
+
+    <div class="pm-bottom">
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Benchmarks · real public bots (read-only)</h2>
+          <span class="meta" id="bmMeta"></span>
+        </div>
+        <div id="bmBody"><div class="waiting-line">Waiting — no benchmark snapshot yet.</div></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Zack vs bots vs market</h2>
+          <span class="meta" id="sgMeta">side game</span>
+        </div>
+        <div id="sgBody"><div class="waiting-line">Waiting — no resolved picks yet.</div></div>
+      </section>
+    </div>
 
     <section class="panel">
       <div class="panel-head">
@@ -1060,6 +1125,154 @@ body.demo .demo-banner { display: flex; }
     poll();
     setInterval(poll, POLL_MS);
   }
+})();
+  </script>
+  <script>
+/* Strategies B/C/A + benchmarks + side game. Display only; reads state.json; never invents numbers. */
+(function () {
+  "use strict";
+  if (/(?:\?|&)demo=1(?:&|$)/.test(location.search)) return;
+  const PATHS = ["./state.json", "state.json", "../state.json"];
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  const safeUrl = (u) => (typeof u === "string" && /^https:\/\//.test(u)) ? esc(u) : "";
+  const money = (n, signed) => (n == null || isNaN(n)) ? "—" : ((signed && n > 0 ? "+" : (n < 0 ? "−" : "")) + "$" + Math.abs(Number(n)).toLocaleString("en-US", { maximumFractionDigits: 2, minimumFractionDigits: 2 }));
+  const big = (n) => { if (n == null || isNaN(n)) return "—"; const a = Math.abs(n), s = n < 0 ? "−" : "+";
+    return s + "$" + (a >= 1e6 ? (a/1e6).toFixed(2) + "M" : a >= 1e3 ? (a/1e3).toFixed(1) + "K" : a.toFixed(0)); };
+  const cls = (n) => n == null ? "" : (n > 0 ? "pos" : (n < 0 ? "neg" : ""));
+  const t = (ts) => { try { return new Date(ts).toLocaleString("en-US", { timeZone: "America/New_York", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) + " ET"; } catch (e) { return ""; } };
+  // Public profile links (kept here, not in the scrubbed feed).
+  const BM_LINKS = {
+    "mo-money": "https://polymarket.com/profile/0x32ed2e546b187ca15e2841edc82b22c713cf8ec3",
+    "almach": "https://polymarket.com/profile/0x3725d52f3c252e8374999cc8617292ea2608ad88",
+    "rn1": "https://polymarket.com/profile/0x2005d16a84ceefa912d4e380cd32e7ff827875ea",
+    "ohioism": "https://polymarket.com/@ohioism",
+    "growi-hf": "https://app.hyperliquid.xyz/vaults/0x1e37a337ed460039d1b15bd3bc489de789768d5e"
+  };
+  let sel = "B";
+  let last = null;
+
+  document.querySelectorAll(".strat-tab").forEach((b) => b.addEventListener("click", () => { sel = b.dataset.s; render(); }));
+
+  function spark(canvas, series) {
+    if (!canvas || !canvas.getContext) return;
+    const dpr = window.devicePixelRatio || 1, w = canvas.clientWidth || 200, h = canvas.clientHeight || 44;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    const ctx = canvas.getContext("2d"); ctx.scale(dpr, dpr); ctx.clearRect(0, 0, w, h);
+    const ys = (series || []).map((p) => Number(p.equity)).filter((v) => !isNaN(v));
+    if (ys.length < 2) { ctx.fillStyle = "#9a8660"; ctx.font = "10px sans-serif"; ctx.fillText("waiting for history", 4, h / 2 + 3); return; }
+    let lo = Math.min(...ys), hi = Math.max(...ys); if (hi - lo < 1) { lo -= 0.5; hi += 0.5; }
+    ctx.strokeStyle = ys[ys.length - 1] >= ys[0] ? "#3dff8a" : "#ff5a6a"; ctx.lineWidth = 1.5; ctx.beginPath();
+    ys.forEach((v, i) => { const x = i / (ys.length - 1) * (w - 2) + 1, y = h - 3 - (v - lo) / (hi - lo) * (h - 6); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); });
+    ctx.stroke();
+  }
+
+  function card(s, tag) {
+    const eq = s.equity, pnl = (eq != null && s.startBalance != null) ? eq - s.startBalance : null;
+    let meta = "";
+    if (s.id === "B") meta = `${(s.resting || []).length} resting · ${(s.counts || {}).fills || 0} fills · ${(s.open || []).length} awaiting result`;
+    else if (s.id === "C") meta = `${(s.open || []).length}/5 open · ${(s.picks || []).length} estimates · Brier ${s.brier && s.brier.team != null ? s.brier.team : "—"}`;
+    else meta = `${s.open != null ? s.open : 0} open · ${s.trades != null ? s.trades : 0} trades`;
+    return `<div class="strat-card ${sel === s.id || sel === "ALL" ? "on" : ""}" data-s="${esc(s.id)}">
+      <div class="sc-top"><span class="sc-id">${esc(s.id)}</span><span class="sc-tag">${esc(tag)} · ${esc(s.status || "waiting")}</span></div>
+      <div class="sc-name">${esc(s.name || "")}</div>
+      <div class="sc-eq">${eq == null ? "—" : money(eq)}</div>
+      <div class="sc-meta"><span class="${cls(pnl)}">${pnl == null ? "P&L —" : "P&L " + money(pnl, true)}</span> · ${esc(meta)}</div>
+      <canvas data-spark="${esc(s.id)}"></canvas></div>`;
+  }
+
+  function rows(list, fn, empty) {
+    if (!list || !list.length) return `<div class="waiting-line">${esc(empty)}</div>`;
+    return list.map(fn).join("");
+  }
+
+  function detailB(s) {
+    const lc = s.lastCycle || {};
+    const quoted = rows((lc.quoted || []), (q) => `<div class="sd-row"><a href="${safeUrl(q.url)}" target="_blank" rel="noopener">${esc(q.question)}</a><br>
+      <span class="mono">Up bid ${esc(q.up)} (book ${esc((q.upBook||[]).join("/"))}) · Down bid ${esc(q.down)} (book ${esc((q.downBook||[]).join("/"))}) · $${esc(q.usd)}</span></div>`, "No markets quoted last cycle.");
+    const resting = rows((s.resting || []).slice(-8), (q) => `<div class="sd-row"><span class="mono">${esc(q.outcome)} bid ${esc(q.price)} × ${esc(q.shares)}</span> · ${esc(q.question)}<br><span class="why">until ${esc(t(q.expires))}</span></div>`, "No resting paper quotes.");
+    const fills = rows((s.fills || []).slice(-8).reverse(), (f) => `<div class="sd-row"><span class="mono">${esc(f.outcome)} ${esc(f.shares)} @ ${esc(f.price)}</span> · ${esc(f.question)}<br><span class="why">${esc(t(f.ts))}</span></div>`, "No paper fills yet. A fill needs public trades printing through the paper bid.");
+    const closed = rows((s.closed || []).slice(-8).reverse(), (c) => `<div class="sd-row"><span class="mono ${cls(c.pnl)}">${money(c.pnl, true)}</span> · ${esc(c.slug)} ${esc(c.outcome)}</div>`, "Nothing settled yet.");
+    const st = s.stats || {};
+    const skipped = (lc.skipped || []).length ? `<div class="why" style="font-size:.64rem;margin-top:4px">${(lc.skipped||[]).slice(0,4).map(esc).join("<br>")}</div>` : "";
+    return `<div class="sd-box"><h3>Last cycle quotes · ${esc(t(lc.ts))}</h3>${quoted}${skipped}</div>
+      <div class="sd-box"><h3>Resting paper quotes</h3>${resting}</div>
+      <div class="sd-box"><h3>Fills (conservative)</h3>${fills}</div>
+      <div class="sd-box"><h3>Settled · expectancy ${st.expectancy == null ? "—" : money(st.expectancy, true)}</h3>${closed}
+      <ul class="sd-rules">${(s.rules || []).map((r) => `<li>${esc(r)}</li>`).join("")}</ul>
+      <div class="why" style="font-size:.64rem">Fees: <a href="${safeUrl(s.feeSource)}" target="_blank" rel="noopener" style="color:var(--cyan)">Polymarket fee docs</a></div></div>`;
+  }
+
+  function detailC(s) {
+    const picks = rows((s.picks || []).slice(-6).reverse(), (p) => `<div class="sd-row"><a href="${safeUrl(p.url)}" target="_blank" rel="noopener">${esc(p.question)}</a> — <b>${esc(p.outcome)}</b><br>
+      <span class="mono">team ${p.estProb != null ? Math.round(p.estProb * 100) + "%" : "—"} vs market ${p.mktProb != null ? Math.round(p.mktProb * 100) + "%" : "—"} · edge ${p.edge != null ? (p.edge * 100).toFixed(1) + " pts" : "—"} · ${esc(p.decision)}</span><br>
+      <span class="why">${esc(p.reasoning)}</span><br>${(p.sources || []).map((x) => `<a href="${safeUrl(x.url)}" target="_blank" rel="noopener">${esc(x.title || "source")}</a> <span class="why">(${esc(x.date)})</span>`).join(" · ")}</div>`, "No estimates logged yet. The team only picks when its estimate beats the price by 8+ points after fees.");
+    const open = rows((s.open || []), (p) => `<div class="sd-row"><span class="mono">${esc(p.outcome)} ${esc(p.shares)} sh · cost ${money(p.cost)} · mark ${p.mark == null ? "—" : esc(p.mark)}</span><br>${esc(p.question)}</div>`, "No open paper picks.");
+    const closed = rows((s.closed || []).slice(-8).reverse(), (c) => `<div class="sd-row"><span class="mono ${cls(c.pnl)}">${money(c.pnl, true)}</span> · ${esc(c.slug)} ${esc(c.outcome)}</div>`, "Nothing settled yet.");
+    const b = s.brier || {};
+    return `<div class="sd-box" style="grid-column:1/-1"><h3>Research picks · reasoning and dated sources</h3>${picks}</div>
+      <div class="sd-box"><h3>Open picks</h3>${open}</div>
+      <div class="sd-box"><h3>Settled · Brier team ${b.team == null ? "—" : esc(b.team)} vs market ${b.market == null ? "—" : esc(b.market)} (n=${esc(b.n || 0)})</h3>${closed}
+      <ul class="sd-rules">${(s.rules || []).map((r) => `<li>${esc(r)}</li>`).join("")}</ul></div>`;
+  }
+
+  function detailA(s) {
+    return `<div class="sd-box" style="grid-column:1/-1"><h3>A · Solana memecoin (side strategy)</h3>
+      <div class="sd-row">Equity ${money(s.equity)} · realized ${money(s.realizedPnl, true)} · ${esc(s.open || 0)} open · ${esc(s.trades || 0)} trades.</div>
+      <div class="sd-row why">Full A view: token chips, seats hub and journal below.</div></div>`;
+  }
+
+  function render() {
+    document.querySelectorAll(".strat-tab").forEach((b) => b.classList.toggle("on", b.dataset.s === sel));
+    const d = last || {}, S = d.strategies || {};
+    const order = ["B", "C", "A"], tags = { B: "main", C: "main", A: "side" };
+    const have = order.filter((k) => S[k]);
+    if (!have.length) { $("stratGrid").innerHTML = '<div class="waiting-line">Waiting — no strategy data in the feed yet.</div>'; $("stratDetail").innerHTML = ""; }
+    else {
+      $("stratGrid").innerHTML = have.map((k) => card(S[k], tags[k])).join("");
+      $("stratGrid").querySelectorAll(".strat-card").forEach((c) => c.addEventListener("click", () => { sel = c.dataset.s; render(); }));
+      $("stratGrid").querySelectorAll("canvas[data-spark]").forEach((c) => spark(c, (S[c.dataset.spark] || {}).equitySeries || (c.dataset.spark === "A" ? ((d.paperLedger || {}).equitySeries) : null)));
+      const pick = sel === "ALL" ? "B" : sel;
+      const s = S[pick];
+      $("stratDetail").innerHTML = !s ? '<div class="waiting-line">Waiting.</div>' :
+        (pick === "B" ? detailB(s) : pick === "C" ? detailC(s) : detailA(s)) +
+        (sel === "ALL" && S.C ? detailC(S.C) : "");
+    }
+    // Benchmarks
+    const bm = d.benchmarks;
+    if (bm && bm.rows && bm.rows.length) {
+      $("bmMeta").textContent = "as of " + t(bm.asOf);
+      $("bmBody").innerHTML = `<table class="bm-table"><thead><tr><th>Bot</th><th>Style</th><th>All-time P&amp;L</th><th>30-day P&amp;L</th><th>Volume</th></tr></thead><tbody>` +
+        bm.rows.map((r) => { const u = BM_LINKS[r.id];
+          return `<tr><td class="nm">${u ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(r.name)}</a>` : esc(r.name)}</td><td class="nm why">${esc(r.style)}</td>
+          <td class="${cls(r.pnlAll)}">${r.error ? "error" : big(r.pnlAll)}</td><td class="${cls(r.pnl30d)}">${big(r.pnl30d)}</td><td>${r.volumeAll != null ? big(r.volumeAll).replace("+", "") : (r.accountValue != null ? "TVL " + big(r.accountValue).replace("+", "") : "—")}</td></tr>`; }).join("") +
+        `</tbody></table><div class="why" style="font-size:.64rem;margin-top:6px">${esc(bm.note || "")}</div>`;
+    }
+    // Side game
+    const sg = d.sideGame;
+    if (sg && sg.rows && sg.rows.length) {
+      $("sgMeta").textContent = `${sg.resolved || 0} resolved of ${sg.picks || 0}`;
+      $("sgBody").innerHTML = `<table class="bm-table"><thead><tr><th>Who</th><th>Resolved</th><th>Brier (lower is better)</th></tr></thead><tbody>` +
+        sg.rows.map((r) => `<tr><td class="nm">${esc(r.who === "zack" ? "Zack" : r.who === "bots" ? "Bots" : "Market")}</td><td>${esc(r.n)}</td><td>${r.brier == null ? "—" : esc(r.brier)}</td></tr>`).join("") + `</tbody></table>`;
+    } else if (sg && sg.note) {
+      $("sgBody").innerHTML = `<div class="waiting-line">${esc(sg.note)}</div>`;
+    }
+  }
+
+  async function poll() {
+    for (const p of PATHS) {
+      try {
+        const r = await fetch(p + "?t=" + Date.now(), { cache: "no-store" });
+        if (!r.ok) continue;
+        last = JSON.parse(await r.text());
+        render();
+        return;
+      } catch (e) { /* try next */ }
+    }
+  }
+  poll();
+  setInterval(poll, 5000);
+  window.addEventListener("resize", render);
 })();
   </script>
 </body>

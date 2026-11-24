@@ -3,7 +3,7 @@
   "paper": true,
   "mode": "paper",
   "evaluation": "running since 2026-11-24 ET, Grok-only",
-  "updatedAt": "2026-11-24T16:19:25-05:00",
+  "updatedAt": "2026-11-24T16:19:50-05:00",
   "timezone": "America/New_York",
   "note": "Paper ledger is empty because no paper fills were found in existing journals. Live trades were not copied. Nothing here is a live book.",
   "agents": [
@@ -191,6 +191,38 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0002 decide: 0 paper fill(s), 5 rejected after votes/quotes. Equity $200.00. Realized $0.00."
+    },
+    {
+      "ts": "2026-11-24T16:19:50-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "coordinator",
+      "agent": "coordinator",
+      "text": "X intake recorded for https://x.com/rgk_degen/status/2125283004415127921. Reject as a trading system (fictional/engagement P&L template, leverage). Visual may inspire the dashboard only. Useful process already partly in the hourly routine: CLI over browser, quiet 'nothing' runs; a turn cap in ROUTINE_PROMPT.md is proposed, not added. See postsReviewed."
+    },
+    {
+      "ts": "2026-11-24T16:36:23-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "maker",
+      "agent": "maker",
+      "text": "Strategy B: 3 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $200.00."
+    },
+    {
+      "ts": "2026-11-24T16:38:41-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 0 estimate(s) logged, 0 paper pick(s) taken."
+    },
+    {
+      "ts": "2026-11-24T16:38:47-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -229,6 +261,15 @@
       "reviewedAt": "2026-11-24T14:55:00-05:00",
       "verdict": "Launch/waitlist from a real Swiss company (Moonberg AG), not a CELE8EX fake-P&L. The 46s video is a product demo with illustrative boards, invented-looking tickers, and unaudited backtest stats — not evidence of edge. Same-day paid KOL posts, referral links, and airdrop/reward talk. Terms let a Privy wallet grant Obzidian a signing key for automations. Do not join the waitlist or connect a wallet.",
       "ideaWorthTesting": "Test-first, confirm-before-arm, and rules-in-code are already on our checklist. Do not copy 24/7 auto-execution or wallet-connected automations."
+    },
+    {
+      "id": "2125283004415127921",
+      "url": "https://x.com/rgk_degen/status/2125283004415127921",
+      "author": "rgk_degen",
+      "postedAt": "2026-11-24T12:38:48-05:00",
+      "reviewedAt": "2026-11-24T16:19:50-05:00",
+      "verdict": "Reject as a trading system. The $3 to $186,420 (62,140x) seven-day claim is a fictional / engagement template: a $3 account cannot take a -$31,935 loss early on; the 'At which day would you have pulled the plug?' shape matches the CELE8EX promo; no wallet, tx links, or ledger; $KOI at 5x leverage breaks our rules. Keep the visual as dashboard design inspiration only — not evidence.",
+      "ideaWorthTesting": "From RGK's Aug 26 2026 'cost floor' note: prefer connectors/CLIs over the browser, stay quiet on uneventful runs, use a turn cap with a state file to resume from, and batch writes. The hourly routine already uses CLI scripts, no browser, and stays quiet. An explicit turn cap in ROUTINE_PROMPT.md is a proposal only and has not been added."
     }
   ],
   "evaluationDetail": {
@@ -435,5 +476,382 @@
       }
     ],
     "paperTraded": []
-  }
+  },
+  "strategies": {
+    "C": {
+      "id": "C",
+      "name": "Polymarket research picks (paper)",
+      "status": "running",
+      "startBalance": 200.0,
+      "equity": 200.0,
+      "cash": 200.0,
+      "realizedPnl": 0.0,
+      "unrealizedPnl": 0.0,
+      "realizedToday": 0.0,
+      "feesPaid": 0.0,
+      "open": [],
+      "picks": [
+        {
+          "ts": "2026-11-24T16:38:47-05:00",
+          "question": "Will Bitcoin dip to $55,000 in November?",
+          "outcome": "Yes",
+          "estProb": 0.32,
+          "mktProb": 0.2685,
+          "edge": 0.049,
+          "decision": "reject",
+          "reasoning": "BTC spot ~$59,840 at 4:38 PM ET Nov 24; $55,000 is ~8.1% below with ~6.3 days left (Binance 1m low through Nov 30 11:59 PM ET). Driftless barrier model on 14 days of Coinbase hourly returns (realized vol ~69% annualized) gives ~35% touch odds; 1m wicks add a little, but realized vol includes the Nov 12-21 crash and may overstate the next week, so team estimate 32%. Bear case for Yes: BTC already bounced off ~$55.1K on Nov 21 without printing $55K, and buyers defended that zone. Market ~27%: edge",
+          "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-november-2026"
+        }
+      ],
+      "fills": [],
+      "closed": [],
+      "brier": {
+        "n": 0,
+        "team": null,
+        "market": null
+      },
+      "equitySeries": [
+        {
+          "ts": "2026-11-24T00:00:00-05:00",
+          "equity": 200.0
+        },
+        {
+          "ts": "2026-11-24T16:38:47-05:00",
+          "equity": 200.0
+        }
+      ],
+      "stats": {
+        "n": 0,
+        "expectancy": null,
+        "expectancyDropTop": null,
+        "winRate": null
+      },
+      "lastCycle": {
+        "ts": "2026-11-24T16:38:47-05:00",
+        "candidates": 12,
+        "picks": [
+          {
+            "q": "Will Bitcoin dip to $55,000 in November?",
+            "outcome": "Yes",
+            "est": 0.32,
+            "mkt": 0.2685,
+            "edge": 0.049,
+            "decision": "reject",
+            "reason": "edge +0.049 < 0.08"
+          }
+        ],
+        "taken": [],
+        "packet": "pc-20261124-1636"
+      },
+      "rules": [
+        "Paper only. Markets resolving in 1-30 days with real volume; at most 2 new picks per cycle.",
+        "Team estimate needs dated sources and written reasoning; narrative alone cannot pass.",
+        "Buy only if estimate - (fresh ask fill price + taker fee/share) >= 8 points.",
+        "<= $10 per pick, <= 5 open. Held to resolution; settled from real payouts.",
+        "Brier score tracked for every estimate vs the market price at the time.",
+        "Daily realized stop -$15; halt at -$40 drawdown."
+      ],
+      "feeSource": "https://docs.polymarket.com/trading/fees"
+    },
+    "B": {
+      "id": "B",
+      "name": "Polymarket maker (paper)",
+      "status": "running",
+      "startBalance": 200.0,
+      "equity": 200.0,
+      "cash": 140.92,
+      "reserved": 59.08,
+      "realizedPnl": 0.0,
+      "unrealizedPnl": 0.0,
+      "realizedToday": 0.0,
+      "feesPaid": 0.0,
+      "rebatesAssumed": 0.0,
+      "resting": [
+        {
+          "slug": "eth-updown-15m-1795557600",
+          "question": "Ethereum Up or Down - November 24, 5:00PM-5:15PM ET",
+          "outcome": "Up",
+          "price": 0.49,
+          "shares": 20,
+          "usd": 9.8,
+          "placed": "2026-11-24T16:36:21-05:00",
+          "expires": "2026-11-24T17:15:00-05:00",
+          "url": "https://polymarket.com/event/eth-updown-15m-1795557600"
+        },
+        {
+          "slug": "eth-updown-15m-1795557600",
+          "question": "Ethereum Up or Down - November 24, 5:00PM-5:15PM ET",
+          "outcome": "Down",
+          "price": 0.49,
+          "shares": 20,
+          "usd": 9.8,
+          "placed": "2026-11-24T16:36:21-05:00",
+          "expires": "2026-11-24T17:15:00-05:00",
+          "url": "https://polymarket.com/event/eth-updown-15m-1795557600"
+        },
+        {
+          "slug": "sol-updown-15m-1795557600",
+          "question": "Solana Up or Down - November 24, 5:00PM-5:15PM ET",
+          "outcome": "Up",
+          "price": 0.47,
+          "shares": 21,
+          "usd": 9.87,
+          "placed": "2026-11-24T16:36:22-05:00",
+          "expires": "2026-11-24T17:15:00-05:00",
+          "url": "https://polymarket.com/event/sol-updown-15m-1795557600"
+        },
+        {
+          "slug": "sol-updown-15m-1795557600",
+          "question": "Solana Up or Down - November 24, 5:00PM-5:15PM ET",
+          "outcome": "Down",
+          "price": 0.47,
+          "shares": 21,
+          "usd": 9.87,
+          "placed": "2026-11-24T16:36:22-05:00",
+          "expires": "2026-11-24T17:15:00-05:00",
+          "url": "https://polymarket.com/event/sol-updown-15m-1795557600"
+        },
+        {
+          "slug": "xrp-updown-15m-1795556700",
+          "question": "XRP Up or Down - November 24, 4:45PM-5:00PM ET",
+          "outcome": "Up",
+          "price": 0.47,
+          "shares": 21,
+          "usd": 9.87,
+          "placed": "2026-11-24T16:36:22-05:00",
+          "expires": "2026-11-24T17:00:00-05:00",
+          "url": "https://polymarket.com/event/xrp-updown-15m-1795556700"
+        },
+        {
+          "slug": "xrp-updown-15m-1795556700",
+          "question": "XRP Up or Down - November 24, 4:45PM-5:00PM ET",
+          "outcome": "Down",
+          "price": 0.47,
+          "shares": 21,
+          "usd": 9.87,
+          "placed": "2026-11-24T16:36:22-05:00",
+          "expires": "2026-11-24T17:00:00-05:00",
+          "url": "https://polymarket.com/event/xrp-updown-15m-1795556700"
+        }
+      ],
+      "open": [],
+      "fills": [],
+      "closed": [],
+      "lastCycle": {
+        "ts": "2026-11-24T16:36:23-05:00",
+        "quoted": [
+          {
+            "slug": "eth-updown-15m-1795557600",
+            "question": "Ethereum Up or Down - November 24, 5:00PM-5:15PM ET",
+            "url": "https://polymarket.com/event/eth-updown-15m-1795557600",
+            "up": 0.49,
+            "down": 0.49,
+            "upBook": [
+              0.48,
+              0.52
+            ],
+            "downBook": [
+              0.48,
+              0.52
+            ],
+            "usd": 19.6,
+            "ends": "2026-11-24T17:15:00-05:00"
+          },
+          {
+            "slug": "sol-updown-15m-1795557600",
+            "question": "Solana Up or Down - November 24, 5:00PM-5:15PM ET",
+            "url": "https://polymarket.com/event/sol-updown-15m-1795557600",
+            "up": 0.47,
+            "down": 0.47,
+            "upBook": [
+              0.46,
+              0.54
+            ],
+            "downBook": [
+              0.46,
+              0.54
+            ],
+            "usd": 19.74,
+            "ends": "2026-11-24T17:15:00-05:00"
+          },
+          {
+            "slug": "xrp-updown-15m-1795556700",
+            "question": "XRP Up or Down - November 24, 4:45PM-5:00PM ET",
+            "url": "https://polymarket.com/event/xrp-updown-15m-1795556700",
+            "up": 0.47,
+            "down": 0.47,
+            "upBook": [
+              0.46,
+              0.54
+            ],
+            "downBook": [
+              0.46,
+              0.54
+            ],
+            "usd": 19.74,
+            "ends": "2026-11-24T17:00:00-05:00"
+          }
+        ],
+        "fills": [],
+        "expired": 0,
+        "settled": [],
+        "skipped": [
+          "btc-updown-15m-1795558500: pair 0.5+0.5 > 0.99",
+          "btc-updown-15m-1795557600: pair 0.5+0.5 > 0.99",
+          "btc-updown-15m-1795555800: spread 0.01 has no room inside",
+          "btc-updown-15m-1795556700: spread 0.01 has no room inside",
+          "eth-updown-15m-1795558500: pair 0.5+0.5 > 0.99",
+          "eth-updown-15m-1795556700: spread 0.01 has no room inside",
+          "btc-updown-1h-1795554000: spread 0.01 has no room inside",
+          "sol-updown-15m-1795558500: pair 0.5+0.5 > 0.99",
+          "xrp-updown-15m-1795558500: pair 0.5+0.5 > 0.99"
+        ]
+      },
+      "equitySeries": [
+        {
+          "ts": "2026-11-24T00:00:00-05:00",
+          "equity": 200.0
+        },
+        {
+          "ts": "2026-11-24T16:36:23-05:00",
+          "equity": 200.0
+        }
+      ],
+      "stats": {
+        "n": 0,
+        "expectancy": null,
+        "expectancyDropTop": null,
+        "winRate": null
+      },
+      "counts": {
+        "quotes": 6,
+        "fills": 0,
+        "settled": 0
+      },
+      "rules": [
+        "Paper only, public read-only data. No wallet, account, keys, or orders.",
+        "BTC/ETH/SOL/XRP 15m and 1h Up/Down markets ending 8-65 min after the cycle.",
+        "One tick inside the spread on both Up and Down; pair must lock >= 1c if both fill.",
+        "<= $10 per quote, <= 4 new markets/cycle, <= 8 open markets, <= $100 gross.",
+        "Fill only if public trades print strictly through the paper bid after placement (+3s); queue at back.",
+        "Maker fee 0; rebate assumed 0 (below $200k 30-day maker volume tier). Held to resolution.",
+        "Daily realized stop -$15; halt at -$40 drawdown."
+      ],
+      "feeSource": "https://docs.polymarket.com/trading/fees",
+      "rebateSource": "https://docs.polymarket.com/programs/maker-rebates"
+    },
+    "A": {
+      "id": "A",
+      "name": "Solana memecoin (paper)",
+      "status": "running",
+      "startBalance": 200.0,
+      "equity": 200.0,
+      "realizedPnl": 0.0,
+      "unrealizedPnl": 0.0,
+      "open": 0,
+      "trades": 0,
+      "note": "Side strategy since 2026-11-24; reads paperLedger (run_cycle.py, unchanged)."
+    }
+  },
+  "benchmarks": {
+    "asOf": "2026-11-24T16:36:26-05:00",
+    "note": "Read-only public data. Benchmarks are context, not targets; their size, speed and rebate tiers are out of reach for a $200 paper book.",
+    "rows": [
+      {
+        "id": "mo-money",
+        "name": "mo-money",
+        "kind": "polymarket",
+        "style": "crypto up/down maker, 5m-1d",
+        "asOf": "2026-11-24T16:36:23-05:00",
+        "pnlAll": 560331.22,
+        "volumeAll": 34340418.25,
+        "rankPnl": 375,
+        "pnlMonth": 107906.0,
+        "monthLabel": "leaderboard month window",
+        "pnl30d": 118242.17,
+        "pnl30dFrom": "2026-10-25T20:00:00-04:00",
+        "makerRebateAll": 63516.41,
+        "feesPaidAll": -62604.84,
+        "source": "data-api.polymarket.com /v2/leaderboard, /v2/user-pnl, /v2/user-stats"
+      },
+      {
+        "id": "almach",
+        "name": "almach",
+        "kind": "polymarket",
+        "style": "short crypto markets bot",
+        "asOf": "2026-11-24T16:36:23-05:00",
+        "pnlAll": 469398.17,
+        "volumeAll": 33121475.23,
+        "rankPnl": 453,
+        "pnlMonth": 103982.93,
+        "monthLabel": "leaderboard month window",
+        "pnl30d": 115289.65,
+        "pnl30dFrom": "2026-10-25T20:00:00-04:00",
+        "makerRebateAll": 61968.76,
+        "feesPaidAll": -53766.49,
+        "source": "data-api.polymarket.com /v2/leaderboard, /v2/user-pnl, /v2/user-stats"
+      },
+      {
+        "id": "rn1",
+        "name": "RN1",
+        "kind": "polymarket",
+        "style": "sports market-maker",
+        "asOf": "2026-11-24T16:36:24-05:00",
+        "pnlAll": 13586533.93,
+        "volumeAll": 1549394274.02,
+        "rankPnl": 4,
+        "pnlMonth": 401963.06,
+        "monthLabel": "leaderboard month window",
+        "pnl30d": 490319.57,
+        "pnl30dFrom": "2026-10-25T20:00:00-04:00",
+        "makerRebateAll": 1295775.31,
+        "feesPaidAll": -1480942.98,
+        "source": "data-api.polymarket.com /v2/leaderboard, /v2/user-pnl, /v2/user-stats"
+      },
+      {
+        "id": "ohioism",
+        "name": "ohioism",
+        "kind": "polymarket",
+        "style": "5m/15m crypto bot (sells a course)",
+        "asOf": "2026-11-24T16:36:25-05:00",
+        "pnlAll": 108333.33,
+        "volumeAll": 9300743.81,
+        "rankPnl": 1868,
+        "pnlMonth": 20098.12,
+        "monthLabel": "leaderboard month window",
+        "pnl30d": 14933.6,
+        "pnl30dFrom": "2026-10-25T20:00:00-04:00",
+        "makerRebateAll": 5733.18,
+        "feesPaidAll": -59308.36,
+        "source": "data-api.polymarket.com /v2/leaderboard, /v2/user-pnl, /v2/user-stats"
+      },
+      {
+        "id": "growi-hf",
+        "name": "Growi HF vault",
+        "kind": "hyperliquid_vault",
+        "style": "automated mean-reversion perps vault",
+        "asOf": "2026-11-24T16:36:26-05:00",
+        "pnlAll": 1493617.17,
+        "pnl30d": -1423107.83,
+        "accountValue": 10350963.16,
+        "apr": -0.1034,
+        "source": "api.hyperliquid.xyz/info vaultDetails"
+      }
+    ]
+  },
+  "sideGame": {
+    "source": "predictions/picks.jsonl (Zack's manual picks routine)",
+    "asOf": "2026-11-24T16:36:26-05:00",
+    "rows": null,
+    "note": "Waiting: no picks file yet."
+  },
+  "mainDesk": [
+    "B",
+    "C"
+  ],
+  "strategyOrder": [
+    "B",
+    "C",
+    "A"
+  ]
 }
