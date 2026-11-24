@@ -638,6 +638,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0008 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $202.74. Realized $4.63."
+    },
+    {
+      "ts": "2026-11-24T18:38:10-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 2 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1064,6 +1072,28 @@
           "decision": "reject",
           "reasoning": "Reports say US-Iran exchange limited strikes and Hormuz tankers are being hit, but the market needs a direct Israel<->Iran air/missile strike by Nov 30; Iran threatens retaliation if struck. Estimate slightly below market 0.92-0.93, below the edge threshold. Bear case: escalation or a qualifying strike in the 6 days left.",
           "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963"
+        },
+        {
+          "ts": "2026-11-24T18:38:10-05:00",
+          "question": "Will Chiang Wan-an win the next Taipei Mayor election?",
+          "outcome": "Yes",
+          "estProb": 0.52,
+          "mktProb": 0.635,
+          "edge": -0.1315,
+          "decision": "reject",
+          "reasoning": "Final pre-blackout polls are split: TVBS 46-44 Chiang, ETtoday Chiang ahead, two other polls have Shen ahead (one by 5). Dead heat with a lead that shrank from 28 pts in May. Incumbent edge and 10% undecided keep me near a coin flip, slightly Chiang. Bear case: momentum clearly toward Shen, so this Yes could be overpriced.",
+          "url": "https://polymarket.com/event/taipei-mayor-election-winner-20260813125857100"
+        },
+        {
+          "ts": "2026-11-24T18:38:10-05:00",
+          "question": "Will Kuomintang (KMT) win the most head of local government elections in the 2026 Taiwan local elections?",
+          "outcome": "Yes",
+          "estProb": 0.72,
+          "mktProb": 0.755,
+          "edge": -0.0551,
+          "decision": "reject",
+          "reasoning": "KMT holds 15 of 22 seats; PollTrack poll-lead map (Nov 17) has DPP 9, KMT 7, 5 unpolled and 1 independent, with the unpolled seats largely rural/eastern/outlying where KMT is strong. DPP needs a big swing to out-seat KMT. Bear case: a national DPP wave (DPP preferred 43% vs 27%) could flip several seats.",
+          "url": "https://polymarket.com/event/2026-taiwanese-local-elections-party-winner"
         }
       ],
       "fills": [],
@@ -1079,7 +1109,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T18:37:43-05:00",
+          "ts": "2026-11-24T18:38:10-05:00",
           "equity": 200.0
         }
       ],
@@ -1090,10 +1120,29 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T18:37:43-05:00",
+        "ts": "2026-11-24T18:38:10-05:00",
         "candidates": 12,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Will Chiang Wan-an win the next Taipei Mayor election?",
+            "outcome": "Yes",
+            "est": 0.52,
+            "mkt": 0.635,
+            "edge": -0.1315,
+            "decision": "reject",
+            "reason": "edge -0.132 < 0.08"
+          },
+          {
+            "q": "Will Kuomintang (KMT) win the most head of local government elections in the 2026 Taiwan local elections?",
+            "outcome": "Yes",
+            "est": 0.72,
+            "mkt": 0.755,
+            "edge": -0.0551,
+            "decision": "reject",
+            "reason": "edge -0.055 < 0.08"
+          }
+        ],
+        "taken": [],
         "packet": "pc-20261124-1837"
       },
       "rules": [
