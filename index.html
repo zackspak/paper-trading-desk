@@ -6,1114 +6,539 @@
   <meta name="color-scheme" content="dark" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="theme-color" content="#0b0a1a" />
-  <title>Paper Trading Team — Desk</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect rx='8' width='32' height='32' fill='%23171032'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%234de1ff' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%235dffb0'/%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#070706" />
+  <title>Paper Desk — simulated, no real money</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect rx='8' width='32' height='32' fill='%23110e08'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%23f5a623' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%233dff8a'/%3E%3C/svg%3E" />
   <style>
 :root {
-  --bg: #0b0a1a;
-  --bg2: #12102a;
-  --card: #171532ee;
-  --card-solid: #171532;
-  --stroke: #2e2a55;
-  --text: #f4f0ff;
-  --muted: #9b93c4;
-  --mint: #5dffb0;
-  --mint-dim: #2a9f6e;
-  --coral: #ff6b7a;
-  --coral-dim: #c44555;
-  --pink: #ff9ad5;
-  --lavender: #c4b5fd;
-  --neon: #7c5cff;
-  --neon2: #4de1ff;
+  --bg: #070706;
+  --shell: #0c0b09;
+  --card: #12110d;
+  --stroke: #3a2c14;
+  --stroke-dim: #2a2110;
+  --text: #f6edd4;
+  --muted: #9a8660;
+  --amber: #f5a623;
+  --amber-dim: #b47812;
   --gold: #ffd56a;
-  --shadow: 0 8px 32px #00000066;
-  --radius: 18px;
+  --green: #3dff8a;
+  --green-dim: #1e8a4a;
+  --red: #ff5a6a;
+  --cyan: #4de1ff;
+  --pink: #ff7ab6;
+  --blue: #6aa6ff;
   --font: "Segoe UI", "SF Pro Display", system-ui, -apple-system, sans-serif;
   --mono: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
-  --safe-t: max(10px, env(safe-area-inset-top));
-  --safe-r: max(12px, env(safe-area-inset-right));
+  --radius: 22px;
+  --safe-t: max(8px, env(safe-area-inset-top));
+  --safe-r: max(10px, env(safe-area-inset-right));
   --safe-b: max(10px, env(safe-area-inset-bottom));
-  --safe-l: max(12px, env(safe-area-inset-left));
+  --safe-l: max(10px, env(safe-area-inset-left));
 }
 * { box-sizing: border-box; }
 html, body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
+  margin: 0; padding: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
-  overflow-x: hidden;
+  min-height: 100%;
 }
 body {
-  min-height: 100vh;
-  min-height: 100dvh;
-  padding: calc(var(--safe-t) + 36px) var(--safe-r) var(--safe-b) var(--safe-l);
-  position: relative;
+  padding: calc(var(--safe-t) + 38px) var(--safe-r) var(--safe-b) var(--safe-l);
 }
-.bg {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
+.bg-glow {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
   background:
-    radial-gradient(ellipse 60% 40% at 12% 0%, #7c5cff33, transparent 60%),
-    radial-gradient(ellipse 50% 35% at 88% 8%, #ff9ad522, transparent 55%),
-    radial-gradient(ellipse 40% 40% at 50% 100%, #4de1ff18, transparent 50%);
+    radial-gradient(ellipse 70% 40% at 50% -10%, #f5a62322, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 100% 80%, #4de1ff0c, transparent 50%);
 }
-.bg::after {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  background:
-    radial-gradient(circle at 20% 30%, #7c5cff14, transparent 28%),
-    radial-gradient(circle at 80% 70%, #4de1ff12, transparent 26%);
-  animation: orbDrift 22s ease-in-out infinite alternate;
-}
-@keyframes orbDrift {
-  from { transform: translate3d(-2%, -1%, 0); }
-  to { transform: translate3d(3%, 2%, 0); }
-}
-
-/* —— Banners —— */
 .paper-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 40;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
   padding: 7px 16px;
   padding-top: max(7px, env(safe-area-inset-top));
-  background: linear-gradient(90deg, #1a1640, #14283a 40%, #1a1640);
-  border-bottom: 1px solid #4de1ff55;
-  color: var(--neon2);
-  font-weight: 800;
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  box-shadow: 0 0 24px #4de1ff22;
+  background: linear-gradient(90deg, #1a1206, #14240e 45%, #1a1206);
+  border-bottom: 1px solid #f5a62366;
+  color: var(--gold);
+  font-weight: 800; font-size: 0.76rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
 }
 .paper-banner .dot {
   width: 8px; height: 8px; border-radius: 50%;
-  background: var(--neon2);
-  box-shadow: 0 0 10px var(--neon2);
-  animation: pulseDot 1.6s ease-in-out infinite;
+  background: var(--green); box-shadow: 0 0 10px var(--green);
+  animation: pulse 1.6s ease-in-out infinite;
 }
 .demo-banner {
-  position: fixed;
-  top: calc(34px + env(safe-area-inset-top));
-  left: 0; right: 0;
-  z-index: 39;
-  display: none;
-  justify-content: center;
+  position: fixed; top: calc(34px + env(safe-area-inset-top));
+  left: 0; right: 0; z-index: 39;
+  display: none; justify-content: center;
   padding: 6px 16px;
   background: repeating-linear-gradient(-45deg, #3a2208, #3a2208 12px, #4a2c0a 12px, #4a2c0a 24px);
-  color: var(--gold);
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-size: 0.78rem;
+  color: var(--gold); font-weight: 800; letter-spacing: 0.12em;
+  text-transform: uppercase; font-size: 0.76rem;
   border-bottom: 1px solid #ffd56a88;
 }
-body.demo { padding-top: calc(var(--safe-t) + 68px); }
+body.demo { padding-top: calc(var(--safe-t) + 70px); }
 body.demo .demo-banner { display: flex; }
 
-.wrap, header, main, footer { position: relative; z-index: 1; }
-
-/* —— Header —— */
-header.topbar, section.kpis { flex: 0 0 auto; }
-header.topbar {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 16px;
-  padding: 10px 8px 12px;
+.shell {
+  position: relative; z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--shell);
+  border: 1px solid var(--stroke);
+  border-radius: 28px;
+  box-shadow: 0 0 0 1px #000, 0 20px 60px #00000088, 0 0 80px #f5a62314;
+  padding: 16px 16px 14px;
+  display: flex; flex-direction: column; gap: 12px;
 }
-.brand { display: flex; align-items: center; gap: 14px; }
-.brand h1 {
+
+/* Header */
+.top {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px 14px;
+  align-items: center;
+}
+.mark {
+  width: 52px; height: 52px; border-radius: 16px;
+  background: #1a160e;
+  border: 1px solid var(--stroke);
+  display: grid; place-items: center;
+  color: var(--amber); font-weight: 800; font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  box-shadow: inset 0 0 12px #f5a62322;
+}
+.titles h1 {
   margin: 0;
-  font-size: clamp(1.15rem, 2.2vw, 1.75rem);
-  letter-spacing: 0.07em;
+  font-size: clamp(1.35rem, 3.4vw, 2rem);
+  letter-spacing: -0.02em;
   font-weight: 800;
 }
-.brand-sub { color: var(--muted); font-size: 0.8rem; margin-top: 2px; }
-.paper-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-weight: 800;
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, #4de1ff, #7c5cff);
-  box-shadow: 0 0 28px #7c5cff66;
-  color: #0a0820;
-  text-align: center;
-  line-height: 1.2;
+.titles h1 em { font-style: normal; color: var(--amber); }
+.sub {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center;
 }
-.paper-badge small {
-  display: block;
-  font-size: 0.62rem;
-  letter-spacing: 0.06em;
-  font-weight: 700;
-  opacity: 0.8;
-}
-.clock-block {
-  justify-self: end;
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
-}
-.clock {
-  font-family: var(--mono);
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--neon2);
-}
-.clock-label, .feed-status { color: var(--muted); font-size: 0.7rem; }
-.feed-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 4px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  border: 1px solid var(--stroke);
-  background: #14122c;
-}
-.feed-status .pip {
+.sub .live-dot {
   width: 7px; height: 7px; border-radius: 50%;
-  background: var(--muted);
+  background: var(--green); box-shadow: 0 0 8px var(--green);
 }
-.feed-status.live .pip { background: var(--mint); box-shadow: 0 0 8px var(--mint); animation: pulseDot 1.6s ease-in-out infinite; }
-.feed-status.waiting .pip, .feed-status.empty .pip { background: var(--gold); box-shadow: 0 0 8px #ffd56a88; }
-.feed-status.disconnected .pip { background: var(--coral); }
-.fs-btn {
-  margin-top: 4px;
-  background: transparent;
-  border: 1px solid var(--stroke);
-  color: var(--muted);
-  border-radius: 8px;
-  padding: 4px 10px;
-  cursor: pointer;
-  font-size: 1rem;
+.bal {
+  text-align: right;
 }
-.fs-btn:hover { color: var(--text); border-color: var(--lavender); }
-
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.45; transform: scale(0.8); }
+.bal-label {
+  font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); font-weight: 700;
 }
-
-/* —— KPIs —— */
-.kpis {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-  padding: 0 8px;
-  margin-bottom: 12px;
-}
-.kpi {
-  background: var(--card);
-  border: 1px solid var(--stroke);
-  border-radius: var(--radius);
-  padding: 12px 14px;
-  box-shadow: var(--shadow);
-  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-}
-.kpi-label {
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 600;
-}
-.kpi-value {
+.bal-value {
   font-family: var(--mono);
-  font-size: clamp(1.15rem, 2vw, 1.7rem);
-  font-weight: 800;
-  margin-top: 4px;
-  line-height: 1.15;
+  font-size: clamp(1.8rem, 4.5vw, 2.7rem);
+  font-weight: 800; color: var(--green);
+  line-height: 1.05;
+  text-shadow: 0 0 18px #3dff8a44;
 }
-.kpi-value.pos { color: var(--mint); }
-.kpi-value.neg { color: var(--coral); }
-.kpi-value.dim { color: var(--muted); }
-.kpi.flash-up { border-color: var(--mint); box-shadow: 0 0 24px #5dffb044; animation: kpiFlashUp 0.6s ease; }
-.kpi.flash-down { border-color: var(--coral); box-shadow: 0 0 24px #ff6b7a44; animation: kpiFlashDown 0.6s ease; }
-@keyframes kpiFlashUp {
-  0% { transform: scale(1); }
-  40% { transform: scale(1.04); background: #1a3d32; }
-  100% { transform: scale(1); }
+.bal-meta { color: var(--muted); font-size: 0.72rem; margin-top: 2px; }
+.kpi-row {
+  grid-column: 1 / -1;
+  display: flex; flex-wrap: wrap; gap: 8px;
 }
-@keyframes kpiFlashDown {
-  0% { transform: scale(1); }
-  40% { transform: scale(1.04); background: #3d1a22; }
-  100% { transform: scale(1); }
+.kpi-chip {
+  background: #16130c;
+  border: 1px solid var(--stroke-dim);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  color: var(--muted);
 }
+.kpi-chip strong { color: var(--text); font-family: var(--mono); font-weight: 700; }
+.feed-pill {
+  margin-left: auto;
+  font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px; border-radius: 999px;
+  background: #1a2a18; color: var(--green); border: 1px solid #2a5a30;
+}
+.feed-pill.waiting { background: #2a220c; color: var(--gold); border-color: #5a4a18; }
+.feed-pill.disconnected { background: #2a1014; color: var(--red); border-color: #5a2028; }
+.feed-pill.demo { background: #2a220c; color: var(--gold); }
 
-/* —— Board —— */
-body.wallboard {
-  height: 100vh;
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+/* Token chips */
+.chips {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  min-height: 36px;
 }
-body.wallboard .wrap-fill,
-body.wallboard main.board {
-  flex: 1;
-  min-height: 0;
-  min-width: 0;
+.chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: #14120c;
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  padding: 5px 10px 5px 6px;
+  font-size: 0.78rem; font-weight: 700;
 }
-main.board {
-  display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(0, 0.9fr);
-  grid-template-rows: minmax(260px, 1.15fr) minmax(220px, 1fr);
-  gap: 12px;
-  padding: 0 8px 4px;
-  min-width: 0;
-  grid-template-areas:
-    "brain  pipeline"
-    "equity side";
+.chip .tag {
+  width: 20px; height: 20px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 0.62rem; font-weight: 800; color: #0a0804;
 }
-.brain-panel { grid-area: brain; }
-.pipeline-panel { grid-area: pipeline; }
-.equity-panel { grid-area: equity; }
-.side-col {
-  grid-area: side;
-  display: grid;
-  grid-template-rows: minmax(160px, 1.45fr) minmax(0, 0.8fr) minmax(0, 0.95fr);
-  gap: 12px;
-  min-height: 0;
-  min-width: 0;
-  overflow: hidden;
-}
+.chip .pct { font-family: var(--mono); font-size: 0.72rem; }
+.chip .pct.pos { color: var(--green); }
+.chip .pct.neg { color: var(--red); }
+.chip .st { font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.waiting-line { color: var(--muted); font-size: 0.8rem; font-style: italic; padding: 6px 2px; }
 
+/* Panels */
 .panel {
   background: var(--card);
-  border: 1px solid var(--stroke);
-  border-radius: var(--radius);
-  padding: 14px 16px;
-  box-shadow: var(--shadow);
-  min-height: 0;
+  border: 1px solid var(--stroke-dim);
+  border-radius: 18px;
+  padding: 10px 12px 12px;
   min-width: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 .panel-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  gap: 8px;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+  margin-bottom: 8px;
 }
 .panel-head h2 {
   margin: 0;
-  font-size: 0.86rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--lavender);
-  font-weight: 700;
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--amber); font-weight: 800;
 }
-.muted { color: var(--muted); }
-.small { font-size: 0.72rem; }
-.pill {
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: #2a2650;
-  color: var(--muted);
-}
-.pill.live { background: #1e3d35; color: var(--mint); box-shadow: 0 0 12px #5dffb044; }
-.pill.waiting, .pill.empty { background: #3a3318; color: var(--gold); }
-.pill.disconnected { background: #3d1a22; color: var(--coral); }
-.pill.demo { background: #3a2208; color: var(--gold); }
+.panel-head .meta { color: var(--muted); font-size: 0.7rem; }
 
-/* —— Brain / agent desk —— */
-.brain {
+.chart-wrap { position: relative; height: 250px; }
+#eqCanvas, #pnlCanvas, #volCanvas { width: 100%; height: 100%; display: block; }
+.chart-empty {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  text-align: center; padding: 16px;
+  color: var(--muted); font-size: 0.88rem; line-height: 1.45;
+}
+.chart-empty[hidden] { display: none; }
+.chart-empty strong { color: var(--gold); display: block; margin-bottom: 4px; font-family: var(--mono); }
+
+/* Hub */
+.hub-panel { position: relative; }
+.hub-head {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 6px;
+}
+.hub-head h2 {
+  margin: 0;
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--amber); font-weight: 800;
+}
+.hub {
   position: relative;
-  flex: 1;
-  min-height: 220px;
-  min-width: 0;
+  height: 560px;
+  margin: 4px 0 8px;
 }
-.brain-grid {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  grid-template-areas:
-    "scout scorer risk jev simulator coordinator zack"
-    "gemini gemini social logger logger chatgpt chatgpt";
-  gap: 12px 10px;
-  position: relative;
-  z-index: 2;
+#hubWires {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 1;
 }
-.agent[data-id="scout"] { grid-area: scout; }
-.agent[data-id="scorer"] { grid-area: scorer; }
-.agent[data-id="risk"] { grid-area: risk; }
-.agent[data-id="jev"] { grid-area: jev; }
-.agent[data-id="simulator"] { grid-area: simulator; }
-.agent[data-id="coordinator"] { grid-area: coordinator; }
-.agent[data-id="zack"] { grid-area: zack; }
-.agent[data-id="gemini"] { grid-area: gemini; }
-.agent[data-id="chatgpt"] { grid-area: chatgpt; }
-.agent[data-id="logger"] { grid-area: logger; }
-.agent[data-id="social"] { grid-area: social; }
-.agent.extra { grid-column: span 1; }
+#hubWires path {
+  fill: none; stroke: #f5a62344; stroke-width: 1.4;
+  stroke-dasharray: 5 8;
+  animation: wire 9s linear infinite;
+}
+#hubWires path.active {
+  stroke: #3dff8aaa;
+  filter: drop-shadow(0 0 4px #3dff8a66);
+  animation-duration: 3s;
+}
+@keyframes wire { to { stroke-dashoffset: -80; } }
 
-#wires {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-  overflow: visible;
-}
-#wires path.wire {
-  fill: none;
-  stroke: #4de1ff66;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-  stroke-dasharray: 5 9;
-  animation: wireFlow 10s linear infinite;
-}
-#wires path.wire.active {
-  stroke: #5dffb0aa;
-  stroke-dasharray: 8 8;
-  animation: wireFlow 3.5s linear infinite;
-  filter: drop-shadow(0 0 4px #5dffb066);
-}
-@keyframes wireFlow {
-  to { stroke-dashoffset: -84; }
-}
-#wires circle.packet {
-  fill: var(--mint);
-  filter: drop-shadow(0 0 6px #5dffb0);
-}
-
-.agent {
-  position: relative;
-  background: #1c1838;
-  border: 1px solid var(--stroke);
-  border-radius: 16px;
-  padding: 10px 10px 12px;
-  min-height: 118px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, opacity 0.3s;
-  opacity: 0.72;
-}
-.agent-top {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-}
-.mono-ring {
-  flex: 0 0 34px;
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-weight: 800;
-  font-size: 0.72rem;
-  letter-spacing: 0.02em;
-  background: #241e48;
-  border: 2px solid #3d3770;
-  color: var(--lavender);
-  position: relative;
-}
-.mono-ring::after {
-  content: "";
-  position: absolute;
-  inset: -5px;
-  border-radius: 50%;
-  border: 1px solid transparent;
-}
-.agent-id {
-  min-width: 0;
-  flex: 1;
-}
-.agent-name {
-  font-size: 0.86rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  line-height: 1.15;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.agent-meta {
-  font-size: 0.62rem;
-  color: var(--muted);
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.agent-status {
-  margin-top: 6px;
-  font-size: 0.6rem;
-  font-weight: 800;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: #2a2650;
-  color: var(--muted);
-}
-.agent-action {
-  margin-top: 6px;
-  font-size: 0.68rem;
-  color: var(--muted);
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  width: 100%;
-  min-height: 1.7em;
-}
-
-.agent.waiting, .agent.idle { opacity: 0.62; }
-.agent.working, .agent.scanning, .agent.pass {
-  opacity: 1;
-  border-color: var(--mint);
-  box-shadow: 0 0 22px #5dffb044;
-}
-.agent.working .mono-ring, .agent.scanning .mono-ring, .agent.pass .mono-ring {
-  border-color: var(--mint);
-  color: var(--mint);
-  box-shadow: 0 0 12px #5dffb055;
-}
-.agent.working .mono-ring::after, .agent.scanning .mono-ring::after {
-  border-color: #5dffb066;
-  animation: ringPulse 1.5s ease-in-out infinite;
-}
-.agent.working .agent-status, .agent.scanning .agent-status {
-  background: #1e3d35; color: var(--mint);
-}
-.agent.pass .agent-status { background: #1e3d35; color: var(--mint); }
-.agent.veto, .agent.error {
-  opacity: 1;
-  border-color: var(--coral);
-  box-shadow: 0 0 18px #ff6b7a44;
-}
-.agent.veto .mono-ring, .agent.error .mono-ring { border-color: var(--coral); color: var(--coral); }
-.agent.veto .agent-status, .agent.error .agent-status { background: #3d1a22; color: var(--coral); }
-.agent.review {
-  opacity: 1;
-  border-color: var(--gold);
-  box-shadow: 0 0 16px #ffd56a33;
-}
-.agent.review .mono-ring { border-color: var(--gold); color: var(--gold); }
-.agent.review .agent-status,
-.agent.awaiting .agent-status { background: #3a3318; color: var(--gold); }
-.agent.awaiting {
-  opacity: 1;
-  border-color: var(--gold);
-  box-shadow: 0 0 16px #ffd56a33;
-}
-.agent.awaiting .mono-ring { border-color: var(--gold); color: var(--gold); }
-.agent.unwired {
-  opacity: 0.58;
-  border-style: dashed;
-}
-.agent.unwired .agent-status { background: #2a2650; color: var(--gold); }
-.agent.unwired .mono-ring { border-style: dashed; }
-
-.agent[data-id="logger"] {
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-.agent[data-id="logger"] .agent-top,
-.agent[data-id="logger"] .agent-status,
-.agent[data-id="logger"] .agent-action { max-width: 240px; }
-.logger-strip {
-  flex: 1 1 180px;
-  min-width: 0;
-  margin-left: auto;
-  font-size: 0.68rem;
-  color: var(--muted);
-  line-height: 1.35;
-  max-height: 4.2em;
-  overflow: hidden;
-  padding: 4px 0 0 12px;
-}
-.agent[data-id="zack"] {
-  background: linear-gradient(180deg, #2a2240 0%, #1c1838 100%);
-  border-color: #6a5a2a;
-}
-.agent[data-id="zack"] .mono-ring {
-  border-color: var(--gold);
-  color: var(--gold);
-  background: #2a2410;
-}
-.agent[data-id="zack"] .agent-name { color: var(--gold); }
-.agent[data-id="gemini"] .mono-ring { color: #8ab4f8; border-color: #4a6fa8; }
-.agent[data-id="chatgpt"] .mono-ring { color: #7dcea0; border-color: #3d7a5a; }
-.agent[data-id="jev"] .mono-ring { color: var(--pink); border-color: #8a4a70; }
-
-@keyframes ringPulse {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.12); opacity: 0.2; }
-}
-
-.flow-hint {
-  display: none;
-  margin-top: 8px;
-  font-size: 0.68rem;
-  color: var(--muted);
-  letter-spacing: 0.04em;
-  text-align: center;
-}
-
-/* —— Pipeline —— */
-.stages {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-  min-height: 0;
-}
-.stage {
-  flex: 1;
-  min-height: 64px;
-  background: #14122c;
+.seat, .core {
+  position: absolute; z-index: 2;
+  background: #15130e;
   border: 1px solid var(--stroke);
   border-radius: 14px;
   padding: 8px 10px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  min-width: 124px; max-width: 150px;
+  box-shadow: 0 4px 16px #0006;
+  transform: translate(-50%, -50%);
 }
-.stage-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 6px;
-}
-.stage-title {
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--lavender);
-}
-.stage-count {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--neon2);
-}
-.stage-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  overflow: auto;
-  max-height: 72px;
-}
-.chip {
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 999px;
-  background: #241e48;
-  border: 1px solid #3d3770;
-  color: var(--text);
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.stage[data-stage="vetoed"] .chip { border-color: #6a3040; color: var(--coral); }
-.stage[data-stage="paperTraded"] .chip { border-color: #2a6a50; color: var(--mint); }
-.stage-empty {
-  font-size: 0.7rem;
-  color: var(--muted);
-  font-style: italic;
-}
-
-/* —— Equity —— */
-.pnl-chart-wrap {
-  flex: 1;
-  min-height: 140px;
-  position: relative;
-}
-#pnlCanvas { width: 100%; height: 100%; min-height: 140px; display: block; }
-.chart-empty {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: var(--muted);
-  font-size: 0.85rem;
+.core {
+  min-width: 150px; max-width: 180px;
   text-align: center;
-  padding: 12px;
-  pointer-events: none;
+  background: radial-gradient(circle at 50% 30%, #2a2010, #120f0a 70%);
+  border-color: var(--amber);
+  box-shadow: 0 0 28px #f5a62333, inset 0 0 18px #f5a62311;
+  padding: 12px 12px 10px;
 }
-.chart-empty[hidden] { display: none; }
-.trade-tape {
-  margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  max-height: 88px;
-  overflow: auto;
+.core .ring {
+  width: 62px; height: 62px; margin: 0 auto 6px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 16px #4de1ff55, inset 0 0 12px #4de1ff22;
+  color: var(--gold); font-weight: 800; font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  animation: corePulse 3s ease-in-out infinite;
 }
-.trade-row {
-  display: grid;
-  grid-template-columns: auto 1fr auto auto;
-  gap: 8px;
-  font-size: 0.72rem;
-  padding: 4px 6px;
-  border-radius: 8px;
-  background: #14122c;
-  align-items: center;
+@keyframes corePulse {
+  0%,100% { box-shadow: 0 0 16px #4de1ff44, inset 0 0 12px #4de1ff22; }
+  50% { box-shadow: 0 0 26px #4de1ff88, inset 0 0 16px #4de1ff33; }
 }
-.trade-sym { font-weight: 800; }
-.trade-side, .trade-status { color: var(--muted); text-transform: uppercase; font-size: 0.62rem; letter-spacing: 0.06em; }
-.trade-pnl { font-family: var(--mono); font-weight: 800; }
-.trade-pnl.pos { color: var(--mint); }
-.trade-pnl.neg { color: var(--coral); }
-
-/* —— Journal ticker —— */
-.ticker {
+.core .name { font-weight: 800; font-size: 0.95rem; }
+.core .meta, .seat .meta { font-size: 0.62rem; color: var(--muted); }
+.core .status, .seat .status {
+  display: inline-block; margin-top: 5px;
+  font-size: 0.58rem; font-weight: 800; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px; border-radius: 999px;
+  background: #2a2414; color: var(--muted);
+}
+.core .action, .seat .action {
+  margin-top: 4px;
+  font-size: 0.64rem; color: var(--muted);
+  line-height: 1.25;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
   overflow: hidden;
-  border-radius: 10px;
-  background: #120f28;
-  border: 1px solid var(--stroke);
-  padding: 0;
-  margin-bottom: 8px;
-  white-space: nowrap;
-  position: relative;
-  min-width: 0;
-  max-width: 100%;
-  flex: 0 0 2.2rem;
-  height: 2.2rem;
-  line-height: 2.2rem;
+  max-height: 2.5em;
 }
-.ticker-track {
-  display: block;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  color: var(--text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0 10px;
-  height: 1.4rem;
-  line-height: 1.4rem;
+.seat .top { display: flex; align-items: center; gap: 7px; }
+.seat .badge {
+  flex: 0 0 22px; width: 22px; height: 22px; border-radius: 7px;
+  display: grid; place-items: center;
+  font-size: 0.65rem; font-weight: 800; color: #0a0804;
 }
-.ticker-track span { color: var(--text); }
-.journal-feed {
-  flex: 1;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-height: 0;
-  min-width: 0;
+.seat .name { font-weight: 800; font-size: 0.78rem; line-height: 1.1; }
+.seat.waiting, .seat.idle { opacity: 0.72; }
+.seat.working, .seat.scanning, .seat.pass {
+  opacity: 1; border-color: var(--green);
+  box-shadow: 0 0 16px #3dff8a33;
 }
-.j-row {
+.seat.veto, .seat.error { border-color: var(--red); box-shadow: 0 0 14px #ff5a6a33; opacity: 1; }
+.seat.unwired { border-style: dashed; opacity: 0.58; }
+.seat.awaiting, .seat.review { border-color: var(--gold); opacity: 1; box-shadow: 0 0 14px #ffd56a33; }
+.seat.working .status, .seat.scanning .status, .seat.pass .status,
+.core.working .status, .core.scanning .status { background: #14331f; color: var(--green); }
+.seat.veto .status, .seat.error .status { background: #3a151c; color: var(--red); }
+.seat.unwired .status { background: #2a2414; color: var(--gold); }
+.seat.awaiting .status, .seat.review .status, .core.awaiting .status { background: #3a2e10; color: var(--gold); }
+.seat[data-id="zack"] { border-color: #6a5a20; }
+.seat[data-id="zack"] .name { color: var(--gold); }
+
+/* Bottom */
+.bottom {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2px 10px;
-  font-size: 0.75rem;
-  padding: 6px 8px;
-  border-left: 2px solid #3d3770;
-  background: #14122c;
-  border-radius: 0 8px 8px 0;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  gap: 10px;
 }
-.j-ts { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); grid-column: 1; }
-.j-who { font-weight: 700; color: var(--lavender); font-size: 0.65rem; }
-.j-text { grid-column: 1 / -1; color: var(--text); line-height: 1.35; overflow-wrap: anywhere; }
-
-/* —— Rules —— */
-.rules-list {
-  margin: 0;
-  padding: 0 0 0 18px;
-  overflow: auto;
-  flex: 1;
-  min-height: 0;
-}
-.rules-list li {
-  margin: 0 0 7px;
-  font-size: 0.78rem;
-  line-height: 1.4;
-  color: var(--text);
-}
-.empty-msg {
-  margin: 0;
-  font-size: 0.8rem;
-  color: var(--muted);
-  font-style: italic;
-  line-height: 1.4;
-}
-
-/* —— Posts —— */
-.posts {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  overflow: auto;
-  flex: 1;
-  min-height: 0;
-  min-width: 0;
-}
+.vol-list { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; max-height: 88px; overflow: auto; }
+.vol-row { display: flex; justify-content: space-between; gap: 8px; font-size: 0.72rem; color: var(--muted); }
+.vol-row b { color: var(--text); }
+.posts { display: flex; flex-direction: column; gap: 6px; max-height: 180px; overflow: auto; }
 .post {
-  background: #14122c;
-  border: 1px solid var(--stroke);
-  border-radius: 12px;
-  padding: 8px 10px;
+  background: #0e0d0a; border: 1px solid var(--stroke-dim);
+  border-radius: 10px; padding: 7px 8px;
 }
-.post-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  align-items: baseline;
-  margin-bottom: 4px;
-}
+.post-head { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
 .post-author { font-weight: 800; font-size: 0.78rem; }
 .post-verdict {
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 2px 7px;
-  border-radius: 999px;
-  background: #2a2650;
-  color: var(--muted);
+  font-size: 0.58rem; font-weight: 800; letter-spacing: 0.06em;
+  text-transform: uppercase; padding: 2px 6px; border-radius: 999px;
+  background: #2a2414; color: var(--muted);
 }
-.post-verdict.caution, .post-verdict.promo, .post-verdict.reject { background: #3d1a22; color: var(--coral); }
-.post-verdict.useful, .post-verdict.pass { background: #1e3d35; color: var(--mint); }
-.post-summary { font-size: 0.74rem; color: var(--text); line-height: 1.35; }
-.post-meta { font-size: 0.65rem; color: var(--muted); margin-top: 4px; }
-.post a { color: var(--neon2); text-decoration: none; }
+.post-verdict.reject { background: #3a151c; color: var(--red); }
+.post-verdict.useful, .post-verdict.pass { background: #14331f; color: var(--green); }
+.post-summary { font-size: 0.72rem; line-height: 1.35; margin-top: 3px; }
+.post-meta { font-size: 0.62rem; color: var(--muted); margin-top: 3px; }
+.post a { color: var(--amber); text-decoration: none; }
 .post a:hover { text-decoration: underline; }
+.pnl-wrap { position: relative; height: 120px; }
+.pnl-stats { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-top: 6px; font-size: 0.72rem; color: var(--muted); }
+.pnl-stats strong { color: var(--text); font-family: var(--mono); }
 
-footer {
-  flex: 0 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  padding: 10px 12px 8px;
-  color: var(--muted);
-  font-size: 0.68rem;
-  letter-spacing: 0.04em;
+.foot {
+  display: flex; flex-wrap: wrap; gap: 8px 14px;
+  padding: 2px 4px 0;
+  color: var(--muted); font-size: 0.65rem; letter-spacing: 0.04em;
 }
 
-/* —— Responsive —— */
-@media (max-width: 1200px) {
-  .kpis { grid-template-columns: repeat(3, 1fr); }
-  main.board {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "brain"
-      "pipeline"
-      "equity"
-      "side";
-  }
-  .brain-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-template-areas:
-      "scout scorer risk jev"
-      "simulator coordinator zack logger"
-      "gemini social chatgpt chatgpt";
-  }
-  .stages { flex-direction: row; flex-wrap: wrap; }
-  .stage { flex: 1 1 42%; min-height: 90px; }
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.85); }
 }
+
 @media (max-width: 800px) {
-  header.topbar {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    text-align: center;
-  }
-  .clock-block { justify-self: center; align-items: center; text-align: center; }
-  .kpis { grid-template-columns: repeat(2, 1fr); }
-  .brain-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-areas:
-      "scout scorer"
-      "risk jev"
-      "simulator coordinator"
-      "zack logger"
-      "gemini chatgpt"
-      "social social";
-  }
-  #wires { display: none; }
-  .flow-hint { display: block; }
-  .stages { flex-direction: column; }
-  body.wallboard {
-    height: auto;
-    overflow: auto;
-    display: block;
-  }
-  .journal-feed, .posts, .rules-list { max-height: none; }
-  .side-col { grid-template-rows: auto; overflow: visible; }
-  main.board { grid-template-rows: auto; }
-  .paper-badge { font-size: 0.72rem; padding: 8px 12px; }
-}
-@media (min-width: 1600px) and (min-height: 900px) {
-  .brain { min-height: 320px; }
-  .kpi-value { font-size: 1.9rem; }
+  .top { grid-template-columns: auto 1fr; }
+  .bal { grid-column: 1 / -1; text-align: left; }
+  .bottom { grid-template-columns: 1fr; }
+  .hub { height: auto; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding-top: 0; }
+  .seat, .core { position: static; transform: none; max-width: none; width: 100%; }
+  .core { grid-column: 1 / -1; }
+  #hubWires { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation: none !important;
-    transition-duration: 0.01ms !important;
-  }
-  .ticker-track { padding-left: 0; white-space: normal; }
-  .bg::after { animation: none; }
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
 }
   </style>
 </head>
-<body class="idle wallboard">
-  <div class="bg" aria-hidden="true"></div>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
   <div class="paper-banner"><span class="dot" aria-hidden="true"></span> PAPER — simulated, no real money</div>
   <div class="demo-banner" id="demoBanner">DEMO / no real data — not a live paper book</div>
 
-  <header class="topbar">
-    <div class="brand">
-      <div>
-        <h1>PAPER DESK</h1>
-        <div class="brand-sub">Zack’s trading team · watch the bots work</div>
+  <div class="shell">
+    <header class="top">
+      <div class="mark" id="mark">PAPER</div>
+      <div class="titles">
+        <h1>Paper <em>Desk</em></h1>
+        <div class="sub"><span class="live-dot" aria-hidden="true"></span><span id="subLine">Waiting for the paper feed</span></div>
       </div>
-    </div>
-    <div class="paper-badge" title="This desk never places real orders">
-      PAPER
-      <small>simulated, no real money</small>
-    </div>
-    <div class="clock-block">
-      <div class="clock" id="clock">--:--:--</div>
-      <div class="clock-label">America/New_York</div>
-      <div class="feed-status waiting" id="feedStatus"><span class="pip"></span><span id="feedLabel">Waiting for feed</span></div>
-      <button type="button" class="fs-btn" id="fsBtn" title="Fullscreen">⛶</button>
-    </div>
-  </header>
+      <div class="bal">
+        <div class="bal-label">Paper balance</div>
+        <div class="bal-value" id="balValue">—</div>
+        <div class="bal-meta" id="balMeta">simulated · no real money</div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-chip">P&amp;L <strong id="kpiPnl">—</strong></div>
+        <div class="kpi-chip">Open <strong id="kpiOpen">—</strong></div>
+        <div class="kpi-chip">Trades <strong id="kpiTrades">—</strong></div>
+        <div class="kpi-chip">Candidates <strong id="kpiCand">—</strong></div>
+        <div class="kpi-chip" id="clockChip">ET <strong id="clock">--:--:--</strong></div>
+        <div class="feed-pill waiting" id="feedPill">waiting</div>
+      </div>
+    </header>
 
-  <section class="kpis" aria-label="Paper book">
-    <div class="kpi" data-kpi="balance">
-      <div class="kpi-label">Paper balance</div>
-      <div class="kpi-value dim" id="kpiBalance">—</div>
-    </div>
-    <div class="kpi" data-kpi="pnl">
-      <div class="kpi-label">Paper P&amp;L</div>
-      <div class="kpi-value dim" id="kpiPnl">—</div>
-    </div>
-    <div class="kpi" data-kpi="open">
-      <div class="kpi-label">Open paper</div>
-      <div class="kpi-value dim" id="kpiOpen">—</div>
-    </div>
-    <div class="kpi" data-kpi="trades">
-      <div class="kpi-label">Paper trades</div>
-      <div class="kpi-value dim" id="kpiTrades">—</div>
-    </div>
-    <div class="kpi" data-kpi="pipeline">
-      <div class="kpi-label">In pipeline</div>
-      <div class="kpi-value dim" id="kpiPipe">—</div>
-    </div>
-    <div class="kpi" data-kpi="posts">
-      <div class="kpi-label">X posts reviewed</div>
-      <div class="kpi-value dim" id="kpiPosts">—</div>
-    </div>
-  </section>
+    <div class="chips" id="chips"><div class="waiting-line">Waiting — no candidates in the feed.</div></div>
 
-  <main class="board">
-    <section class="panel brain-panel">
+    <section class="panel">
       <div class="panel-head">
-        <h2>Agent desk</h2>
-        <span class="pill waiting" id="deskPill">waiting</span>
+        <h2 id="chartTitle">Paper equity · candles</h2>
+        <span class="meta" id="chartMeta">from the paper feed only</span>
       </div>
-      <div class="brain" id="brain">
-        <svg id="wires" aria-hidden="true"></svg>
-        <div class="brain-grid" id="brainGrid"></div>
+      <div class="chart-wrap">
+        <canvas id="eqCanvas" width="960" height="250"></canvas>
+        <div class="chart-empty" id="chartEmpty">Waiting — no GMGN candle data in the feed.</div>
       </div>
-      <p class="flow-hint">Flow: Scout → Scorer → Risk → Jev → Simulator → Coordinator → Zack · Gemini &amp; ChatGPT are reject seats · Logger records the book</p>
     </section>
 
-    <section class="panel pipeline-panel">
-      <div class="panel-head">
-        <h2>Token pipeline</h2>
-        <span class="muted small" id="pipeMeta">scanned → scored → vetoed → paper-traded</span>
+    <section class="hub-panel">
+      <div class="hub-head">
+        <h2>Seats around Coordinator · paper signals</h2>
+        <span class="meta" id="hubMeta"></span>
       </div>
-      <div class="stages" id="stages"></div>
+      <div class="hub" id="hub">
+        <svg id="hubWires" aria-hidden="true"></svg>
+      </div>
     </section>
 
-    <section class="panel equity-panel">
-      <div class="panel-head">
-        <h2>Paper equity</h2>
-        <span class="muted small" id="eqLegend">from the paper feed only</span>
-      </div>
-      <div class="pnl-chart-wrap">
-        <canvas id="pnlCanvas" width="640" height="200"></canvas>
-        <div class="chart-empty" id="chartEmpty">No paper trades yet — waiting for the feed.</div>
-      </div>
-      <div class="trade-tape" id="tradeTape"></div>
-    </section>
-
-    <div class="side-col">
-      <section class="panel journal-panel">
+    <div class="bottom">
+      <section class="panel">
         <div class="panel-head">
-          <h2>Trade journal</h2>
-          <span class="muted small">latest + log</span>
+          <h2>Volume · tracking</h2>
+          <span class="meta" id="volMeta"></span>
         </div>
-        <div class="ticker" id="tickerWrap" hidden>
-          <div class="ticker-track" id="tickerTrack"></div>
+        <div class="chart-wrap" style="height:110px;position:relative">
+          <canvas id="volCanvas" width="400" height="110"></canvas>
+          <div class="chart-empty" id="volEmpty">Waiting — no volume in the feed.</div>
         </div>
-        <div class="journal-feed" id="journalFeed">
-          <p class="empty-msg">Journal is empty — waiting for the team feed.</p>
-        </div>
+        <div class="vol-list" id="volList"></div>
       </section>
-
-      <section class="panel rules-panel">
+      <section class="panel">
         <div class="panel-head">
-          <h2>Rules</h2>
+          <h2>X feed · reviewed posts</h2>
+          <span class="meta" id="postsMeta"></span>
         </div>
-        <div id="rulesBody">
-          <p class="empty-msg">Waiting for rules from the paper feed.</p>
-        </div>
+        <div class="posts" id="posts"><div class="waiting-line">No posts reviewed yet.</div></div>
       </section>
-
-      <section class="panel posts-panel">
+      <section class="panel">
         <div class="panel-head">
-          <h2>X posts reviewed</h2>
-          <span class="muted small" id="postsCount"></span>
+          <h2>P&amp;L · tracking</h2>
+          <span class="meta" id="pnlMeta">paper book only</span>
         </div>
-        <div class="posts" id="posts">
-          <p class="empty-msg">No posts reviewed yet.</p>
+        <div class="pnl-wrap">
+          <canvas id="pnlCanvas" width="400" height="120"></canvas>
+          <div class="chart-empty" id="pnlEmpty">Waiting — no paper equity history yet.</div>
         </div>
+        <div class="pnl-stats" id="pnlStats"></div>
       </section>
     </div>
-  </main>
 
-  <footer>
-    <span>Display only · no wallets · no orders</span>
-    <span id="footPoll">poll 3s</span>
-    <span id="footUpdated">updated —</span>
-    <span id="footPath">feed: state.json</span>
-  </footer>
+    <footer class="foot">
+      <span>Display only · no wallets · no orders · no leverage</span>
+      <span id="footPoll">poll 3s</span>
+      <span id="footUpdated">updated —</span>
+      <span id="footPath">feed: state.json</span>
+    </footer>
+  </div>
 
   <script>
 (function () {
   "use strict";
-
   const POLL_MS = 3000;
   const TZ = "America/New_York";
   const STATE_PATHS = ["./state.json", "state.json", "../state.json"];
   const REDUCE = typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
   const DEMO = /(?:\?|&)demo=1(?:&|$)/.test(location.search);
-  const SECRET_RE = /wallet|secret|seed|private|apikey|api_key|mnemonic|passphrase/i;
 
-  const ROSTER = [
-    { id: "scout", name: "Scout", model: "Grok", role: "Scanner", mono: "SC" },
-    { id: "scorer", name: "Scorer", model: "Grok", role: "Signal scorer", mono: "Σ" },
-    { id: "risk", name: "Risk", model: "Grok", role: "Skeptic", mono: "RK" },
-    { id: "jev", name: "Jev", model: "Grok", role: "Veto", mono: "JV" },
-    { id: "simulator", name: "Simulator", model: "Grok", role: "Paper fills", mono: "SIM" },
-    { id: "coordinator", name: "Coordinator", model: "Grok", role: "Orchestrator", mono: "CO" },
-    { id: "logger", name: "Logger", model: "Grok", role: "Journal", mono: "LG" },
-    { id: "social", name: "Social", model: "Grok", role: "Narrative seat", mono: "SOC" },
-    { id: "gemini", name: "Gemini", model: "Gemini", role: "Reject seat", mono: "GEM" },
-    { id: "chatgpt", name: "ChatGPT", model: "ChatGPT", role: "Reject seat", mono: "GPT" },
-    { id: "zack", name: "Zack", model: "Human", role: "Final approver", mono: "Z" }
+  const CORE = { id: "coordinator", name: "Coordinator", model: "Grok", role: "Orchestrator", mono: "GROK" };
+  const RING = [
+    { id: "scout", name: "Scout", model: "Grok", role: "Scanner", mono: "SC", color: "#6aa6ff" },
+    { id: "risk", name: "Risk", model: "Grok", role: "Skeptic", mono: "RK", color: "#ff5a6a" },
+    { id: "social", name: "Social", model: "Grok", role: "Narrative", mono: "SO", color: "#ff7ab6" },
+    { id: "simulator", name: "Simulator", model: "Grok", role: "Paper fills", mono: "SIM", color: "#f5a623" },
+    { id: "gemini", name: "Gemini", model: "Gemini", role: "Red team", mono: "GEM", color: "#6aa6ff" },
+    { id: "chatgpt", name: "ChatGPT", model: "ChatGPT", role: "Auditor", mono: "GPT", color: "#3dff8a" },
+    { id: "jev", name: "Jev", model: "Jev", role: "Veto", mono: "JV", color: "#ff7ab6" },
+    { id: "logger", name: "Logger", model: "Grok", role: "Journal", mono: "LG", color: "#c4b5fd" },
+    { id: "zack", name: "Zack", model: "Human", role: "Final approver", mono: "Z", color: "#ffd56a" }
   ];
+  const TAG_COLORS = ["#f5a623","#3dff8a","#ff5a6a","#6aa6ff","#ff7ab6","#ffd56a","#4de1ff"];
 
-  const EDGES = [
-    ["scout", "scorer"],
-    ["scorer", "risk"],
-    ["risk", "jev"],
-    ["jev", "simulator"],
-    ["simulator", "coordinator"],
-    ["coordinator", "zack"],
-    ["gemini", "coordinator"],
-    ["chatgpt", "coordinator"],
-    ["coordinator", "logger"],
-    ["logger", "zack"]
-  ];
-
-  const STAGES = [
-    { key: "scanned", label: "Scanned" },
-    { key: "scored", label: "Scored" },
-    { key: "vetoed", label: "Vetoed" },
-    { key: "paperTraded", label: "Paper-traded" }
-  ];
-
-  const state = {
-    data: null,
-    agents: {},
-    feed: "waiting",
-    lastGoodAt: null,
-    lastJson: "",
-    prevKpis: {},
-    packets: [],
-    paths: {},
-    pollTimer: null
-  };
-
+  const state = { data: null, agents: {}, feed: "waiting" };
   const $ = (id) => document.getElementById(id);
 
   function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
   }
   function setText(el, t) {
     if (!el) return;
     const v = t == null ? "" : String(t);
     if (el.textContent !== v) el.textContent = v;
   }
-  function fmtMoney(n) {
+  function fmtMoney(n, signed) {
+    if (n == null || n === "" || Number.isNaN(Number(n))) return null;
+    const v = Number(n);
+    const sign = signed ? (v > 0 ? "+" : v < 0 ? "−" : "") : "";
+    return sign + "$" + Math.abs(v).toFixed(2);
+  }
+  function fmtPct(n) {
     if (n == null || n === "" || Number.isNaN(Number(n))) return null;
     const v = Number(n);
     const sign = v > 0 ? "+" : v < 0 ? "−" : "";
-    return sign + "$" + Math.abs(v).toFixed(2);
-  }
-  function fmtMoneyPlain(n) {
-    if (n == null || n === "" || Number.isNaN(Number(n))) return null;
-    return "$" + Number(n).toFixed(2);
+    return sign + Math.abs(v).toFixed(1) + "%";
   }
   function fmtTime(ts) {
     if (!ts) return "—";
     const d = ts instanceof Date ? ts : new Date(ts);
     if (Number.isNaN(d.getTime())) return String(ts).slice(0, 19);
-    return d.toLocaleTimeString("en-US", {
-      timeZone: TZ, hour: "numeric", minute: "2-digit", second: "2-digit", hour12: true
-    });
+    return d.toLocaleTimeString("en-US", { timeZone: TZ, hour: "numeric", minute: "2-digit", second: "2-digit", hour12: true });
   }
-  function fmtClock(d) {
-    return d.toLocaleTimeString("en-US", {
-      timeZone: TZ, hour: "numeric", minute: "2-digit", second: "2-digit", hour12: true
-    });
+  function clockNow() {
+    return new Date().toLocaleTimeString("en-US", { timeZone: TZ, hour: "numeric", minute: "2-digit", second: "2-digit", hour12: true });
   }
-  function isSecretKey(k) { return SECRET_RE.test(String(k || "")); }
   function safeStr(v, n) {
     if (v == null) return "";
     const s = String(v).replace(/\s+/g, " ").trim();
     return n ? s.slice(0, n) : s;
   }
+  function num(v) {
+    if (v == null || v === "") return null;
+    const n = Number(v);
+    return Number.isNaN(n) ? null : n;
+  }
+  function ledger(data) { return (data && (data.paperLedger || data.paper_ledger)) || {}; }
   function normStatus(s) {
     const v = String(s || "waiting").toLowerCase().trim();
-    if (/not[_\s-]?wired|unwired|offline|unconfigured/.test(v)) return "unwired";
-    if (/awaiting_decision|pending.?approv|needs.?approv/.test(v)) return "awaiting";
+    if (/not[_\\s-]?wired|unwired|offline|unconfigured|skipped/.test(v)) return "unwired";
+    if (/awaiting_decision|awaiting_review|pending.?approv/.test(v)) return "awaiting";
     if (/idle|wait|queue|standby/.test(v)) return "waiting";
     if (/scan|hunt|watch/.test(v)) return "scanning";
     if (/veto|reject|block|fail|denied/.test(v)) return "veto";
@@ -1125,29 +550,28 @@ footer {
   }
   function normId(a) {
     const raw = String(a.id || a.name || "").toLowerCase().replace(/\s+/g, "");
-    if (/scout/.test(raw)) return "scout";
-    if (/scor|signal/.test(raw)) return "scorer";
-    if (/risk|skeptic/.test(raw)) return "risk";
-    if (/^jev|veto/.test(raw) && !/risk/.test(raw)) return raw.includes("jev") ? "jev" : raw;
-    if (/sim/.test(raw)) return "simulator";
     if (/coord/.test(raw)) return "coordinator";
-    if (/log/.test(raw)) return "logger";
+    if (/scout/.test(raw)) return "scout";
+    if (/risk|skeptic/.test(raw)) return "risk";
+    if (/social|narrative/.test(raw)) return "social";
+    if (/sim/.test(raw)) return "simulator";
     if (/gemini/.test(raw)) return "gemini";
-    if (/chat|gpt/.test(raw)) return "chatgpt";
+    if (/chat|gpt|auditor/.test(raw)) return "chatgpt";
+    if (/jev/.test(raw)) return "jev";
+    if (/log/.test(raw)) return "logger";
     if (/zack|approver|human/.test(raw)) return "zack";
     return String(a.id || raw || "agent").toLowerCase();
   }
-
   function mergeAgents(data) {
     const map = {};
-    ROSTER.forEach((r) => {
+    const roster = [CORE].concat(RING);
+    roster.forEach((r) => {
       map[r.id] = Object.assign({ status: "waiting", lastAction: "No update in this feed yet." }, r);
     });
-    const incoming = (data && Array.isArray(data.agents)) ? data.agents : [];
-    incoming.forEach((a) => {
+    ((data && data.agents) || []).forEach((a) => {
       if (!a || typeof a !== "object") return;
       const id = normId(a);
-      const base = map[id] || { id: id, name: a.name || id, model: a.model || "—", role: a.role || "", mono: (a.name || id).slice(0, 2).toUpperCase() };
+      const base = map[id] || { id: id, name: a.name || id, model: a.model || "—", role: a.role || "", mono: (a.name || id).slice(0, 2).toUpperCase(), color: "#f5a623" };
       map[id] = Object.assign({}, base, {
         id: id,
         name: a.name || base.name,
@@ -1159,547 +583,428 @@ footer {
     });
     return map;
   }
+  function isActive(a) {
+    return a && /working|scanning|pass|review|veto|awaiting/.test(a.status || "");
+  }
 
-  function ledger(data) {
-    return (data && data.paperLedger) || (data && data.paper_ledger) || {};
+  function tokenPct(t) {
+    if (!t || typeof t !== "object") return null;
+    return num(t.changePct != null ? t.changePct : (t.pct != null ? t.pct : (t.priceChange != null ? t.priceChange : t.change)));
   }
-  function tradesOf(data) {
-    const L = ledger(data);
-    const t = L.trades || data && data.trades;
-    return Array.isArray(t) ? t.filter((x) => x && typeof x === "object") : [];
+  function tokenVol(t) {
+    if (!t || typeof t !== "object") return null;
+    return num(t.volume != null ? t.volume : (t.vol != null ? t.vol : t.volumeUsd));
   }
-  function isOpen(t) {
-    const s = String(t.status || t.state || "").toLowerCase();
-    return /open|active|held|holding/.test(s);
+  function tokenSym(t) {
+    if (t == null) return "";
+    if (typeof t === "string") return safeStr(t, 18);
+    return safeStr(t.symbol || t.sym || t.ticker || t.name || t.id, 18);
   }
-  function pipelineOf(data) {
-    const p = (data && (data.pipeline || data.tokenPipeline || data.tokensByStage)) || {};
+  function pipeline(data) {
+    const p = (data && (data.pipeline || data.tokenPipeline)) || {};
     const out = { scanned: [], scored: [], vetoed: [], paperTraded: [] };
-    const alias = { scanned: ["scanned", "scan"], scored: ["scored", "score"], vetoed: ["vetoed", "veto", "rejected"], paperTraded: ["paperTraded", "paper_traded", "traded", "fills"] };
-    Object.keys(alias).forEach((k) => {
-      alias[k].forEach((key) => {
-        if (Array.isArray(p[key])) out[k] = p[key];
-      });
-    });
-    if (Array.isArray(data && data.tokens)) {
-      data.tokens.forEach((tok) => {
-        const st = String(tok.stage || tok.status || "").toLowerCase();
-        if (/score/.test(st)) out.scored.push(tok);
-        else if (/veto|reject/.test(st)) out.vetoed.push(tok);
-        else if (/trade|fill|paper/.test(st)) out.paperTraded.push(tok);
-        else if (/scan/.test(st)) out.scanned.push(tok);
-      });
-    }
+    const alias = { scanned: ["scanned","scan"], scored: ["scored","score"], vetoed: ["vetoed","veto","rejected"], paperTraded: ["paperTraded","paper_traded","traded"] };
+    Object.keys(alias).forEach((k) => alias[k].forEach((key) => { if (Array.isArray(p[key])) out[k] = p[key]; }));
     return out;
   }
-  function tokenLabel(t) {
-    if (t == null) return "";
-    if (typeof t === "string") return safeStr(t, 24);
-    return safeStr(t.symbol || t.sym || t.ticker || t.name || t.id, 24);
+  function chipItems(data) {
+    const p = pipeline(data);
+    const rows = [];
+    (p.scored || []).forEach((t) => rows.push({ token: t, stage: "scored" }));
+    (p.scanned || []).forEach((t) => {
+      const s = tokenSym(t);
+      if (s && !rows.some((r) => tokenSym(r.token) === s)) rows.push({ token: t, stage: "scanned" });
+    });
+    return rows.slice(0, 10);
+  }
+
+  function candlesFrom(data) {
+    if (!data) return [];
+    const direct = data.candles || data.ohlcv || data.ohlc || (data.gmgn && (data.gmgn.candles || data.gmgn.ohlcv));
+    const review = data.reviewToken || data.underReview || data.tokenUnderReview;
+    const fromReview = review && (review.candles || review.ohlcv || review.ohlc);
+    const raw = Array.isArray(direct) && direct.length ? direct : (Array.isArray(fromReview) ? fromReview : []);
+    return raw.map((c) => {
+      if (!c || typeof c !== "object") return null;
+      const o = num(c.o != null ? c.o : c.open);
+      const h = num(c.h != null ? c.h : c.high);
+      const l = num(c.l != null ? c.l : c.low);
+      const cl = num(c.c != null ? c.c : c.close);
+      const v = num(c.v != null ? c.v : c.volume);
+      const ts = c.ts || c.t || c.time;
+      if (o == null || h == null || l == null || cl == null) return null;
+      return { ts: ts, o: o, h: h, l: l, c: cl, v: v };
+    }).filter(Boolean);
   }
   function equitySeries(data) {
     if (!data) return [];
-    const raw = data.equity || ledger(data).equity || data.equityCurve;
+    const raw = data.equity || ledger(data).equity || ledger(data).equitySeries || data.equityCurve;
+    if (!Array.isArray(raw)) return [];
+    return raw.map((p) => ({
+      ts: p.ts || p.time || p.t,
+      equity: num(p.equity != null ? p.equity : (p.balance != null ? p.balance : p.y))
+    })).filter((p) => p.equity != null);
+  }
+  function volumePoints(data) {
+    if (!data) return [];
+    const raw = data.volumeSeries || data.volumes || (data.gmgn && data.gmgn.volumes);
     if (Array.isArray(raw) && raw.length) {
-      return raw.map((p) => ({
-        ts: p.ts || p.time || p.t,
-        equity: p.equity != null ? Number(p.equity) : (p.balance != null ? Number(p.balance) : (p.y != null ? Number(p.y) : NaN))
-      })).filter((p) => !Number.isNaN(p.equity));
+      return raw.map((p) => ({ ts: p.ts || p.t, v: num(p.v != null ? p.v : p.volume), symbol: tokenSym(p) })).filter((p) => p.v != null);
     }
-    const trades = tradesOf(data);
-    const pts = [];
-    trades.forEach((t) => {
-      const eq = t.equity != null ? t.equity : (t.balance != null ? t.balance : t.cash_usd);
-      const ts = t.ts || t.exit_ts || t.entry_ts || t.time;
-      if (eq != null && !Number.isNaN(Number(eq))) pts.push({ ts: ts, equity: Number(eq) });
+    const items = [];
+    const p = pipeline(data);
+    ["paperTraded","scored","scanned"].forEach((k) => {
+      (p[k] || []).forEach((t) => {
+        const v = tokenVol(t);
+        if (v != null) items.push({ symbol: tokenSym(t), v: v });
+      });
     });
-    if (pts.length) return pts;
-    const start = ledger(data).startBalance;
-    if (start == null || Number.isNaN(Number(start))) return [];
-    let running = Number(start);
-    let any = false;
-    const fromPnl = [{ ts: null, equity: running }];
-    trades.forEach((t) => {
-      if (t.pnl == null || Number.isNaN(Number(t.pnl))) return;
-      if (isOpen(t)) return;
-      running += Number(t.pnl);
-      any = true;
-      fromPnl.push({ ts: t.ts || t.exit_ts || t.entry_ts, equity: running });
-    });
-    if (any) return fromPnl;
-    const book = ledger(data).balance != null ? Number(ledger(data).balance) : running;
-    if (book != null && !Number.isNaN(book)) {
-      return [{ ts: data && (data.updatedAt || data.updated_at) || null, equity: book, starting: true }];
-    }
-    return [];
+    return items;
   }
 
-  function updateClock() {
-    setText($("clock"), fmtClock(new Date()));
+  function evalLine(data) {
+    const ev = (data && data.evaluationDetail) || {};
+    const start = ev.startDate || (typeof data.evaluation === "string" && /\d{4}-\d{2}-\d{2}/.test(data.evaluation) ? data.evaluation.match(/\d{4}-\d{2}-\d{2}/)[0] : null);
+    let day = null;
+    if (start) {
+      const a = new Date(start + "T12:00:00-05:00");
+      const b = new Date();
+      if (!Number.isNaN(a.getTime())) {
+        day = Math.max(1, Math.floor((b.getTime() - a.getTime()) / 86400000) + 1);
+      }
+    }
+    const bits = [];
+    if (day) bits.push("Day " + day);
+    if (ev.window) bits.push(ev.window + " paper test");
+    if (ev.seats === "grok_only") bits.push("Grok-only");
+    else if (data && data.evaluation) bits.push(String(data.evaluation).replace(/_/g, " "));
+    bits.push("Zack is final approver");
+    return bits.join(" · ");
   }
 
   function setFeed(kind, label) {
     state.feed = kind;
-    const el = $("feedStatus");
-    el.className = "feed-status " + kind;
-    setText($("feedLabel"), label);
-    const pill = $("deskPill");
-    pill.className = "pill " + kind;
-    setText(pill, kind === "live" ? "live feed" : kind === "demo" ? "demo" : kind === "disconnected" ? "no feed" : "waiting");
+    const pill = $("feedPill");
+    pill.className = "feed-pill " + kind;
+    setText(pill, label || kind);
     document.body.classList.toggle("demo", DEMO);
-    document.body.classList.toggle("idle", kind !== "live" && !DEMO);
   }
 
-  function flashKpi(id, up) {
-    if (REDUCE) return;
-    const card = document.querySelector('.kpi[data-kpi="' + id + '"]');
-    if (!card) return;
-    card.classList.remove("flash-up", "flash-down");
-    void card.offsetWidth;
-    card.classList.add(up ? "flash-up" : "flash-down");
-    setTimeout(() => card.classList.remove("flash-up", "flash-down"), 700);
-  }
-
-  function setKpi(id, text, cls) {
-    const el = id === "balance" ? $("kpiBalance")
-      : id === "pnl" ? $("kpiPnl")
-      : id === "open" ? $("kpiOpen")
-      : id === "trades" ? $("kpiTrades")
-      : id === "pipeline" ? $("kpiPipe")
-      : $("kpiPosts");
-    const prev = state.prevKpis[id];
-    setText(el, text);
-    el.className = "kpi-value " + (cls || (text === "—" ? "dim" : ""));
-    if (prev != null && prev !== text && text !== "—") {
-      const a = parseFloat(String(prev).replace(/[^0-9.+-]/g, ""));
-      const b = parseFloat(String(text).replace(/[^0-9.+-]/g, ""));
-      if (!Number.isNaN(a) && !Number.isNaN(b) && a !== b) flashKpi(id, b > a);
-    }
-    state.prevKpis[id] = text;
-  }
-
-  function renderAgents(map) {
-    state.agents = map;
-    const grid = $("brainGrid");
-    const known = ROSTER.map((r) => r.id);
-    const extras = Object.keys(map).filter((id) => known.indexOf(id) < 0);
-    const order = known.concat(extras);
-    const existing = {};
-    Array.from(grid.children).forEach((el) => { existing[el.dataset.id] = el; });
-    const wanted = new Set(order);
-    Object.keys(existing).forEach((id) => { if (!wanted.has(id)) existing[id].remove(); });
-    order.forEach((id) => {
-      const a = map[id];
-      let el = existing[id];
-      if (!el) {
-        el = document.createElement("article");
-        el.className = "agent";
-        el.dataset.id = id;
-        if (extras.indexOf(id) >= 0) el.classList.add("extra");
-        el.innerHTML =
-          '<div class="agent-top"><div class="mono-ring"></div><div class="agent-id">' +
-          '<div class="agent-name"></div><div class="agent-meta"></div></div></div>' +
-          '<div class="agent-status"></div><div class="agent-action"></div>' +
-          (id === "logger" ? '<div class="logger-strip" id="loggerStrip"></div>' : "");
-        grid.appendChild(el);
-      }
-      const st = a.status || "waiting";
-      el.className = "agent" + (extras.indexOf(id) >= 0 ? " extra" : "") + " " + st;
-      el.dataset.id = id;
-      setText(el.querySelector(".mono-ring"), a.mono || (a.name || id).slice(0, 2).toUpperCase());
-      setText(el.querySelector(".agent-name"), a.name);
-      const role = a.role || "";
-      const meta = (a.model || "—") + (role ? " · " + role : "");
-      setText(el.querySelector(".agent-meta"), meta);
-      el.querySelector(".agent-meta").title = meta;
-      el.title = (a.name || id) + " — " + role;
-      setText(el.querySelector(".agent-status"), st.replace(/_/g, " "));
-      setText(el.querySelector(".agent-action"), a.lastAction || "—");
-      el.querySelector(".agent-action").title = a.lastAction || "";
-    });
-    layoutWires();
-  }
-
-  function layoutWires() {
-    const svg = $("wires");
-    const brain = $("brain");
-    if (!svg || !brain) return;
-    if (window.matchMedia("(max-width: 800px)").matches) {
-      svg.innerHTML = "";
-      state.paths = {};
+  function renderChips(data) {
+    const root = $("chips");
+    const items = data ? chipItems(data) : [];
+    if (!items.length) {
+      root.innerHTML = '<div class="waiting-line">Waiting — no candidates in the feed.</div>';
+      setText($("kpiCand"), data ? "0" : "—");
       return;
     }
-    const br = brain.getBoundingClientRect();
-    svg.setAttribute("viewBox", "0 0 " + Math.max(1, br.width) + " " + Math.max(1, br.height));
-    svg.setAttribute("width", br.width);
-    svg.setAttribute("height", br.height);
-    const pts = {};
-    ROSTER.forEach((r) => {
-      const el = document.querySelector('.agent[data-id="' + r.id + '"]');
-      if (!el) return;
-      const rc = el.getBoundingClientRect();
-      pts[r.id] = {
-        x: rc.left - br.left + rc.width / 2,
-        y: rc.top - br.top + rc.height / 2,
-        t: rc.top - br.top,
-        b: rc.bottom - br.top,
-        l: rc.left - br.left,
-        r: rc.right - br.left
-      };
-    });
-    const parts = [];
-    const paths = {};
-    EDGES.forEach(([a, b], i) => {
-      const A = pts[a], B = pts[b];
-      if (!A || !B) return;
-      const active = isActive(state.agents[a]) || isActive(state.agents[b]);
-      let d;
-      if (Math.abs(A.y - B.y) < 30) {
-        const x1 = A.x < B.x ? A.r : A.l;
-        const x2 = A.x < B.x ? B.l : B.r;
-        const mid = (x1 + x2) / 2;
-        d = "M " + x1 + " " + A.y + " C " + mid + " " + A.y + ", " + mid + " " + B.y + ", " + x2 + " " + B.y;
-      } else {
-        const y1 = A.y < B.y ? A.b : A.t;
-        const y2 = A.y < B.y ? B.t : B.b;
-        const midy = (y1 + y2) / 2;
-        d = "M " + A.x + " " + y1 + " C " + A.x + " " + midy + ", " + B.x + " " + midy + ", " + B.x + " " + y2;
-      }
-      const id = "e" + i;
-      paths[id] = { d: d, from: a, to: b, active: active };
-      parts.push('<path id="' + id + '" class="wire' + (active ? " active" : "") + '" d="' + d + '" />');
-    });
-    const packetDots = state.packets.map((p) =>
-      '<circle class="packet" r="3.2" data-pid="' + p.id + '" cx="0" cy="0" />'
-    ).join("");
-    svg.innerHTML = parts.join("") + packetDots;
-    state.paths = paths;
-    Object.keys(paths).forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) paths[id].length = el.getTotalLength();
-    });
-  }
-
-  function isActive(a) {
-    if (!a) return false;
-    return /working|scanning|pass|review|veto/.test(a.status || "");
-  }
-
-  function tickPackets() {
-    if (REDUCE) return;
-    const svg = $("wires");
-    if (!svg) return;
-    const activeIds = Object.keys(state.paths).filter((id) => state.paths[id].active);
-    if (activeIds.length && state.packets.length < activeIds.length * 2) {
-      const edge = activeIds[Math.floor(Math.random() * activeIds.length)];
-      state.packets.push({ id: "p" + Math.random().toString(16).slice(2), edge: edge, t: 0, speed: 0.006 + Math.random() * 0.006 });
-    }
-    const keep = [];
-    state.packets.forEach((p) => {
-      p.t += p.speed;
-      const pathEl = document.getElementById(p.edge);
-      const meta = state.paths[p.edge];
-      if (!pathEl || !meta || p.t > 1) return;
-      const pt = pathEl.getPointAtLength(p.t * (meta.length || pathEl.getTotalLength()));
-      let c = svg.querySelector('circle[data-pid="' + p.id + '"]');
-      if (!c) {
-        c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        c.setAttribute("class", "packet");
-        c.setAttribute("r", "3.2");
-        c.setAttribute("data-pid", p.id);
-        svg.appendChild(c);
-      }
-      c.setAttribute("cx", pt.x);
-      c.setAttribute("cy", pt.y);
-      keep.push(p);
-    });
-    Array.from(svg.querySelectorAll("circle.packet")).forEach((c) => {
-      if (!keep.some((p) => p.id === c.getAttribute("data-pid"))) c.remove();
-    });
-    state.packets = keep;
-  }
-
-  function renderPipeline(data) {
-    const pipe = pipelineOf(data);
-    const root = $("stages");
-    let total = 0;
-    root.innerHTML = STAGES.map((s) => {
-      const items = pipe[s.key] || [];
-      total += items.length;
-      const chips = items.slice(0, 16).map((t) => {
-        const label = tokenLabel(t);
-        return label ? '<span class="chip">' + escapeHtml(label) + "</span>" : "";
-      }).join("");
-      const body = items.length
-        ? '<div class="stage-chips">' + chips + "</div>"
-        : '<div class="stage-empty">Waiting — no tokens.</div>';
-      return '<div class="stage" data-stage="' + s.key + '"><div class="stage-head">' +
-        '<span class="stage-title">' + s.label + "</span>" +
-        '<span class="stage-count">' + items.length + "</span></div>" + body + "</div>";
+    root.innerHTML = items.map((row, i) => {
+      const sym = tokenSym(row.token) || "—";
+      const pct = tokenPct(row.token);
+      const letter = (sym.replace(/^\$/, "")[0] || "?").toUpperCase();
+      const col = TAG_COLORS[i % TAG_COLORS.length];
+      const pctHtml = pct == null ? '<span class="st">' + escapeHtml(row.stage) + "</span>"
+        : '<span class="pct ' + (pct >= 0 ? "pos" : "neg") + '">' + escapeHtml(fmtPct(pct)) + "</span>";
+      return '<div class="chip"><span class="tag" style="background:' + col + '">' + escapeHtml(letter) + "</span><span>$" +
+        escapeHtml(sym.replace(/^\$/, "")) + "</span>" + pctHtml + "</div>";
     }).join("");
-    return total;
+    const p = pipeline(data);
+    setText($("kpiCand"), String((p.scored || []).length + (p.scanned || []).length));
   }
 
-  function drawEquity(series) {
-    const canvas = $("pnlCanvas");
-    const empty = $("chartEmpty");
+  function drawLine(canvas, series, color, emptyEl, emptyMsg, ykey) {
     const ctx = canvas.getContext("2d");
     const dpr = window.devicePixelRatio || 1;
-    const w = canvas.clientWidth || 640;
-    const h = canvas.clientHeight || 200;
+    const w = canvas.clientWidth || 400;
+    const h = canvas.clientHeight || 120;
     canvas.width = Math.floor(w * dpr);
     canvas.height = Math.floor(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
     if (!series.length) {
-      empty.hidden = false;
-      setText(empty, "No paper trades yet — waiting for the feed.");
+      if (emptyEl) { emptyEl.hidden = false; if (emptyMsg) setText(emptyEl, emptyMsg); }
       return;
     }
-    empty.hidden = true;
-    const startingOnly = series.length <= 2 && series.every(function (pt) { return pt.starting; });
-    if (startingOnly) {
-      const v = series[0].equity;
-      const mid = Math.round(h * 0.48);
-      ctx.setLineDash([6, 6]);
-      ctx.strokeStyle = "rgba(255,213,106,0.55)";
-      ctx.lineWidth = 1.6;
-      ctx.beginPath();
-      ctx.moveTo(24, mid);
-      ctx.lineTo(w - 24, mid);
-      ctx.stroke();
-      ctx.setLineDash([]);
-      ctx.beginPath();
-      ctx.arc(w / 2, mid, 5, 0, Math.PI * 2);
-      ctx.fillStyle = "#5dffb0";
-      ctx.shadowColor = "#5dffb0";
-      ctx.shadowBlur = 10;
-      ctx.fill();
-      ctx.shadowBlur = 0;
-      ctx.fillStyle = "#ffd56a";
-      ctx.font = "600 14px ui-monospace, SF Mono, monospace";
-      ctx.textAlign = "center";
-      ctx.fillText("Starting book  " + (fmtMoneyPlain(v) || ""), w / 2, mid - 18);
-      ctx.fillStyle = "#9b93c4";
-      ctx.font = "12px ui-sans-serif, Segoe UI, sans-serif";
-      ctx.fillText("No paper fills yet", w / 2, mid + 24);
-      ctx.textAlign = "start";
-      return;
-    }
-    const ys = series.map((p) => p.equity);
-    let min = Math.min.apply(null, ys);
-    let max = Math.max.apply(null, ys);
+    if (emptyEl) emptyEl.hidden = true;
+    const ys = series.map((p) => (ykey ? p[ykey] : p.equity));
+    let min = Math.min.apply(null, ys), max = Math.max.apply(null, ys);
     if (min === max) { min -= 1; max += 1; }
-    const pad = { l: 44, r: 10, t: 12, b: 18 };
-    const iw = w - pad.l - pad.r;
-    const ih = h - pad.t - pad.b;
-    const xAt = (i) => pad.l + (series.length === 1 ? iw / 2 : (i / (series.length - 1)) * iw);
-    const yAt = (v) => pad.t + (1 - (v - min) / (max - min)) * ih;
-    ctx.strokeStyle = "#2e2a55";
-    ctx.lineWidth = 1;
-    ctx.setLineDash([3, 4]);
+    const pad = { l: 8, r: 8, t: 10, b: 8 };
+    const xAt = (i) => pad.l + (series.length === 1 ? (w - pad.l - pad.r) / 2 : i / (series.length - 1) * (w - pad.l - pad.r));
+    const yAt = (v) => pad.t + (1 - (v - min) / (max - min)) * (h - pad.t - pad.b);
     ctx.beginPath();
-    ctx.moveTo(pad.l, yAt(min)); ctx.lineTo(w - pad.r, yAt(min));
-    ctx.moveTo(pad.l, yAt(max)); ctx.lineTo(w - pad.r, yAt(max));
-    ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle = "#9b93c4";
-    ctx.font = "11px ui-monospace, SF Mono, monospace";
-    ctx.fillText(fmtMoneyPlain(max) || String(max), 4, yAt(max) + 4);
-    ctx.fillText(fmtMoneyPlain(min) || String(min), 4, yAt(min) + 4);
-    const last = ys[ys.length - 1];
-    const first = ys[0];
-    const up = last >= first;
-    const col = up ? "#5dffb0" : "#ff6b7a";
-    ctx.beginPath();
-    series.forEach((p, i) => {
-      const x = xAt(i), y = yAt(p.equity);
-      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-    });
-    ctx.strokeStyle = col;
-    ctx.lineWidth = 2.2;
-    ctx.shadowColor = col;
+    series.forEach((p, i) => { const x = xAt(i), y = yAt(ykey ? p[ykey] : p.equity); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); });
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.shadowColor = color;
     ctx.shadowBlur = 8;
     ctx.stroke();
     ctx.shadowBlur = 0;
-    const area = ctx.createLinearGradient(0, pad.t, 0, h - pad.b);
-    area.addColorStop(0, up ? "rgba(93,255,176,0.22)" : "rgba(255,107,122,0.22)");
-    area.addColorStop(1, "rgba(11,10,26,0)");
-    ctx.lineTo(xAt(series.length - 1), h - pad.b);
-    ctx.lineTo(xAt(0), h - pad.b);
-    ctx.closePath();
-    ctx.fillStyle = area;
-    ctx.fill();
-    const end = series[series.length - 1];
+    const last = ys[ys.length - 1];
     ctx.beginPath();
-    ctx.arc(xAt(series.length - 1), yAt(end.equity), 3.5, 0, Math.PI * 2);
-    ctx.fillStyle = col;
+    ctx.arc(xAt(series.length - 1), yAt(last), 3, 0, Math.PI * 2);
+    ctx.fillStyle = color;
     ctx.fill();
   }
 
-  function renderTrades(data) {
-    const tape = $("tradeTape");
-    const trades = tradesOf(data);
+  function drawCandles(canvas, candles, emptyEl) {
+    const ctx = canvas.getContext("2d");
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth || 960;
+    const h = canvas.clientHeight || 250;
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    if (!candles.length) {
+      emptyEl.hidden = false;
+      return false;
+    }
+    emptyEl.hidden = true;
+    const highs = candles.map((c) => c.h), lows = candles.map((c) => c.l);
+    let min = Math.min.apply(null, lows), max = Math.max.apply(null, highs);
+    if (min === max) { min -= 1; max += 1; }
+    const pad = { l: 8, r: 8, t: 12, b: 16 };
+    const slot = (w - pad.l - pad.r) / candles.length;
+    const yAt = (v) => pad.t + (1 - (v - min) / (max - min)) * (h - pad.t - pad.b);
+    candles.forEach((c, i) => {
+      const x = pad.l + (i + 0.5) * slot;
+      const up = c.c >= c.o;
+      ctx.strokeStyle = ctx.fillStyle = up ? "#3dff8a" : "#ff5a6a";
+      ctx.beginPath();
+      ctx.moveTo(x, yAt(c.h)); ctx.lineTo(x, yAt(c.l));
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      const top = yAt(Math.max(c.o, c.c)), bot = yAt(Math.min(c.o, c.c));
+      const bw = Math.max(2, slot * 0.55);
+      ctx.fillRect(x - bw / 2, top, bw, Math.max(1, bot - top));
+    });
+    return true;
+  }
+
+  function drawVolume(canvas, pts, emptyEl) {
+    const ctx = canvas.getContext("2d");
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth || 400;
+    const h = canvas.clientHeight || 110;
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    if (!pts.length) { emptyEl.hidden = false; return; }
+    emptyEl.hidden = true;
+    const vs = pts.map((p) => p.v);
+    const max = Math.max.apply(null, vs) || 1;
+    const slot = w / pts.length;
+    pts.forEach((p, i) => {
+      const bh = (p.v / max) * (h - 8);
+      ctx.fillStyle = i % 2 === 0 ? "#3dff8a" : "#1e8a4a";
+      ctx.fillRect(i * slot + 2, h - bh, Math.max(2, slot - 4), bh);
+    });
+  }
+
+  function renderChart(data) {
+    const candles = candlesFrom(data);
+    const empty = $("chartEmpty");
+    if (candles.length) {
+      setText($("chartTitle"), "Token candles · GMGN feed");
+      setText($("chartMeta"), candles.length + " bars · real feed only");
+      drawCandles($("eqCanvas"), candles, empty);
+    } else {
+      setText($("chartTitle"), "Paper equity · candles");
+      setText($("chartMeta"), "from the paper feed only");
+      const ctx = $("eqCanvas").getContext("2d");
+      const dpr = window.devicePixelRatio || 1;
+      const c = $("eqCanvas");
+      const w = c.clientWidth || 960, h = c.clientHeight || 250;
+      c.width = Math.floor(w * dpr); c.height = Math.floor(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, w, h);
+      empty.hidden = false;
+      const L = ledger(data);
+      const bal = fmtMoney(L.balance != null ? L.balance : L.startBalance);
+      setText(empty, bal
+        ? "No GMGN candle data in the feed.\nStarting book " + bal + " · no paper fills to chart as candles."
+        : "Waiting — no GMGN candle data in the feed.");
+    }
+  }
+
+  function renderVolume(data) {
+    const pts = volumePoints(data);
+    drawVolume($("volCanvas"), pts, $("volEmpty"));
+    const list = $("volList");
+    const withSym = pts.filter((p) => p.symbol);
+    if (!withSym.length) { list.innerHTML = ""; setText($("volMeta"), ""); return; }
+    list.innerHTML = withSym.slice(0, 6).map((p) =>
+      '<div class="vol-row"><b>$' + escapeHtml(p.symbol) + "</b><span>" + escapeHtml(String(p.v)) + "</span></div>"
+    ).join("");
+    setText($("volMeta"), withSym.length + " tokens");
+  }
+
+  function renderPnl(data) {
+    const series = equitySeries(data);
     const L = ledger(data);
-    const reason = safeStr((data && data.note) || L.emptyReason || "", 360);
-    if (!trades.length) {
-      tape.innerHTML = '<p class="empty-msg">' + (reason ? escapeHtml(reason) : "No paper trades in the feed.") + "</p>";
-      return trades;
+    if (!series.length && L.balance != null && L.startBalance != null) {
+      // Honest two-point book only when both values exist — still a real ledger, not invented candles.
     }
-    const rows = trades.slice().reverse().slice(0, 12).map((t) => {
-      const sym = escapeHtml(safeStr(t.symbol || t.sym || t.ticker || t.name || "—", 20));
-      const side = escapeHtml(safeStr(t.side || t.action || "", 8));
-      const st = escapeHtml(safeStr(t.status || (isOpen(t) ? "open" : "closed"), 12));
-      const pnlN = t.pnl != null ? Number(t.pnl) : (t.pnl_usd != null ? Number(t.pnl_usd) : null);
-      const pnl = pnlN == null || Number.isNaN(pnlN) ? "—" : (fmtMoney(pnlN) || "—");
-      const cls = pnlN == null || Number.isNaN(pnlN) ? "" : (pnlN >= 0 ? "pos" : "neg");
-      return '<div class="trade-row"><span class="trade-sym">' + sym + '</span><span class="trade-side">' +
-        side + '</span><span class="trade-status">' + st + '</span><span class="trade-pnl ' + cls + '">' +
-        escapeHtml(pnl) + "</span></div>";
-    }).join("");
-    tape.innerHTML = rows;
-    return trades;
-  }
-
-  function renderJournal(data) {
-    const items = Array.isArray(data && data.journal) ? data.journal : [];
-    const feed = $("journalFeed");
-    const wrap = $("tickerWrap");
-    const track = $("tickerTrack");
-    if (!items.length) {
-      wrap.hidden = true;
-      feed.innerHTML = '<p class="empty-msg">Journal is empty — waiting for the team feed.</p>';
-      return;
-    }
-    const recent = items.slice(-40).reverse();
-    feed.innerHTML = recent.map((j) => {
-      const text = safeStr(j.text || j.note || j.message || j.entry || "", 480);
-      const who = safeStr(j.agent || j.author || j.who || j.by || "", 32);
-      return '<div class="j-row"><span class="j-ts">' + escapeHtml(fmtTime(j.ts || j.time)) +
-        '</span><span class="j-who">' + escapeHtml(who) + "</span>" +
-        '<div class="j-text">' + escapeHtml(text) + "</div></div>";
-    }).join("");
-    const latest = items[items.length - 1] || {};
-    const lt = safeStr(latest.text || latest.note || latest.message || "", 140);
-    const lw = safeStr(latest.agent || latest.author || latest.who || "", 20);
-    track.innerHTML = "<span>" + escapeHtml((lw ? lw + " · " : "") + lt) + "</span>";
-    wrap.hidden = false;
-  }
-
-  function renderRules(data) {
-    const rules = (data && data.rules) || [];
-    const body = $("rulesBody");
-    const list = Array.isArray(rules) ? rules : [];
-    if (!list.length) {
-      body.innerHTML = '<p class="empty-msg">Waiting for rules from the paper feed. Standing constraints on this desk: display only, no wallets, no real money, Zack is the final approver.</p>';
-      return;
-    }
-    const items = list.map((r) => {
-      const text = typeof r === "string" ? r : (r.text || r.rule || r.title || JSON.stringify(r));
-      return "<li>" + escapeHtml(safeStr(text, 280)) + "</li>";
-    }).join("");
-    body.innerHTML = '<ol class="rules-list">' + items + "</ol>";
+    drawLine($("pnlCanvas"), series, "#f5a623", $("pnlEmpty"),
+      series.length ? "" : "Waiting — no paper equity history yet.", "equity");
+    const start = num(L.startBalance);
+    const bal = num(L.balance);
+    const realized = num(L.realizedPnl);
+    const bits = [];
+    if (bal != null && start != null) bits.push("book <strong>" + escapeHtml(fmtMoney(bal)) + "</strong>");
+    if (realized != null) bits.push("realized <strong>" + escapeHtml(fmtMoney(realized, true)) + "</strong>");
+    if (!series.length && bal != null) bits.push("no fills yet");
+    $("pnlStats").innerHTML = bits.join(" · ");
   }
 
   function renderPosts(data) {
     const posts = Array.isArray(data && data.postsReviewed) ? data.postsReviewed
       : (Array.isArray(data && data.posts_reviewed) ? data.posts_reviewed : []);
     const root = $("posts");
-    setText($("postsCount"), posts.length ? String(posts.length) : "");
+    setText($("postsMeta"), posts.length ? String(posts.length) + " reviewed" : "");
     if (!posts.length) {
-      root.innerHTML = '<p class="empty-msg">No posts reviewed yet.</p>';
-      return 0;
+      root.innerHTML = '<div class="waiting-line">No posts reviewed yet.</div>';
+      return;
     }
     root.innerHTML = posts.slice().reverse().slice(0, 20).map((p) => {
-      const author = escapeHtml(safeStr(p.author || p.handle || p.user || "unknown", 40));
+      const author = escapeHtml(safeStr(p.author || p.handle || "unknown", 40));
       const verdictFull = safeStr(p.verdict || p.rating || p.tag || "", 280);
       let badge = "reviewed";
       if (/^reject/i.test(verdictFull)) badge = "Reject";
       else if (/^useful/i.test(verdictFull)) badge = "Useful";
       else if (/^pass/i.test(verdictFull)) badge = "Pass";
-      else if (verdictFull) badge = verdictFull.slice(0, 18);
-      const vcls = badge.toLowerCase().replace(/\s+/g, "");
-      const sum = escapeHtml(safeStr(p.summary || p.note || p.text || p.title || verdictFull, 280));
-      const idea = safeStr(p.ideaWorthTesting || p.idea || "", 200);
+      const vcls = badge.toLowerCase();
+      const sum = escapeHtml(safeStr(p.summary || p.note || p.text || verdictFull, 240));
       const url = String(p.url || p.link || "");
       const safeUrl = /^https?:\/\//i.test(url) ? url : "";
       const link = safeUrl ? ' · <a href="' + escapeHtml(safeUrl) + '" target="_blank" rel="noopener noreferrer">view</a>' : "";
-      const ideaHtml = idea ? '<div class="post-meta">Worth testing: ' + escapeHtml(idea) + "</div>" : "";
-      return '<article class="post"><div class="post-head"><span class="post-author">' + author +
-        '</span><span class="post-verdict ' + escapeHtml(vcls) + '">' + escapeHtml(badge) +
-        "</span></div><div class=\"post-summary\">" + sum + "</div>" + ideaHtml +
-        '<div class="post-meta">' + escapeHtml(fmtTime(p.reviewedAt || p.ts || p.time || p.postedAt)) + link + "</div></article>";
+      return '<article class="post"><div class="post-head"><span class="post-author">@' + author +
+        '</span><span class="post-verdict ' + vcls + '">' + escapeHtml(badge) + "</span></div>" +
+        '<div class="post-summary">' + sum + "</div>" +
+        '<div class="post-meta">' + escapeHtml(fmtTime(p.reviewedAt || p.ts || p.postedAt)) + link + "</div></article>";
     }).join("");
-    return posts.length;
   }
 
-  function renderAll(data, feedKind, feedLabel) {
-    setFeed(feedKind, feedLabel);
-    const map = mergeAgents(data);
-    renderAgents(map);
-    const pipeTotal = renderPipeline(data);
-    const trades = renderTrades(data);
-    renderJournal(data);
-    (function fillLogger() {
-      const strip = $("loggerStrip");
-      if (!strip) return;
-      const items = Array.isArray(data && data.journal) ? data.journal : [];
-      if (!items.length) { setText(strip, ""); return; }
-      const last = items[items.length - 1];
-      const who = safeStr(last.agent || last.author || "", 16);
-      const text = safeStr(last.text || last.note || last.message || "", 140);
-      setText(strip, (who ? who + " · " : "") + text);
-    })();
-    renderRules(data);
-    const postN = renderPosts(data);
-    const series = equitySeries(data);
-    drawEquity(series);
-    if (series.length && !tradesOf(data).length && series.every(function (pt) { return pt.starting; })) {
-      setText($("eqLegend"), "starting book · no paper fills yet");
-    } else {
-      setText($("eqLegend"), "from the paper feed only");
-    }
+  function ensureHub(map) {
+    const hub = $("hub");
+    if ($("seat-coordinator") && $("seat-scout")) return;
+    hub.querySelectorAll(".seat, .core").forEach((n) => n.remove());
+    const core = document.createElement("div");
+    core.className = "core";
+    core.id = "seat-coordinator";
+    core.innerHTML = '<div class="ring">GROK</div><div class="name">Coordinator</div><div class="meta"></div><div class="status"></div><div class="action"></div>';
+    hub.appendChild(core);
+    RING.forEach((r) => {
+      const el = document.createElement("article");
+      el.className = "seat";
+      el.id = "seat-" + r.id;
+      el.dataset.id = r.id;
+      el.innerHTML = '<div class="top"><span class="badge" style="background:' + r.color + '">' + escapeHtml(r.mono) +
+        '</span><div><div class="name"></div><div class="meta"></div></div></div><div class="status"></div><div class="action"></div>';
+      hub.appendChild(el);
+    });
+  }
 
+  function layoutHub() {
+    const hub = $("hub");
+    const svg = $("hubWires");
+    if (window.matchMedia("(max-width: 800px)").matches) {
+      svg.innerHTML = "";
+      return;
+    }
+    const w = hub.clientWidth, h = hub.clientHeight;
+    svg.setAttribute("viewBox", "0 0 " + w + " " + h);
+    svg.setAttribute("width", w);
+    svg.setAttribute("height", h);
+    const cx = w / 2, cy = h / 2;
+    const core = $("seat-coordinator");
+    core.style.left = cx + "px";
+    core.style.top = cy + "px";
+    const rx = Math.min(w * 0.40, 400);
+    const ry = Math.min(h * 0.40, 230);
+    const n = RING.length;
+    const paths = [];
+    RING.forEach((r, i) => {
+      const ang = -Math.PI / 2 + (i / n) * Math.PI * 2;
+      const x = cx + rx * Math.cos(ang);
+      const y = cy + ry * Math.sin(ang);
+      const el = $("seat-" + r.id);
+      if (!el) return;
+      el.style.left = x + "px";
+      el.style.top = y + "px";
+      const active = isActive(state.agents[r.id]) || isActive(state.agents.coordinator);
+      const d = "M " + x + " " + y + " Q " + (x * 0.35 + cx * 0.65) + " " + (y * 0.35 + cy * 0.65) + " " + cx + " " + cy;
+      paths.push('<path class="' + (active ? "active" : "") + '" d="' + d + '" />');
+    });
+    svg.innerHTML = paths.join("");
+  }
+
+  function renderHub(map) {
+    state.agents = map;
+    ensureHub(map);
+    const all = [CORE].concat(RING);
+    all.forEach((r) => {
+      const a = map[r.id] || r;
+      const el = $("seat-" + r.id);
+      if (!el) return;
+      const st = a.status || "waiting";
+      el.className = (r.id === "coordinator" ? "core " : "seat ") + st;
+      el.dataset.id = r.id;
+      if (r.id === "coordinator") setText(el.querySelector(".ring"), a.mono || "GROK");
+      setText(el.querySelector(".name"), a.name);
+      setText(el.querySelector(".meta"), (a.model || "—") + " · " + (a.role || ""));
+      setText(el.querySelector(".status"), st.replace(/_/g, " "));
+      setText(el.querySelector(".action"), a.lastAction || "—");
+    });
+    const unwired = all.filter((r) => map[r.id] && map[r.id].status === "unwired").length;
+    setText($("hubMeta"), all.length + " seats · " + unwired + " not wired");
+    layoutHub();
+  }
+
+  function renderHeader(data) {
     const L = ledger(data);
-    const bal = L.balance != null ? L.balance : L.cash;
-    const start = L.startBalance != null ? L.startBalance : L.start;
-    const balTxt = fmtMoneyPlain(bal);
-    setKpi("balance", balTxt || "—", balTxt ? "" : "dim");
-
-    let pnlTxt = null, pnlCls = "dim";
-    const realized = L.realizedPnl != null ? Number(L.realizedPnl) : (L.pnl != null ? Number(L.pnl) : null);
-    const unreal = L.unrealizedPnl != null ? Number(L.unrealizedPnl) : 0;
-    if (realized != null && !Number.isNaN(realized)) {
-      const total = realized + (Number.isNaN(unreal) ? 0 : unreal);
-      pnlTxt = fmtMoney(total);
-      pnlCls = total >= 0 ? "pos" : "neg";
-    } else if (bal != null && start != null && !Number.isNaN(Number(bal)) && !Number.isNaN(Number(start))) {
-      const d = Number(bal) - Number(start);
-      pnlTxt = fmtMoney(d);
-      pnlCls = d >= 0 ? "pos" : "neg";
+    const bal = fmtMoney(L.balance != null ? L.balance : L.startBalance);
+    const el = $("balValue");
+    setText(el, bal || "—");
+    el.style.color = bal ? "var(--green)" : "var(--muted)";
+    const start = num(L.startBalance), cur = num(L.balance);
+    let pnlTxt = "—", pnlColor = "";
+    const realized = num(L.realizedPnl), unreal = num(L.unrealizedPnl) || 0;
+    if (realized != null) {
+      const tot = realized + unreal;
+      pnlTxt = fmtMoney(tot, true) || "—";
+      pnlColor = tot >= 0 ? "var(--green)" : "var(--red)";
+    } else if (cur != null && start != null) {
+      const d = cur - start;
+      pnlTxt = fmtMoney(d, true) || "—";
+      pnlColor = d >= 0 ? "var(--green)" : "var(--red)";
     }
-    setKpi("pnl", pnlTxt || "—", pnlTxt ? pnlCls : "dim");
-
+    setText($("kpiPnl"), pnlTxt);
+    $("kpiPnl").style.color = pnlColor || "var(--text)";
     let openN = null;
     if (L.openCount != null) openN = Number(L.openCount);
     else if (Array.isArray(L.open)) openN = L.open.length;
-    else if (trades.length) openN = trades.filter(isOpen).length;
-    setKpi("open", openN == null ? "—" : String(openN), openN == null ? "dim" : "");
-    setKpi("trades", data ? String(trades.length) : "—", data ? "" : "dim");
-    setKpi("pipeline", data ? String(pipeTotal) : "—", data ? "" : "");
-    setKpi("posts", data ? String(postN) : "—", data ? "" : "dim");
-
-    const updated = (data && (data.updatedAt || data.updated_at || data.ts)) || state.lastGoodAt;
+    else if (Array.isArray(L.trades)) openN = L.trades.filter((t) => /open|active|held/.test(String(t.status || t.state || "").toLowerCase())).length;
+    const trades = Array.isArray(L.trades) ? L.trades.length : (data ? 0 : null);
+    setText($("kpiOpen"), openN == null ? "—" : String(openN));
+    setText($("kpiTrades"), trades == null ? "—" : String(trades));
+    setText($("subLine"), data ? evalLine(data) : "Waiting for the paper feed");
+    setText($("balMeta"), "simulated · no real money");
+    const updated = data && (data.updatedAt || data.updated_at || data.ts);
     setText($("footUpdated"), "updated " + (updated ? fmtTime(updated) : "—"));
-    if (data && data.evaluation) {
-      const ev = String(data.evaluation).replace(/_/g, " ");
-      setText($("eqLegend"), ev === "not started" ? "evaluation not started · feed only" : ev);
-    }
   }
 
-  function idleView(kind, label) {
-    state.data = null;
-    renderAll(null, kind, label);
+  function renderAll(data, kind, label) {
+    setFeed(kind, label);
+    renderHeader(data);
+    renderChips(data);
+    renderChart(data);
+    renderHub(mergeAgents(data));
+    renderVolume(data);
+    renderPosts(data);
+    renderPnl(data);
   }
 
   async function poll() {
@@ -1708,99 +1013,47 @@ footer {
     for (let i = 0; i < STATE_PATHS.length; i++) {
       const path = STATE_PATHS[i];
       try {
-        const res = await fetch(path, { cache: "no-store" });
+        const res = await fetch(path + "?t=" + Date.now(), { cache: "no-store" });
         if (!res.ok) { lastErr = path + " · " + res.status; continue; }
         const text = await res.text();
-        setText($("footPath"), "feed: " + path);
-        if (!text || !text.trim() || text.trim() === "{}") {
-          idleView("empty", "Feed is empty");
-          return;
-        }
+        setText($("footPath"), "feed: state.json");
+        if (!text || !text.trim() || text.trim() === "{}") { renderAll(null, "waiting", "empty"); return; }
         let data;
-        try { data = JSON.parse(text); }
-        catch (e) { idleView("disconnected", "Feed is not valid JSON"); return; }
-        if (!data || typeof data !== "object") { idleView("empty", "Feed is empty"); return; }
-        const hasAgents = Array.isArray(data.agents) && data.agents.length;
-        const hasLedger = data.paperLedger || data.paper_ledger;
-        const hasJournal = Array.isArray(data.journal) && data.journal.length;
-        const hasPosts = Array.isArray(data.postsReviewed) && data.postsReviewed.length;
-        const hasRules = Array.isArray(data.rules) && data.rules.length;
-        const hasPipe = data.pipeline || data.tokens;
-        if (!hasAgents && !hasLedger && !hasJournal && !hasPosts && !hasRules && !hasPipe) {
-          idleView("empty", "Feed is empty");
-          return;
-        }
+        try { data = JSON.parse(text); } catch (e) { renderAll(null, "disconnected", "bad json"); return; }
+        if (!data || typeof data !== "object") { renderAll(null, "waiting", "empty"); return; }
+        const has = (data.agents && data.agents.length) || data.paperLedger || (data.journal && data.journal.length) ||
+          (data.postsReviewed && data.postsReviewed.length) || data.pipeline;
+        if (!has) { renderAll(null, "waiting", "empty"); return; }
         state.data = data;
-        state.lastGoodAt = new Date().toISOString();
-        renderAll(data, "live", "Paper feed · 3s");
+        renderAll(data, "live", "live feed");
         return;
       } catch (e) {
         lastErr = e && e.message ? e.message : "fetch failed";
       }
     }
-    idleView("disconnected", "Waiting for state.json");
+    renderAll(null, "disconnected", "waiting");
     setText($("footPath"), "feed: state.json" + (lastErr ? " · " + lastErr : ""));
   }
 
-  function startLoop() {
-    let last = 0;
-    function frame(ts) {
-      if (ts - last > 40) {
-        tickPackets();
-        last = ts;
-      }
-      requestAnimationFrame(frame);
-    }
-    if (!REDUCE) requestAnimationFrame(frame);
-  }
+  setInterval(function () { setText($("clock"), clockNow()); }, 1000);
+  setText($("clock"), clockNow());
+  window.addEventListener("resize", layoutHub);
+  if (typeof ResizeObserver === "function") new ResizeObserver(layoutHub).observe($("hub"));
 
-  $("fsBtn").addEventListener("click", () => {
-    if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {});
-    else document.exitFullscreen();
-  });
-  window.addEventListener("resize", () => {
-    layoutWires();
-    drawEquity(equitySeries(state.data));
-  });
-  if (typeof ResizeObserver === "function") {
-    new ResizeObserver(() => {
-      layoutWires();
-      drawEquity(equitySeries(state.data));
-    }).observe($("brain"));
-  }
-
-  updateClock();
-  setInterval(updateClock, 1000);
-  renderAgents(mergeAgents(null));
-  renderPipeline(null);
-  renderTrades(null);
-  renderJournal(null);
-  renderRules(null);
-  renderPosts(null);
-  drawEquity([]);
-  setFeed("waiting", "Waiting for feed");
-  startLoop();
+  renderAll(null, "waiting", "waiting");
 
   if (DEMO) {
     document.body.classList.add("demo");
-    setFeed("demo", "DEMO / no real data");
-    setText($("feedLabel"), "DEMO / no real data");
-    /* Intentionally no invented balances or trades — only status theater, clearly labeled. */
     const demo = {
-      updatedAt: new Date().toISOString(),
-      agents: ROSTER.map((r, i) => ({
-        id: r.id,
-        name: r.name,
-        model: r.model,
-        role: r.role,
-        status: r.id === "zack" ? "waiting" : (i % 3 === 0 ? "scanning" : (i % 3 === 1 ? "working" : "review")),
+      evaluationDetail: { window: "demo", seats: "demo" },
+      agents: [CORE].concat(RING).map((r, i) => ({
+        id: r.id, name: r.name, model: r.model, role: r.role,
+        status: r.id === "zack" ? "waiting" : (i % 3 === 0 ? "scanning" : "review"),
         lastAction: "Demo animation only — no paper book behind this."
       })),
-      rules: ["DEMO / no real data — this is an animation preview, not a trading result."],
+      rules: ["DEMO / no real data"],
       paperLedger: {},
-      journal: [{ ts: new Date().toISOString(), agent: "Desk", text: "DEMO / no real data. No paper trades or balances are being shown." }],
-      postsReviewed: [],
-      pipeline: { scanned: [], scored: [], vetoed: [], paperTraded: [] }
+      journal: [], postsReviewed: [], pipeline: {}
     };
     renderAll(demo, "demo", "DEMO / no real data");
   } else {
