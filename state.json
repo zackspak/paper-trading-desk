@@ -1,0 +1,183 @@
+{
+  "ok": true,
+  "paper": true,
+  "mode": "paper",
+  "evaluation": "not_started",
+  "updatedAt": "2026-11-24T14:55:00-05:00",
+  "timezone": "America/New_York",
+  "note": "Paper ledger is empty because no paper fills were found in existing journals. Live trades were not copied. Nothing here is a live book.",
+  "agents": [
+    {
+      "id": "coordinator",
+      "name": "Coordinator",
+      "model": "Grok Bot",
+      "role": "Orchestrate cycles, tally independent votes, journal, digest to Zack. Does not pick tokens and does not overrule a reject.",
+      "status": "idle",
+      "lastAction": "Reviewed the Obzidian launch post at 2:55 PM ET on Nov 24, 2026. Added intake verdict. Did not join the waitlist or connect a wallet."
+    },
+    {
+      "id": "scout",
+      "name": "Scout",
+      "model": "Grok (Scout seat)",
+      "role": "Scan public lists, apply numeric prefilters, build a FACTS packet with data_ts and source per metric.",
+      "status": "idle",
+      "lastAction": "Historical scout reports and raw cycles remain in the prior paper desk. No new scan this session."
+    },
+    {
+      "id": "risk",
+      "name": "Risk",
+      "model": "Grok (Risk / Skeptic seat)",
+      "role": "Score the fixed checklist, write the bear case, first veto.",
+      "status": "idle",
+      "lastAction": "Prior hard-reject and bear-case rules reused from the October desk. No new candidate scored this session."
+    },
+    {
+      "id": "simulator",
+      "name": "Simulator",
+      "model": "Grok (Simulator seat)",
+      "role": "Paper marks and fills from fresh size-specific quotes only. Never invent a fill.",
+      "status": "idle",
+      "lastAction": "Initialized the original $200 paper book on Oct 6, 2026. No paper fills exist in that ledger. New paper ledger starts empty."
+    },
+    {
+      "id": "social",
+      "name": "Social",
+      "model": "Grok (Social seat)",
+      "role": "Label NARRATIVE (X, KOL, meme heat) separately. runner_score is not a fact and cannot clear a hard gate.",
+      "status": "idle",
+      "lastAction": "No narrative deep-dive this session. X posts were reviewed as promo or tooling, not as trade signals."
+    },
+    {
+      "id": "jev",
+      "name": "Jev veto gate",
+      "model": "Jev (TypeSafe AI) — not wired",
+      "role": "Optional fast typed classifier / extra veto. Not an alpha source. Key is Zack-gated.",
+      "status": "not_wired",
+      "lastAction": "Documented as optional and unconfigured. No TypeSafe key requested or set up."
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini (red team)",
+      "model": "Gemini — not wired",
+      "role": "Reject-only seat. Find reasons to veto the candidate. 'No reject found' is not a buy.",
+      "status": "not_wired",
+      "lastAction": "Seat designed. No Gemini API key or gemini-api-cli setup. Waiting on Zack."
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT (checklist)",
+      "model": "ChatGPT — not wired",
+      "role": "Independent score of the same fixed checklist, votes hidden until tally.",
+      "status": "not_wired",
+      "lastAction": "Seat designed. No OpenAI/ChatGPT key set up. Waiting on Zack."
+    },
+    {
+      "id": "zack",
+      "name": "Zack",
+      "model": "human",
+      "role": "Final approver. Morning journal review by default; can pause anytime. Live remains a separate explicit approval.",
+      "status": "awaiting_decision",
+      "lastAction": "Asked the team to keep designing the paper plan and dashboard, and to research X posts as they arrive. Check-in later."
+    }
+  ],
+  "rules": [
+    "Paper only. No real money, wallets, exchange or DEX keys, sign-ups, posts, or messages.",
+    "No unattended live execution. The October live Solana desk stays off. mode.json is not edited.",
+    "Virtual bankroll $200. Max $10 per position. Max 2 open. No leverage. No averaging down.",
+    "Daily realized loss stop -$15 (America/New_York). Evaluation drawdown fail line -$40.",
+    "Missing or unverified data = reject. Fresh current-cycle sources and timestamps required.",
+    "Any disagreement or missing required seat vote = reject.",
+    "Exits written before entry: full stop -25%, full take-profit +50%, 24h time stop. No moonbag in this evaluation.",
+    "Hard rejects: honeypot; mint or freeze not renounced; rug_ratio > 0.25; bot_degen >= 0.75; failed liquidity or canonical-pool check; impersonation tickers; no quote.",
+    "Bear case required. Facts vs narrative; narrative cannot pass a gate.",
+    "No invented fills or marks. Corrections are new notes only.",
+    "Existing routines (paper-memecoin-team-cycle, memecoin sweeps) are not modified.",
+    "Until Zack decides otherwise, unwired Gemini/ChatGPT/Jev seats are missing votes and block fills (see the paper team plan, rule 14)."
+  ],
+  "paperLedger": {
+    "startBalance": 200.0,
+    "balance": 200.0,
+    "currency": "USD",
+    "open": [],
+    "realizedPnl": 0.0,
+    "unrealizedPnl": 0.0,
+    "trades": [],
+    "emptyReason": "The original paper book was initialized Oct 6, 2026 with $200 and no paper fills; all fills in that ledger are live and are not copied here."
+  },
+  "journal": [
+    {
+      "ts": "2026-11-24T14:02:26-05:00",
+      "type": "note",
+      "author": "coordinator",
+      "text": "Living plan written in the paper team plan. Paper evaluation not started. No new trades."
+    },
+    {
+      "ts": "2026-11-24T14:02:26-05:00",
+      "type": "note",
+      "author": "simulator",
+      "text": "Searched existing journals. The prior desk ledger was initialized as paper ($200) on 2026-10-06T21:45:00-04:00, but all 41 fills are mode=live. No paper fills found. This paper ledger therefore starts empty at $200 and does not copy live trades."
+    },
+    {
+      "ts": "2026-11-24T14:02:26-05:00",
+      "type": "note",
+      "author": "coordinator",
+      "text": "Prior LIVE book is a lesson set only: unique desk exits roughly -$99 realized (Unccat duplicate close dropped); additional Zack-manual lines net about -$25; worst loss TRUMP -$54.94 on Oct 17 after an LP pull. Expectancy was negative; dropping the best one or two winners does not flip it green. Last ledger observe 2026-10-17T14:40:43-04:00, open=0. mode.json still says live_enabled true on disk; this plan does not edit it and treats live as off."
+    },
+    {
+      "ts": "2026-11-24T14:02:26-05:00",
+      "type": "note",
+      "author": "coordinator",
+      "text": "Parked a separate paper bot: pnl.json updated 2026-10-12, 2 resolved binary trades both losses (-$20), 10 skips. Not mixed into this ledger."
+    },
+    {
+      "ts": "2026-11-24T14:02:26-05:00",
+      "type": "note",
+      "author": "coordinator",
+      "text": "X intake recorded for three posts Zack sent today. See postsReviewed."
+    },
+    {
+      "ts": "2026-11-24T14:55:00-05:00",
+      "type": "note",
+      "author": "coordinator",
+      "text": "X intake recorded for https://x.com/obzidian_ai/status/2125258360014655961. Real company, marketing demo, paid KOL amplification; not a trading edge. Did not join the waitlist or connect a wallet. See postsReviewed."
+    }
+  ],
+  "postsReviewed": [
+    {
+      "id": "2124967425771032616",
+      "url": "https://x.com/AI__Brain/status/2124967425771032616",
+      "author": "AI__Brain",
+      "postedAt": "2026-11-23T15:44:48-05:00",
+      "reviewedAt": "2026-11-24T14:02:26-05:00",
+      "verdict": "Reject as a trading system. Promo account (CELE8EX). $141 to $13,962 overnight claim is promotional / illustrative, not evidence. Unattended live execution is forbidden.",
+      "ideaWorthTesting": "Keep Head-of-Desk / Risk / written-log process. Do not test the overnight wallet-connected sniper."
+    },
+    {
+      "id": "2125129105603719203",
+      "url": "https://x.com/lbang_2580/status/2125129105603719203",
+      "author": "lbang_2580",
+      "postedAt": "2026-11-24T02:27:16-05:00",
+      "reviewedAt": "2026-11-24T14:02:26-05:00",
+      "verdict": "Useful tooling, not a trading system. Google gemini-api-cli lets other agents call Gemini for images, PDFs, and research.",
+      "ideaWorthTesting": "Later, Zack-gated Gemini API as the reject seat and as a research helper. Does not change entry rules."
+    },
+    {
+      "id": "2124943923613471156",
+      "url": "https://x.com/immortalhowwl/status/2124943923613471156",
+      "author": "immortalhowwl",
+      "postedAt": "2026-11-23T14:11:25-05:00",
+      "reviewedAt": "2026-11-24T14:02:26-05:00",
+      "verdict": "Reject as a trading system. The post itself calls the $412 to $38,947 night a fictional story. Same promo network (CELE8EX). Unattended 94x sniper is not to be run.",
+      "ideaWorthTesting": "Reason-before-entry, mint/LP/dev/honeypot checks, and wallet-cluster review as reject filters (already on the checklist). Do not run linked third-party trading repos with a funded key."
+    },
+    {
+      "id": "2125258360014655961",
+      "url": "https://x.com/obzidian_ai/status/2125258360014655961",
+      "author": "obzidian_ai",
+      "postedAt": "2026-11-24T11:00:53-05:00",
+      "reviewedAt": "2026-11-24T14:55:00-05:00",
+      "verdict": "Launch/waitlist from a real Swiss company (Moonberg AG), not a CELE8EX fake-P&L. The 46s video is a product demo with illustrative boards, invented-looking tickers, and unaudited backtest stats — not evidence of edge. Same-day paid KOL posts, referral links, and airdrop/reward talk. Terms let a Privy wallet grant Obzidian a signing key for automations. Do not join the waitlist or connect a wallet.",
+      "ideaWorthTesting": "Test-first, confirm-before-arm, and rules-in-code are already on our checklist. Do not copy 24/7 auto-execution or wallet-connected automations."
+    }
+  ]
+}
