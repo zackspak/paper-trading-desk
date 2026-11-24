@@ -514,6 +514,22 @@
       "author": "maker",
       "agent": "maker",
       "text": "Strategy B: 0 market(s) quoted, 5 paper fill(s), 3 quote(s) expired unfilled, 5 settled. Equity $160.92. daily stop (today realized $-39.08)"
+    },
+    {
+      "ts": "2026-11-24T17:56:53-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "maker",
+      "agent": "maker",
+      "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92. daily stop (today realized $-39.08)"
+    },
+    {
+      "ts": "2026-11-24T17:56:57-05:00",
+      "type": "alert",
+      "kind": "alert",
+      "author": "coordinator",
+      "agent": "coordinator",
+      "text": "ALERT daily_stop B: realizedToday $-39.08. WakeParent — notify Zack immediately."
     }
   ],
   "postsReviewed": [
@@ -933,7 +949,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T17:04:32-05:00",
+          "ts": "2026-11-24T17:56:53-05:00",
           "equity": 200.0
         }
       ],
@@ -944,11 +960,11 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T17:04:32-05:00",
+        "ts": "2026-11-24T17:33:56-05:00",
         "candidates": 12,
         "settled": [],
         "picks": [],
-        "packet": "pc-20261124-1704"
+        "packet": "pc-20261124-1733"
       },
       "rules": [
         "Paper only. Markets resolving in 1-30 days with real volume; at most 2 new picks per cycle.",
@@ -1082,23 +1098,11 @@
         }
       ],
       "lastCycle": {
-        "ts": "2026-11-24T17:33:49-05:00",
+        "ts": "2026-11-24T17:56:53-05:00",
         "quoted": [],
-        "fills": [
-          "eth-updown-15m-1795557600 Up 20.00@0.49",
-          "eth-updown-15m-1795557600 Down 20.00@0.49",
-          "sol-updown-15m-1795557600 Down 21.00@0.47",
-          "sol-updown-15m-1795558500 Down 21.00@0.47",
-          "xrp-updown-15m-1795558500 Down 21.00@0.47"
-        ],
-        "expired": 3,
-        "settled": [
-          "eth-updown-15m-1795557600 Up -> 1",
-          "eth-updown-15m-1795557600 Down -> 0",
-          "sol-updown-15m-1795557600 Down -> 0",
-          "sol-updown-15m-1795558500 Down -> 0",
-          "xrp-updown-15m-1795558500 Down -> 0"
-        ],
+        "fills": [],
+        "expired": 0,
+        "settled": [],
         "skipped": [
           "no new quotes: daily stop (today realized $-39.08)"
         ]
@@ -1133,7 +1137,7 @@
           "equity": 160.92
         },
         {
-          "ts": "2026-11-24T17:33:49-05:00",
+          "ts": "2026-11-24T17:56:53-05:00",
           "equity": 160.92
         }
       ],
@@ -1155,8 +1159,10 @@
         "One tick inside the spread on both Up and Down; pair must lock >= 1c if both fill.",
         "<= $10 per quote, <= 4 new markets/cycle, <= 8 open markets, <= $100 gross.",
         "Fill only if public trades print strictly through the paper bid after placement (+3s); queue at back.",
+        "Both sides required. Cancel the remaining bid if Coinbase/Binance 1m close moves 0.30% against it before the fill (close timestamp only).",
+        "Worst-case cap: realizedToday + max loss of resting/open quotes must stay >= -$15 before any new quote.",
         "Maker fee 0; rebate assumed 0 (below $200k 30-day maker volume tier). Held to resolution.",
-        "Daily realized stop -$15; halt at -$40 drawdown."
+        "Daily realized stop -$15; halt at -$40 drawdown. Book not reset after the 2026-11-24 -$39.08 stop."
       ],
       "feeSource": "https://docs.polymarket.com/trading/fees",
       "rebateSource": "https://docs.polymarket.com/programs/maker-rebates"
@@ -1175,7 +1181,7 @@
     }
   },
   "benchmarks": {
-    "asOf": "2026-11-24T17:33:53-05:00",
+    "asOf": "2026-11-24T17:56:57-05:00",
     "note": "Read-only public data. Benchmarks are context, not targets; their size, speed and rebate tiers are out of reach for a $200 paper book.",
     "rows": [
       {
@@ -1183,7 +1189,7 @@
         "name": "mo-money",
         "kind": "polymarket",
         "style": "crypto up/down maker, 5m-1d",
-        "asOf": "2026-11-24T17:33:49-05:00",
+        "asOf": "2026-11-24T17:56:53-05:00",
         "pnlAll": 560014.3,
         "volumeAll": 34348727.18,
         "rankPnl": 375,
@@ -1200,7 +1206,7 @@
         "name": "almach",
         "kind": "polymarket",
         "style": "short crypto markets bot",
-        "asOf": "2026-11-24T17:33:50-05:00",
+        "asOf": "2026-11-24T17:56:54-05:00",
         "pnlAll": 468583.94,
         "volumeAll": 33131869.76,
         "rankPnl": 454,
@@ -1217,13 +1223,13 @@
         "name": "RN1",
         "kind": "polymarket",
         "style": "sports market-maker",
-        "asOf": "2026-11-24T17:33:50-05:00",
+        "asOf": "2026-11-24T17:56:55-05:00",
         "pnlAll": 13578594.72,
         "volumeAll": 1550047592.94,
         "rankPnl": 4,
         "pnlMonth": 390825.14,
         "monthLabel": "leaderboard month window",
-        "pnl30d": 490319.57,
+        "pnl30d": 490045.35,
         "pnl30dFrom": "2026-10-25T20:00:00-04:00",
         "makerRebateAll": 1295775.31,
         "feesPaidAll": -1481316.78,
@@ -1234,7 +1240,7 @@
         "name": "ohioism",
         "kind": "polymarket",
         "style": "5m/15m crypto bot (sells a course)",
-        "asOf": "2026-11-24T17:33:51-05:00",
+        "asOf": "2026-11-24T17:56:55-05:00",
         "pnlAll": 108266.75,
         "volumeAll": 9302288.37,
         "rankPnl": 1867,
@@ -1251,18 +1257,18 @@
         "name": "Growi HF vault",
         "kind": "hyperliquid_vault",
         "style": "automated mean-reversion perps vault",
-        "asOf": "2026-11-24T17:33:52-05:00",
-        "pnlAll": 1517077.38,
-        "pnl30d": -1422500.02,
-        "accountValue": 10375002.68,
-        "apr": -0.1032,
+        "asOf": "2026-11-24T17:56:56-05:00",
+        "pnlAll": 1521067.03,
+        "pnl30d": -1418510.37,
+        "accountValue": 10378992.33,
+        "apr": -0.1029,
         "source": "api.hyperliquid.xyz/info vaultDetails"
       }
     ]
   },
   "sideGame": {
     "source": "predictions/picks.jsonl (Zack's manual picks routine)",
-    "asOf": "2026-11-24T17:33:53-05:00",
+    "asOf": "2026-11-24T17:56:57-05:00",
     "rows": null,
     "note": "Waiting: no picks file yet."
   },
@@ -1274,5 +1280,10 @@
     "B",
     "C",
     "A"
-  ]
+  ],
+  "statusSnapshot": {
+    "A": "running",
+    "B": "daily_stop",
+    "C": "running"
+  }
 }
