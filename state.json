@@ -452,14 +452,6 @@
   },
   "journal": [
     {
-      "ts": "2026-11-24T20:03:30-05:00",
-      "type": "note",
-      "kind": "note",
-      "author": "maker",
-      "agent": "maker",
-      "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92. daily stop (today realized $-39.08)"
-    },
-    {
       "ts": "2026-11-24T20:03:58-05:00",
       "type": "note",
       "kind": "note",
@@ -1090,6 +1082,14 @@
       "author": "maker",
       "agent": "maker",
       "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92."
+    },
+    {
+      "ts": "2026-11-25T13:07:33-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1531,17 +1531,6 @@
       "picks": [
         {
           "ts": "2026-11-24T18:11:40-05:00",
-          "question": "Will the Fed increase interest rates by 25 bps after the December 2026 meeting?",
-          "outcome": "Yes",
-          "estProb": 0.95,
-          "mktProb": 0.935,
-          "edge": 0.0094,
-          "decision": "reject",
-          "reasoning": "CME FedWatch shows ~95.1-95.9% for a 25bp hike at Dec 8-9; Williams did not rule out consecutive moves. Market ask 0.94 so no edge. Bear case: Waller wants 50bp (4-5% tail), which would resolve to a different bracket.",
-          "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632"
-        },
-        {
-          "ts": "2026-11-24T18:11:40-05:00",
           "question": "Israel x Iran ceasefire continues through November 30?",
           "outcome": "Yes",
           "estProb": 0.88,
@@ -1858,6 +1847,17 @@
           "decision": "reject",
           "reasoning": "BTC ~$59.1k on Nov 25 after a $57.5k session low; needs about -7% touch to $55k by Nov 30 (market closes Dec 1 05:00 UTC). Support cited near $55-56k. Est ~22% touch given elevated vol, so No ~78% vs market ~71.5%. Bear case: continued tech rout / ETF outflows could produce a fast wick below $55k.",
           "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-november-2026"
+        },
+        {
+          "ts": "2026-11-25T13:07:33-05:00",
+          "question": "Will the Fed increase interest rates by 25 bps after the December 2026 meeting?",
+          "outcome": "Yes",
+          "estProb": 0.95,
+          "mktProb": 0.925,
+          "edge": 0.0193,
+          "decision": "reject",
+          "reasoning": "CME FedWatch on Nov 25 shows 95-98% for a 25bp hike at the Dec 9 meeting, about 2.6% for 50bp. Est Yes 95% vs market 92.5%. Bear case: Fed surprises with a hold, or a 50bp hike resolves to a different bracket.",
+          "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632"
         }
       ],
       "fills": [
@@ -1914,7 +1914,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T13:07:17-05:00",
+          "ts": "2026-11-25T13:07:33-05:00",
           "equity": 201.5447
         }
       ],
@@ -1925,21 +1925,21 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-25T12:34:22-05:00",
-        "candidates": 11,
+        "ts": "2026-11-25T13:07:33-05:00",
+        "candidates": 10,
         "picks": [
           {
-            "q": "Will Bitcoin dip to $55,000 in November?",
-            "outcome": "No",
-            "est": 0.78,
-            "mkt": 0.712,
-            "edge": 0.0587,
+            "q": "Will the Fed increase interest rates by 25 bps after the December 2026 meeting?",
+            "outcome": "Yes",
+            "est": 0.95,
+            "mkt": 0.925,
+            "edge": 0.0193,
             "decision": "reject",
-            "reason": "edge +0.059 < 0.08"
+            "reason": "edge +0.019 < 0.08"
           }
         ],
         "taken": [],
-        "packet": "pc-20261125-1234"
+        "packet": "pc-20261125-1307"
       },
       "rules": [
         "Paper only. Markets resolving in 1-30 days with real volume; at most 2 new picks per cycle.",
