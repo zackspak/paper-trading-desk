@@ -457,14 +457,6 @@
   "journal": [
     {
       "ts": "2026-11-24T20:39:24-05:00",
-      "type": "close",
-      "kind": "close",
-      "author": "simulator",
-      "agent": "simulator",
-      "text": "Paper exit Singularity: stop -28.89% <= -25%. Realized P&L $-2.98 after quote impact and 1% haircut."
-    },
-    {
-      "ts": "2026-11-24T20:39:24-05:00",
       "type": "observe",
       "kind": "observe",
       "author": "scout",
@@ -1094,6 +1086,14 @@
       "author": "maker",
       "agent": "maker",
       "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92."
+    },
+    {
+      "ts": "2026-11-25T13:37:25-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1534,17 +1534,6 @@
       ],
       "picks": [
         {
-          "ts": "2026-11-24T18:11:40-05:00",
-          "question": "Israel x Iran ceasefire continues through November 30?",
-          "outcome": "Yes",
-          "estProb": 0.88,
-          "mktProb": 0.925,
-          "edge": -0.05,
-          "decision": "reject",
-          "reasoning": "Reports say US-Iran exchange limited strikes and Hormuz tankers are being hit, but the market needs a direct Israel<->Iran air/missile strike by Nov 30; Iran threatens retaliation if struck. Estimate slightly below market 0.92-0.93, below the edge threshold. Bear case: escalation or a qualifying strike in the 6 days left.",
-          "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963"
-        },
-        {
           "ts": "2026-11-24T18:38:10-05:00",
           "question": "Will Chiang Wan-an win the next Taipei Mayor election?",
           "outcome": "Yes",
@@ -1862,6 +1851,17 @@
           "decision": "reject",
           "reasoning": "CME FedWatch on Nov 25 shows 95-98% for a 25bp hike at the Dec 9 meeting, about 2.6% for 50bp. Est Yes 95% vs market 92.5%. Bear case: Fed surprises with a hold, or a 50bp hike resolves to a different bracket.",
           "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632"
+        },
+        {
+          "ts": "2026-11-25T13:37:25-05:00",
+          "question": "Israel x Iran ceasefire continues through November 30?",
+          "outcome": "Yes",
+          "estProb": 0.88,
+          "mktProb": 0.935,
+          "edge": -0.06,
+          "decision": "reject",
+          "reasoning": "Nov 25 coverage is mixed: reports say the June US-Iran memorandum is stalled/expired and strikes have resumed, while Iran says ceasefire implementation depends on US adherence. Resolution depends on the market rules, which I have not matched to this coverage. Est Yes 88% vs market 93.5%: no edge on Yes. Bear case: a formal collapse of the ceasefire before Nov 30.",
+          "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963"
         }
       ],
       "fills": [
@@ -1918,7 +1918,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T13:37:09-05:00",
+          "ts": "2026-11-25T13:37:26-05:00",
           "equity": 201.1355
         }
       ],
@@ -1929,21 +1929,21 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-25T13:07:33-05:00",
+        "ts": "2026-11-25T13:37:25-05:00",
         "candidates": 10,
         "picks": [
           {
-            "q": "Will the Fed increase interest rates by 25 bps after the December 2026 meeting?",
+            "q": "Israel x Iran ceasefire continues through November 30?",
             "outcome": "Yes",
-            "est": 0.95,
-            "mkt": 0.925,
-            "edge": 0.0193,
+            "est": 0.88,
+            "mkt": 0.935,
+            "edge": -0.06,
             "decision": "reject",
-            "reason": "edge +0.019 < 0.08"
+            "reason": "edge -0.060 < 0.08"
           }
         ],
         "taken": [],
-        "packet": "pc-20261125-1307"
+        "packet": "pc-20261125-1337"
       },
       "rules": [
         "Paper only. Markets resolving in 1-30 days with real volume; at most 2 new picks per cycle.",
