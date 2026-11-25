@@ -404,14 +404,6 @@
   },
   "journal": [
     {
-      "ts": "2026-11-24T17:03:37-05:00",
-      "type": "observe",
-      "kind": "observe",
-      "author": "scout",
-      "agent": "scout",
-      "text": "c0004 scan: 68 unique names, 56 prefilter/rank-outs, 0 deep hard rejects, 12 scored candidates (risky profile; Coordinator will take top 2-4)."
-    },
-    {
       "ts": "2026-11-24T17:04:19-05:00",
       "type": "fill",
       "kind": "fill",
@@ -1042,6 +1034,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0022 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $190.15. Realized $-1.00."
+    },
+    {
+      "ts": "2026-11-25T09:42:24-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1744,6 +1744,17 @@
           "decision": "reject",
           "reasoning": "Market 0.935 Yes. Coverage says the June truce memorandum fell apart and the US-Iran conflict is a 'frozen conflict' with blockade in place; resolution depends on the market's specific ceasefire definition, which I could not confirm beyond the rules excerpt. Bear case: renewed strikes before Nov 30 resolve No. Estimate slightly below market, no edge.",
           "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963"
+        },
+        {
+          "ts": "2026-11-25T09:42:24-05:00",
+          "question": "Will Pedro Sánchez be the next Prime Minister of Spain?",
+          "outcome": "Yes",
+          "estProb": 0.11,
+          "mktProb": 0.113,
+          "edge": -0.0066,
+          "decision": "reject",
+          "reasoning": "Snap election is Nov 29 (announced Oct 5); resolution by Nov 30 would need a new PM/investiture, which is very unlikely that fast, but wording of 'next PM' is ambiguous. Market 0.113 about fair. A search hit showing Nov 29 results is dated after today so I discarded it as unreliable. Bear case: rules count winning the election as 'next PM'.",
+          "url": "https://polymarket.com/event/next-prime-minister-of-spain-20260625005215443"
         }
       ],
       "fills": [
@@ -1800,7 +1811,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T09:42:01-05:00",
+          "ts": "2026-11-25T09:42:24-05:00",
           "equity": 196.8008
         }
       ],
@@ -1811,10 +1822,20 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-25T09:42:01-05:00",
+        "ts": "2026-11-25T09:42:24-05:00",
         "candidates": 9,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Will Pedro Sánchez be the next Prime Minister of Spain?",
+            "outcome": "Yes",
+            "est": 0.11,
+            "mkt": 0.113,
+            "edge": -0.0066,
+            "decision": "reject",
+            "reason": "edge -0.007 < 0.08"
+          }
+        ],
+        "taken": [],
         "packet": "pc-20261125-0942"
       },
       "rules": [
