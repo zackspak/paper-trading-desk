@@ -746,6 +746,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0011 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $198.14. Realized $4.63."
+    },
+    {
+      "ts": "2026-11-24T20:04:07-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 2 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1250,6 +1258,28 @@
           "decision": "buy",
           "reasoning": "Final pre-blackout polls (Nov 23) give PP ~31-32% vs PSOE ~29% and PP roughly 128-133 seats, a lead of 12-20 seats; PP+Vox 187-196 vs 176 needed. PSOE is closing the gap. Spanish polling error is usually smaller than a 3-pt lead, so I put PP finishing first at about 87%. Bear case: late PSOE momentum (gap already narrowed 12 seats in one poll) and tactical voting.",
           "url": "https://polymarket.com/event/spain-general-election-winner"
+        },
+        {
+          "ts": "2026-11-24T20:04:06-05:00",
+          "question": "Will Ethereum dip to $1,500 in November?",
+          "outcome": "Yes",
+          "estProb": 0.2,
+          "mktProb": 0.222,
+          "edge": -0.0297,
+          "decision": "reject",
+          "reasoning": "ETH trades ~$1,672-1,678 (Nov 24 low 1,664, Nov 23 high 1,845), so $1,500 is ~10% below with about 5 days left. At roughly 4% daily vol a touch is ~20-25%. Market 0.22 is about fair, no edge. Bear case: continued downtrend (66% below ATH) and BTC weakness could accelerate the drop.",
+          "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-november-2026"
+        },
+        {
+          "ts": "2026-11-24T20:04:07-05:00",
+          "question": "Will Pedro Sánchez be the next Prime Minister of Spain?",
+          "outcome": "Yes",
+          "estProb": 0.17,
+          "mktProb": 0.1085,
+          "edge": 0.0592,
+          "decision": "reject",
+          "reasoning": "Le Millenaire forecast (Nov 22, 20,000 sims) gives Feijoo 78% to be PM and Sanchez 22% (counting hung-parliament outgoing-PM cases). Polls have PP 31.5, PSOE 29, Vox 18 with PP+Vox 187-196 seats and Junts refusing to back either. I shade Sanchez to 17% because the outgoing-government case only helps him briefly. Market 0.1085, edge below threshold. Bear case: PSOE closing fast and the PP-Vox majority missing would leave Sanchez in office.",
+          "url": "https://polymarket.com/event/next-prime-minister-of-spain-20260625005215443"
         }
       ],
       "fills": [
@@ -1276,7 +1306,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T20:03:37-05:00",
+          "ts": "2026-11-24T20:04:07-05:00",
           "equity": 199.8143
         }
       ],
@@ -1287,10 +1317,29 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T20:03:37-05:00",
+        "ts": "2026-11-24T20:04:07-05:00",
         "candidates": 11,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Will Ethereum dip to $1,500 in November?",
+            "outcome": "Yes",
+            "est": 0.2,
+            "mkt": 0.222,
+            "edge": -0.0297,
+            "decision": "reject",
+            "reason": "edge -0.030 < 0.08"
+          },
+          {
+            "q": "Will Pedro Sánchez be the next Prime Minister of Spain?",
+            "outcome": "Yes",
+            "est": 0.17,
+            "mkt": 0.1085,
+            "edge": 0.0592,
+            "decision": "reject",
+            "reason": "edge +0.059 < 0.08"
+          }
+        ],
+        "taken": [],
         "packet": "pc-20261124-2003"
       },
       "rules": [
