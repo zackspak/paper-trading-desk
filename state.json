@@ -926,6 +926,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0014 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $195.58. Realized $-1.00."
+    },
+    {
+      "ts": "2026-11-24T21:41:46-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1485,6 +1493,17 @@
           "decision": "reject",
           "reasoning": "ETH ~$1,659 (24h low 1,652.6), about 9.6% above $1,500 with ~5 days left; liquidations are long-heavy and tariff fears weigh on risk. At ~4% daily vol a touch is roughly 22-27%. Market 0.274 is slightly above my estimate, no edge on Yes. Bear case: sell-off accelerating, as long liquidations already show.",
           "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-november-2026"
+        },
+        {
+          "ts": "2026-11-24T21:41:46-05:00",
+          "question": "Will Bitcoin dip to $50,000 in November?",
+          "outcome": "Yes",
+          "estProb": 0.04,
+          "mktProb": 0.0645,
+          "edge": -0.0266,
+          "decision": "reject",
+          "reasoning": "BTC trades ~$59.1-59.4k, so $50,000 is about 15% below with ~5 days left. At ~3% daily vol that is a ~2 sigma touch, roughly 3%; I add fat tails for 4%. Market 0.0645 is above my estimate, so no edge on Yes. Bear case: tariff fears and long liquidations could cascade into a crash.",
+          "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-november-2026"
         }
       ],
       "fills": [
@@ -1511,7 +1530,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T21:41:26-05:00",
+          "ts": "2026-11-24T21:41:46-05:00",
           "equity": 199.8143
         }
       ],
@@ -1522,10 +1541,20 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T21:41:26-05:00",
+        "ts": "2026-11-24T21:41:46-05:00",
         "candidates": 11,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Will Bitcoin dip to $50,000 in November?",
+            "outcome": "Yes",
+            "est": 0.04,
+            "mkt": 0.0645,
+            "edge": -0.0266,
+            "decision": "reject",
+            "reason": "edge -0.027 < 0.08"
+          }
+        ],
+        "taken": [],
         "packet": "pc-20261124-2141"
       },
       "rules": [
