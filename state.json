@@ -854,6 +854,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0012 decide (risky): 2 paper fill(s), 10 skipped/rejected after score/quotes. Equity $199.00. Realized $-1.00."
+    },
+    {
+      "ts": "2026-11-24T20:40:25-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1380,6 +1388,17 @@
           "decision": "reject",
           "reasoning": "Le Millenaire forecast (Nov 22, 20,000 sims) gives Feijoo 78% to be PM and Sanchez 22% (counting hung-parliament outgoing-PM cases). Polls have PP 31.5, PSOE 29, Vox 18 with PP+Vox 187-196 seats and Junts refusing to back either. I shade Sanchez to 17% because the outgoing-government case only helps him briefly. Market 0.1085, edge below threshold. Bear case: PSOE closing fast and the PP-Vox majority missing would leave Sanchez in office.",
           "url": "https://polymarket.com/event/next-prime-minister-of-spain-20260625005215443"
+        },
+        {
+          "ts": "2026-11-24T20:40:25-05:00",
+          "question": "Will Su Chiao-hui win the next New Taipei Mayor election?",
+          "outcome": "Yes",
+          "estProb": 0.5,
+          "mktProb": 0.585,
+          "edge": -0.1021,
+          "decision": "reject",
+          "reasoning": "Final TVBS poll (Nov 15-16) has Su 43.0 vs Lee 42.4; the China Times/Apollo poll has Lee ahead 37.0-33.4, both inside the margin of error with ~13% undecided. Mixed polls on a historically KMT-leaning city give a coin flip. Market 0.585 for Su is above my estimate, so no edge on Yes. Bear case: late DPP momentum or higher turnout in Banqiao/Sanchong would favor Su.",
+          "url": "https://polymarket.com/event/new-taipei-mayor-election-winner-20260813125857200"
         }
       ],
       "fills": [
@@ -1406,7 +1425,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T20:39:58-05:00",
+          "ts": "2026-11-24T20:40:25-05:00",
           "equity": 199.8143
         }
       ],
@@ -1417,10 +1436,20 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T20:39:58-05:00",
+        "ts": "2026-11-24T20:40:25-05:00",
         "candidates": 11,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Will Su Chiao-hui win the next New Taipei Mayor election?",
+            "outcome": "Yes",
+            "est": 0.5,
+            "mkt": 0.585,
+            "edge": -0.1021,
+            "decision": "reject",
+            "reason": "edge -0.102 < 0.08"
+          }
+        ],
+        "taken": [],
         "packet": "pc-20261124-2039"
       },
       "rules": [
