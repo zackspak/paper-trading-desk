@@ -448,14 +448,6 @@
   },
   "journal": [
     {
-      "ts": "2026-11-24T19:37:16-05:00",
-      "type": "note",
-      "kind": "note",
-      "author": "maker",
-      "agent": "maker",
-      "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92. daily stop (today realized $-39.08)"
-    },
-    {
       "ts": "2026-11-24T19:37:42-05:00",
       "type": "note",
       "kind": "note",
@@ -1086,6 +1078,14 @@
       "author": "maker",
       "agent": "maker",
       "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92."
+    },
+    {
+      "ts": "2026-11-25T12:34:22-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1526,17 +1526,6 @@
       ],
       "picks": [
         {
-          "ts": "2026-11-24T16:38:47-05:00",
-          "question": "Will Bitcoin dip to $55,000 in November?",
-          "outcome": "Yes",
-          "estProb": 0.32,
-          "mktProb": 0.2685,
-          "edge": 0.049,
-          "decision": "reject",
-          "reasoning": "BTC spot ~$59,840 at 4:38 PM ET Nov 24; $55,000 is ~8.1% below with ~6.3 days left (Binance 1m low through Nov 30 11:59 PM ET). Driftless barrier model on 14 days of Coinbase hourly returns (realized vol ~69% annualized) gives ~35% touch odds; 1m wicks add a little, but realized vol includes the Nov 12-21 crash and may overstate the next week, so team estimate 32%. Bear case for Yes: BTC already bounced off ~$55.1K on Nov 21 without printing $55K, and buyers defended that zone. Market ~27%: edge",
-          "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-november-2026"
-        },
-        {
           "ts": "2026-11-24T18:11:40-05:00",
           "question": "Will the Fed increase interest rates by 25 bps after the December 2026 meeting?",
           "outcome": "Yes",
@@ -1854,6 +1843,17 @@
           "decision": "reject",
           "reasoning": "FedWatch (CME futures ZQZ26) on Nov 25 shows ~2-8% no-change for the Dec 9 meeting, with a 25bp hike heavily priced after PCE. My est for Yes (no change) is 4%, vs market 5.8%: no edge on Yes. Bear case: a surprise hold if data or Fed communication shifts sharply before Dec 9.",
           "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632"
+        },
+        {
+          "ts": "2026-11-25T12:34:22-05:00",
+          "question": "Will Bitcoin dip to $55,000 in November?",
+          "outcome": "No",
+          "estProb": 0.78,
+          "mktProb": 0.712,
+          "edge": 0.0587,
+          "decision": "reject",
+          "reasoning": "BTC ~$59.1k on Nov 25 after a $57.5k session low; needs about -7% touch to $55k by Nov 30 (market closes Dec 1 05:00 UTC). Support cited near $55-56k. Est ~22% touch given elevated vol, so No ~78% vs market ~71.5%. Bear case: continued tech rout / ETF outflows could produce a fast wick below $55k.",
+          "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-november-2026"
         }
       ],
       "fills": [
@@ -1910,7 +1910,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T12:34:02-05:00",
+          "ts": "2026-11-25T12:34:23-05:00",
           "equity": 200.4107
         }
       ],
@@ -1921,21 +1921,21 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-25T12:11:42-05:00",
+        "ts": "2026-11-25T12:34:22-05:00",
         "candidates": 11,
         "picks": [
           {
-            "q": "Will there be no change in Fed interest rates after the December 2026 meeting?",
-            "outcome": "Yes",
-            "est": 0.04,
-            "mkt": 0.0555,
-            "edge": -0.0185,
+            "q": "Will Bitcoin dip to $55,000 in November?",
+            "outcome": "No",
+            "est": 0.78,
+            "mkt": 0.712,
+            "edge": 0.0587,
             "decision": "reject",
-            "reason": "edge -0.018 < 0.08"
+            "reason": "edge +0.059 < 0.08"
           }
         ],
         "taken": [],
-        "packet": "pc-20261125-1211"
+        "packet": "pc-20261125-1234"
       },
       "rules": [
         "Paper only. Markets resolving in 1-30 days with real volume; at most 2 new picks per cycle.",
