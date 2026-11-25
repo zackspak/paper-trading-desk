@@ -890,6 +890,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0013 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $196.90. Realized $-1.00."
+    },
+    {
+      "ts": "2026-11-24T21:12:04-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 2 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1427,6 +1435,28 @@
           "decision": "reject",
           "reasoning": "Final TVBS poll (Nov 15-16) has Su 43.0 vs Lee 42.4; the China Times/Apollo poll has Lee ahead 37.0-33.4, both inside the margin of error with ~13% undecided. Mixed polls on a historically KMT-leaning city give a coin flip. Market 0.585 for Su is above my estimate, so no edge on Yes. Bear case: late DPP momentum or higher turnout in Banqiao/Sanchong would favor Su.",
           "url": "https://polymarket.com/event/new-taipei-mayor-election-winner-20260813125857200"
+        },
+        {
+          "ts": "2026-11-24T21:12:04-05:00",
+          "question": "Kimberly Powell announced resignation or removal by November 30, 2026?",
+          "outcome": "Yes",
+          "estProb": 0.07,
+          "mktProb": 0.105,
+          "edge": -0.0484,
+          "decision": "reject",
+          "reasoning": "As of Nov 24 no official departure had been announced and her company profile was unchanged; the board reinstated the CEO on Nov 23, which lowers near-term pressure. Only 6 days remain to Nov 30, so I put it near 7% vs market 0.105, no edge on Yes. Bear case: a new disclosure or HR action could come quickly.",
+          "url": "https://polymarket.com/event/nvidia-vp-kimberly-powell-announced-resignation-or-removal-byptptpt"
+        },
+        {
+          "ts": "2026-11-24T21:12:04-05:00",
+          "question": "Will Ethereum dip to $1,500 in November?",
+          "outcome": "Yes",
+          "estProb": 0.24,
+          "mktProb": 0.2725,
+          "edge": -0.039,
+          "decision": "reject",
+          "reasoning": "ETH ~$1,659 (24h low 1,652.6), about 9.6% above $1,500 with ~5 days left; liquidations are long-heavy and tariff fears weigh on risk. At ~4% daily vol a touch is roughly 22-27%. Market 0.274 is slightly above my estimate, no edge on Yes. Bear case: sell-off accelerating, as long liquidations already show.",
+          "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-november-2026"
         }
       ],
       "fills": [
@@ -1453,7 +1483,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T21:11:39-05:00",
+          "ts": "2026-11-24T21:12:04-05:00",
           "equity": 199.8143
         }
       ],
@@ -1464,10 +1494,29 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T21:11:38-05:00",
+        "ts": "2026-11-24T21:12:04-05:00",
         "candidates": 11,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Kimberly Powell announced resignation or removal by November 30, 2026?",
+            "outcome": "Yes",
+            "est": 0.07,
+            "mkt": 0.105,
+            "edge": -0.0484,
+            "decision": "reject",
+            "reason": "edge -0.048 < 0.08"
+          },
+          {
+            "q": "Will Ethereum dip to $1,500 in November?",
+            "outcome": "Yes",
+            "est": 0.24,
+            "mkt": 0.2725,
+            "edge": -0.039,
+            "decision": "reject",
+            "reason": "edge -0.039 < 0.08"
+          }
+        ],
+        "taken": [],
         "packet": "pc-20261124-2111"
       },
       "rules": [
