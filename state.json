@@ -433,14 +433,6 @@
   "journal": [
     {
       "ts": "2026-11-24T18:09:59-05:00",
-      "type": "close",
-      "kind": "close",
-      "author": "simulator",
-      "agent": "simulator",
-      "text": "Paper exit Singularity: take-profit 51.33% >= +50%. Realized P&L $4.63 after quote impact and 1% haircut."
-    },
-    {
-      "ts": "2026-11-24T18:09:59-05:00",
       "type": "observe",
       "kind": "observe",
       "author": "scout",
@@ -1070,6 +1062,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0024 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $192.29. Realized $-3.94."
+    },
+    {
+      "ts": "2026-11-25T10:39:10-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1794,6 +1794,17 @@
           "decision": "reject",
           "reasoning": "ETH ~$1,631 (-5% today, -9% 7d); touching $1,300 needs ~-20% by Nov 30. With ~4% daily vol over ~5 days a touch is ~2-4% incl. fat tails. Market Yes 0.0595 slightly rich, but edge on No (~0.03) is below the rule. Bear case: a liquidation cascade given the sharp downtrend.",
           "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-november-2026"
+        },
+        {
+          "ts": "2026-11-25T10:39:10-05:00",
+          "question": "Will Bitcoin dip to $50,000 November 23-29?",
+          "outcome": "Yes",
+          "estProb": 0.03,
+          "mktProb": 0.0695,
+          "edge": -0.0407,
+          "decision": "reject",
+          "reasoning": "BTC ~$58.1k (-5% 24h, tech rout) needs ~-14% to touch $50k by Nov 29. With ~3% daily vol over ~4 days a touch is ~1-4% incl. fat tails. Market Yes 0.0755 slightly rich; No edge below rule. Bear case: continued tech-led liquidation cascade.",
+          "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-november-23-29-2026"
         }
       ],
       "fills": [
@@ -1850,7 +1861,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T10:38:49-05:00",
+          "ts": "2026-11-25T10:39:11-05:00",
           "equity": 194.8367
         }
       ],
@@ -1861,10 +1872,20 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-25T10:38:48-05:00",
+        "ts": "2026-11-25T10:39:10-05:00",
         "candidates": 10,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Will Bitcoin dip to $50,000 November 23-29?",
+            "outcome": "Yes",
+            "est": 0.03,
+            "mkt": 0.0695,
+            "edge": -0.0407,
+            "decision": "reject",
+            "reason": "edge -0.041 < 0.08"
+          }
+        ],
+        "taken": [],
         "packet": "pc-20261125-1038"
       },
       "rules": [
