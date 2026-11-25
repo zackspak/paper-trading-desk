@@ -998,6 +998,14 @@
       "author": "maker",
       "agent": "maker",
       "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92. daily stop (today realized $-39.08)"
+    },
+    {
+      "ts": "2026-11-24T22:40:39-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 2 estimate(s) logged, 1 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1384,12 +1392,12 @@
       "name": "Polymarket research picks (paper)",
       "status": "running",
       "startBalance": 200.0,
-      "equity": 199.5638,
-      "cash": 179.8153,
+      "equity": 199.105,
+      "cash": 169.4982,
       "realizedPnl": 0.0,
-      "unrealizedPnl": -0.4362,
+      "unrealizedPnl": -0.895,
       "realizedToday": 0.0,
-      "feesPaid": 0.19192,
+      "feesPaid": 0.51183,
       "open": [
         {
           "slug": "will-pp-win-the-most-seats-in-the-2026-spanish-general-election",
@@ -1412,6 +1420,17 @@
           "estProb": 0.45,
           "mktProb": 0.27,
           "url": "https://polymarket.com/event/bank-of-canada-decision-in-december-20260908230600011"
+        },
+        {
+          "slug": "will-chiang-wan-an-win-the-next-taipei-mayor-election-20260813125857101",
+          "question": "Will Chiang Wan-an win the next Taipei Mayor election?",
+          "outcome": "No",
+          "shares": 27.77,
+          "cost": 10.3171,
+          "mark": 0.355,
+          "estProb": 0.52,
+          "mktProb": 0.355,
+          "url": "https://polymarket.com/event/taipei-mayor-election-winner-20260813125857100"
         }
       ],
       "picks": [
@@ -1590,6 +1609,28 @@
           "decision": "buy",
           "reasoning": "Kalshi prices hold at ~50% vs hike 49% while this market implies only ~27% hold; 3 of 4 logged economist calls expect a hold (TD, CIBC cited subdued core inflation and weak jobs data, Desjardins calls it a coin flip). Core near 2% and Canada lost 68,300 jobs in September argue for a pause, but CPI ~3% and the Oct 28 hike with explicit tightening bias keep a hike live. I shade hold to 45%, below Kalshi/economists. Bear case: Macklem doubles down on inflation and hikes again.",
           "url": "https://polymarket.com/event/bank-of-canada-decision-in-december-20260908230600011"
+        },
+        {
+          "ts": "2026-11-24T22:40:39-05:00",
+          "question": "Will the Fed increase interest rates by 25 bps after the December 2026 meeting?",
+          "outcome": "Yes",
+          "estProb": 0.97,
+          "mktProb": 0.925,
+          "edge": 0.0393,
+          "decision": "reject",
+          "reasoning": "Futures-implied odds (30-day Fed funds) show ~99% for a 25bp hike at Dec 8-9 meeting as of Nov 24. Market at 0.93 is slightly cheap. Bear case: futures-based odds can swing before meeting, and a hold/surprise would resolve No; edge is small after fees.",
+          "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632"
+        },
+        {
+          "ts": "2026-11-24T22:40:39-05:00",
+          "question": "Will Chiang Wan-an win the next Taipei Mayor election?",
+          "outcome": "No",
+          "estProb": 0.52,
+          "mktProb": 0.355,
+          "edge": 0.1485,
+          "decision": "buy",
+          "reasoning": "Final polls mixed: Shen led 47.7-42.7 (TIA), 46.3-42.2 (Taiwan Brain Trust), 44.7-43.0; Chiang led TVBS 46-44 and ETtoday 48.1-42.0; weighted aggregate Shen +2.5. I put Chiang at ~48%, so No ~52% vs market 0.355. Bear case: incumbent KMT turnout machine and TPP voters (82% back Chiang) could beat polls; polls in Taiwan have missed before.",
+          "url": "https://polymarket.com/event/taipei-mayor-election-winner-20260813125857100"
         }
       ],
       "fills": [
@@ -1612,6 +1653,16 @@
           "usd": 10.0,
           "fee": 0.07199,
           "url": "https://polymarket.com/event/bank-of-canada-decision-in-december-20260908230600011"
+        },
+        {
+          "ts": "2026-11-24T22:40:39-05:00",
+          "question": "Will Chiang Wan-an win the next Taipei Mayor election?",
+          "outcome": "No",
+          "price": 0.36,
+          "shares": 27.77,
+          "usd": 10.0,
+          "fee": 0.31991,
+          "url": "https://polymarket.com/event/taipei-mayor-election-winner-20260813125857100"
         }
       ],
       "closed": [],
@@ -1626,8 +1677,8 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T22:40:14-05:00",
-          "equity": 199.5638
+          "ts": "2026-11-24T22:40:39-05:00",
+          "equity": 199.105
         }
       ],
       "stats": {
@@ -1637,23 +1688,32 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T22:08:14-05:00",
+        "ts": "2026-11-24T22:40:39-05:00",
         "candidates": 11,
         "picks": [
           {
-            "q": "Will the Bank of Canada make no change to the target for the overnight rate at the December interest rate announcement?",
+            "q": "Will the Fed increase interest rates by 25 bps after the December 2026 meeting?",
             "outcome": "Yes",
-            "est": 0.45,
-            "mkt": 0.27,
-            "edge": 0.168,
+            "est": 0.97,
+            "mkt": 0.925,
+            "edge": 0.0393,
+            "decision": "reject",
+            "reason": "edge +0.039 < 0.08"
+          },
+          {
+            "q": "Will Chiang Wan-an win the next Taipei Mayor election?",
+            "outcome": "No",
+            "est": 0.52,
+            "mkt": 0.355,
+            "edge": 0.1485,
             "decision": "buy",
             "reason": ""
           }
         ],
         "taken": [
-          "Will the Bank of Canada make no change to the target for the overnight rate at the December interest rate announcement? Yes 35.71@0.280"
+          "Will Chiang Wan-an win the next Taipei Mayor election? No 27.77@0.360"
         ],
-        "packet": "pc-20261124-2207"
+        "packet": "pc-20261124-2240"
       },
       "rules": [
         "Paper only. Markets resolving in 1-30 days with real volume; at most 2 new picks per cycle.",
