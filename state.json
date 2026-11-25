@@ -388,14 +388,6 @@
   },
   "journal": [
     {
-      "ts": "2026-11-24T15:35:06-05:00",
-      "type": "note",
-      "kind": "note",
-      "author": "coordinator",
-      "agent": "coordinator",
-      "text": "c0001 decide: 0 paper fill(s), 6 rejected after votes/quotes. Equity $200.00. Realized $0.00."
-    },
-    {
       "ts": "2026-11-24T16:18:59-05:00",
       "type": "observe",
       "kind": "observe",
@@ -1026,6 +1018,14 @@
       "author": "maker",
       "agent": "maker",
       "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92. daily stop (today realized $-39.08)"
+    },
+    {
+      "ts": "2026-11-24T23:40:23-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1684,6 +1684,17 @@
           "decision": "buy",
           "reasoning": "PollTrack Nov 17 simulation favors DPP 9 vs KMT 7 seats (5 with no polls, 1 independent); an Oct 27 survey had 38.1% expecting DPP to win >=11 vs 28.7% KMT. KMT holds 15 of 22 now, so unpolled seats lean KMT; I put P(KMT wins most) near 50%. Bear case: KMT incumbency and unpolled rural seats could give it a plurality; ties/definition risk in resolution.",
           "url": "https://polymarket.com/event/2026-taiwanese-local-elections-party-winner"
+        },
+        {
+          "ts": "2026-11-24T23:40:23-05:00",
+          "question": "Will Bitcoin dip to $55,000 in November?",
+          "outcome": "Yes",
+          "estProb": 0.34,
+          "mktProb": 0.3045,
+          "edge": 0.0329,
+          "decision": "reject",
+          "reasoning": "BTC ~$59.06k on Nov 25; touching $55k needs about -7% within ~5 days. With implied vol ~57% annualized (~3%/day), a barrier-touch estimate is ~35%; record November spot-ETF outflows and a weak $60k hold tilt slightly down, but a rebound toward $62-64k is plausible. Bear case: PCE/GDP data on Nov 25 could squeeze shorts and kill the dip; thin Thanksgiving liquidity cuts both ways.",
+          "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-november-2026"
         }
       ],
       "fills": [
@@ -1740,7 +1751,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T23:40:05-05:00",
+          "ts": "2026-11-24T23:40:24-05:00",
           "equity": 198.2506
         }
       ],
@@ -1751,32 +1762,21 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T23:12:19-05:00",
+        "ts": "2026-11-24T23:40:23-05:00",
         "candidates": 10,
         "picks": [
           {
-            "q": "Will Bitcoin dip to $50,000 in November?",
+            "q": "Will Bitcoin dip to $55,000 in November?",
             "outcome": "Yes",
-            "est": 0.04,
-            "mkt": 0.0645,
-            "edge": -0.0256,
+            "est": 0.34,
+            "mkt": 0.3045,
+            "edge": 0.0329,
             "decision": "reject",
-            "reason": "edge -0.026 < 0.08"
-          },
-          {
-            "q": "Will Kuomintang (KMT) win the most head of local government elections in the 2026 Taiwan local elections?",
-            "outcome": "No",
-            "est": 0.5,
-            "mkt": 0.24,
-            "edge": 0.2406,
-            "decision": "buy",
-            "reason": ""
+            "reason": "edge +0.033 < 0.08"
           }
         ],
-        "taken": [
-          "Will Kuomintang (KMT) win the most head of local government elections in the 2026 Taiwan local elections? No 40.0@0.250"
-        ],
-        "packet": "pc-20261124-2312"
+        "taken": [],
+        "packet": "pc-20261124-2340"
       },
       "rules": [
         "Paper only. Markets resolving in 1-30 days with real volume; at most 2 new picks per cycle.",
