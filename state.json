@@ -436,14 +436,6 @@
   },
   "journal": [
     {
-      "ts": "2026-11-24T18:11:08-05:00",
-      "type": "note",
-      "kind": "note",
-      "author": "coordinator",
-      "agent": "coordinator",
-      "text": "c0007 decide (risky): 1 paper fill(s), 11 skipped/rejected after score/quotes. Equity $204.63. Realized $4.63."
-    },
-    {
       "ts": "2026-11-24T18:11:16-05:00",
       "type": "note",
       "kind": "note",
@@ -1074,6 +1066,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0025 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $192.15. Realized $-3.94."
+    },
+    {
+      "ts": "2026-11-25T11:06:29-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1809,6 +1809,17 @@
           "decision": "reject",
           "reasoning": "BTC ~$58.1k (-5% 24h, tech rout) needs ~-14% to touch $50k by Nov 29. With ~3% daily vol over ~4 days a touch is ~1-4% incl. fat tails. Market Yes 0.0755 slightly rich; No edge below rule. Bear case: continued tech-led liquidation cascade.",
           "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-november-23-29-2026"
+        },
+        {
+          "ts": "2026-11-25T11:06:29-05:00",
+          "question": "Will there be no change in Fed interest rates after the December 2026 meeting?",
+          "outcome": "Yes",
+          "estProb": 0.03,
+          "mktProb": 0.0535,
+          "edge": -0.0262,
+          "decision": "reject",
+          "reasoning": "CME FedWatch on Nov 25 shows ~97.4-97.8% for a 25bp hike and ~2.2% for a hold. Market Yes 0.0535 is a bit above that; I add a little for surprise risk. Bear case: weak data or a market shock leads the Fed to hold.",
+          "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632"
         }
       ],
       "fills": [
@@ -1865,7 +1876,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T11:06:07-05:00",
+          "ts": "2026-11-25T11:06:30-05:00",
           "equity": 195.3921
         }
       ],
@@ -1876,10 +1887,20 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-25T11:06:06-05:00",
+        "ts": "2026-11-25T11:06:29-05:00",
         "candidates": 10,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Will there be no change in Fed interest rates after the December 2026 meeting?",
+            "outcome": "Yes",
+            "est": 0.03,
+            "mkt": 0.0535,
+            "edge": -0.0262,
+            "decision": "reject",
+            "reason": "edge -0.026 < 0.08"
+          }
+        ],
+        "taken": [],
         "packet": "pc-20261125-1106"
       },
       "rules": [
