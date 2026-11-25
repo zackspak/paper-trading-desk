@@ -962,6 +962,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0015 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $195.70. Realized $-1.00."
+    },
+    {
+      "ts": "2026-11-24T22:08:14-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 1 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1348,12 +1356,12 @@
       "name": "Polymarket research picks (paper)",
       "status": "running",
       "startBalance": 200.0,
-      "equity": 199.8143,
-      "cash": 189.8861,
+      "equity": 199.3852,
+      "cash": 179.8153,
       "realizedPnl": 0.0,
-      "unrealizedPnl": -0.1857,
+      "unrealizedPnl": -0.6148,
       "realizedToday": 0.0,
-      "feesPaid": 0.11993,
+      "feesPaid": 0.19192,
       "open": [
         {
           "slug": "will-pp-win-the-most-seats-in-the-2026-spanish-general-election",
@@ -1365,6 +1373,17 @@
           "estProb": 0.87,
           "mktProb": 0.755,
           "url": "https://polymarket.com/event/spain-general-election-winner"
+        },
+        {
+          "slug": "will-the-bank-of-canada-make-no-change-to-the-target-for-the-overnight-rate-at-the-december-interest-rate-announcement-20260908230600014",
+          "question": "Will the Bank of Canada make no change to the target for the overnight rate at the December interest rate announcement?",
+          "outcome": "Yes",
+          "shares": 35.71,
+          "cost": 10.0708,
+          "mark": 0.27,
+          "estProb": 0.45,
+          "mktProb": 0.27,
+          "url": "https://polymarket.com/event/bank-of-canada-decision-in-december-20260908230600011"
         }
       ],
       "picks": [
@@ -1532,6 +1551,17 @@
           "decision": "reject",
           "reasoning": "BTC trades ~$59.1-59.4k, so $50,000 is about 15% below with ~5 days left. At ~3% daily vol that is a ~2 sigma touch, roughly 3%; I add fat tails for 4%. Market 0.0645 is above my estimate, so no edge on Yes. Bear case: tariff fears and long liquidations could cascade into a crash.",
           "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-november-2026"
+        },
+        {
+          "ts": "2026-11-24T22:08:14-05:00",
+          "question": "Will the Bank of Canada make no change to the target for the overnight rate at the December interest rate announcement?",
+          "outcome": "Yes",
+          "estProb": 0.45,
+          "mktProb": 0.27,
+          "edge": 0.168,
+          "decision": "buy",
+          "reasoning": "Kalshi prices hold at ~50% vs hike 49% while this market implies only ~27% hold; 3 of 4 logged economist calls expect a hold (TD, CIBC cited subdued core inflation and weak jobs data, Desjardins calls it a coin flip). Core near 2% and Canada lost 68,300 jobs in September argue for a pause, but CPI ~3% and the Oct 28 hike with explicit tightening bias keep a hike live. I shade hold to 45%, below Kalshi/economists. Bear case: Macklem doubles down on inflation and hikes again.",
+          "url": "https://polymarket.com/event/bank-of-canada-decision-in-december-20260908230600011"
         }
       ],
       "fills": [
@@ -1544,6 +1574,16 @@
           "usd": 9.99,
           "fee": 0.11993,
           "url": "https://polymarket.com/event/spain-general-election-winner"
+        },
+        {
+          "ts": "2026-11-24T22:08:14-05:00",
+          "question": "Will the Bank of Canada make no change to the target for the overnight rate at the December interest rate announcement?",
+          "outcome": "Yes",
+          "price": 0.28,
+          "shares": 35.71,
+          "usd": 10.0,
+          "fee": 0.07199,
+          "url": "https://polymarket.com/event/bank-of-canada-decision-in-december-20260908230600011"
         }
       ],
       "closed": [],
@@ -1558,8 +1598,8 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T22:07:52-05:00",
-          "equity": 199.8143
+          "ts": "2026-11-24T22:08:14-05:00",
+          "equity": 199.3852
         }
       ],
       "stats": {
@@ -1569,10 +1609,22 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T22:07:52-05:00",
+        "ts": "2026-11-24T22:08:14-05:00",
         "candidates": 11,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Will the Bank of Canada make no change to the target for the overnight rate at the December interest rate announcement?",
+            "outcome": "Yes",
+            "est": 0.45,
+            "mkt": 0.27,
+            "edge": 0.168,
+            "decision": "buy",
+            "reason": ""
+          }
+        ],
+        "taken": [
+          "Will the Bank of Canada make no change to the target for the overnight rate at the December interest rate announcement? Yes 35.71@0.280"
+        ],
         "packet": "pc-20261124-2207"
       },
       "rules": [
