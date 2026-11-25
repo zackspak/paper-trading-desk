@@ -428,14 +428,6 @@
   },
   "journal": [
     {
-      "ts": "2026-11-24T17:33:40-05:00",
-      "type": "note",
-      "kind": "note",
-      "author": "coordinator",
-      "agent": "coordinator",
-      "text": "c0005 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $197.62. Realized $0.00."
-    },
-    {
       "ts": "2026-11-24T17:33:49-05:00",
       "type": "note",
       "kind": "note",
@@ -1066,6 +1058,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0023 decide (risky): 1 paper fill(s), 10 skipped/rejected after score/quotes. Equity $196.06. Realized $-3.94."
+    },
+    {
+      "ts": "2026-11-25T10:03:25-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1771,6 +1771,17 @@
           "decision": "reject",
           "reasoning": "Snap election is Nov 29 (announced Oct 5); resolution by Nov 30 would need a new PM/investiture, which is very unlikely that fast, but wording of 'next PM' is ambiguous. Market 0.113 about fair. A search hit showing Nov 29 results is dated after today so I discarded it as unreliable. Bear case: rules count winning the election as 'next PM'.",
           "url": "https://polymarket.com/event/next-prime-minister-of-spain-20260625005215443"
+        },
+        {
+          "ts": "2026-11-25T10:03:25-05:00",
+          "question": "Will Ethereum dip to $1,300 in November?",
+          "outcome": "Yes",
+          "estProb": 0.03,
+          "mktProb": 0.0595,
+          "edge": -0.0306,
+          "decision": "reject",
+          "reasoning": "ETH ~$1,631 (-5% today, -9% 7d); touching $1,300 needs ~-20% by Nov 30. With ~4% daily vol over ~5 days a touch is ~2-4% incl. fat tails. Market Yes 0.0595 slightly rich, but edge on No (~0.03) is below the rule. Bear case: a liquidation cascade given the sharp downtrend.",
+          "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-november-2026"
         }
       ],
       "fills": [
@@ -1827,7 +1838,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T10:03:04-05:00",
+          "ts": "2026-11-25T10:03:25-05:00",
           "equity": 197.8721
         }
       ],
@@ -1838,10 +1849,20 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-25T10:03:03-05:00",
+        "ts": "2026-11-25T10:03:25-05:00",
         "candidates": 9,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Will Ethereum dip to $1,300 in November?",
+            "outcome": "Yes",
+            "est": 0.03,
+            "mkt": 0.0595,
+            "edge": -0.0306,
+            "decision": "reject",
+            "reason": "edge -0.031 < 0.08"
+          }
+        ],
+        "taken": [],
         "packet": "pc-20261125-1003"
       },
       "rules": [
