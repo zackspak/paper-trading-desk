@@ -387,12 +387,6 @@
       "ts": "2026-11-24T14:02:26-05:00",
       "type": "note",
       "author": "coordinator",
-      "text": "Parked a separate paper bot: pnl.json updated 2026-10-12, 2 resolved binary trades both losses (-$20), 10 skips. Not mixed into this ledger."
-    },
-    {
-      "ts": "2026-11-24T14:02:26-05:00",
-      "type": "note",
-      "author": "coordinator",
       "text": "X intake recorded for three posts Zack sent today. See postsReviewed."
     },
     {
@@ -1016,6 +1010,14 @@
       "author": "maker",
       "agent": "maker",
       "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92. daily stop (today realized $-39.08)"
+    },
+    {
+      "ts": "2026-11-24T23:12:19-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 2 estimate(s) logged, 1 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1402,12 +1404,12 @@
       "name": "Polymarket research picks (paper)",
       "status": "running",
       "startBalance": 200.0,
-      "equity": 198.9265,
-      "cash": 169.4982,
+      "equity": 198.1515,
+      "cash": 159.1232,
       "realizedPnl": 0.0,
-      "unrealizedPnl": -1.0735,
+      "unrealizedPnl": -1.8485,
       "realizedToday": 0.0,
-      "feesPaid": 0.51183,
+      "feesPaid": 0.88683,
       "open": [
         {
           "slug": "will-pp-win-the-most-seats-in-the-2026-spanish-general-election",
@@ -1441,6 +1443,17 @@
           "estProb": 0.52,
           "mktProb": 0.355,
           "url": "https://polymarket.com/event/taipei-mayor-election-winner-20260813125857100"
+        },
+        {
+          "slug": "will-kuomintang-kmt-win-the-most-head-of-local-government-elections-in-the-2026-taiwan-local-elections",
+          "question": "Will Kuomintang (KMT) win the most head of local government elections in the 2026 Taiwan local elections?",
+          "outcome": "No",
+          "shares": 40.0,
+          "cost": 10.375,
+          "mark": 0.24,
+          "estProb": 0.5,
+          "mktProb": 0.24,
+          "url": "https://polymarket.com/event/2026-taiwanese-local-elections-party-winner"
         }
       ],
       "picks": [
@@ -1641,6 +1654,28 @@
           "decision": "buy",
           "reasoning": "Final polls mixed: Shen led 47.7-42.7 (TIA), 46.3-42.2 (Taiwan Brain Trust), 44.7-43.0; Chiang led TVBS 46-44 and ETtoday 48.1-42.0; weighted aggregate Shen +2.5. I put Chiang at ~48%, so No ~52% vs market 0.355. Bear case: incumbent KMT turnout machine and TPP voters (82% back Chiang) could beat polls; polls in Taiwan have missed before.",
           "url": "https://polymarket.com/event/taipei-mayor-election-winner-20260813125857100"
+        },
+        {
+          "ts": "2026-11-24T23:12:19-05:00",
+          "question": "Will Bitcoin dip to $50,000 in November?",
+          "outcome": "Yes",
+          "estProb": 0.04,
+          "mktProb": 0.0645,
+          "edge": -0.0256,
+          "decision": "reject",
+          "reasoning": "BTC closed Nov 24 near $59.8k (range 59.25k-61.67k). A touch of $50k by Nov 30 needs about -16% in ~6 days; ~4% for Yes given crypto vol. Market 0.0635 is slightly rich for Yes, but No edge is only ~2 pts. Bear case: macro/regulatory shock or liquidation cascade could gap down.",
+          "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-november-2026"
+        },
+        {
+          "ts": "2026-11-24T23:12:19-05:00",
+          "question": "Will Kuomintang (KMT) win the most head of local government elections in the 2026 Taiwan local elections?",
+          "outcome": "No",
+          "estProb": 0.5,
+          "mktProb": 0.24,
+          "edge": 0.2406,
+          "decision": "buy",
+          "reasoning": "PollTrack Nov 17 simulation favors DPP 9 vs KMT 7 seats (5 with no polls, 1 independent); an Oct 27 survey had 38.1% expecting DPP to win >=11 vs 28.7% KMT. KMT holds 15 of 22 now, so unpolled seats lean KMT; I put P(KMT wins most) near 50%. Bear case: KMT incumbency and unpolled rural seats could give it a plurality; ties/definition risk in resolution.",
+          "url": "https://polymarket.com/event/2026-taiwanese-local-elections-party-winner"
         }
       ],
       "fills": [
@@ -1673,6 +1708,16 @@
           "usd": 10.0,
           "fee": 0.31991,
           "url": "https://polymarket.com/event/taipei-mayor-election-winner-20260813125857100"
+        },
+        {
+          "ts": "2026-11-24T23:12:19-05:00",
+          "question": "Will Kuomintang (KMT) win the most head of local government elections in the 2026 Taiwan local elections?",
+          "outcome": "No",
+          "price": 0.25,
+          "shares": 40.0,
+          "usd": 10.0,
+          "fee": 0.375,
+          "url": "https://polymarket.com/event/2026-taiwanese-local-elections-party-winner"
         }
       ],
       "closed": [],
@@ -1687,8 +1732,8 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T23:11:54-05:00",
-          "equity": 198.9265
+          "ts": "2026-11-24T23:12:20-05:00",
+          "equity": 198.1515
         }
       ],
       "stats": {
@@ -1698,32 +1743,32 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T22:40:39-05:00",
-        "candidates": 11,
+        "ts": "2026-11-24T23:12:19-05:00",
+        "candidates": 10,
         "picks": [
           {
-            "q": "Will the Fed increase interest rates by 25 bps after the December 2026 meeting?",
+            "q": "Will Bitcoin dip to $50,000 in November?",
             "outcome": "Yes",
-            "est": 0.97,
-            "mkt": 0.925,
-            "edge": 0.0393,
+            "est": 0.04,
+            "mkt": 0.0645,
+            "edge": -0.0256,
             "decision": "reject",
-            "reason": "edge +0.039 < 0.08"
+            "reason": "edge -0.026 < 0.08"
           },
           {
-            "q": "Will Chiang Wan-an win the next Taipei Mayor election?",
+            "q": "Will Kuomintang (KMT) win the most head of local government elections in the 2026 Taiwan local elections?",
             "outcome": "No",
-            "est": 0.52,
-            "mkt": 0.355,
-            "edge": 0.1485,
+            "est": 0.5,
+            "mkt": 0.24,
+            "edge": 0.2406,
             "decision": "buy",
             "reason": ""
           }
         ],
         "taken": [
-          "Will Chiang Wan-an win the next Taipei Mayor election? No 27.77@0.360"
+          "Will Kuomintang (KMT) win the most head of local government elections in the 2026 Taiwan local elections? No 40.0@0.250"
         ],
-        "packet": "pc-20261124-2240"
+        "packet": "pc-20261124-2312"
       },
       "rules": [
         "Paper only. Markets resolving in 1-30 days with real volume; at most 2 new picks per cycle.",
