@@ -396,14 +396,6 @@
   },
   "journal": [
     {
-      "ts": "2026-11-24T16:51:03-05:00",
-      "type": "note",
-      "kind": "note",
-      "author": "coordinator",
-      "agent": "coordinator",
-      "text": "c0003 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $200.00. Realized $0.00."
-    },
-    {
       "ts": "2026-11-24T16:52:27-05:00",
       "type": "fill",
       "kind": "fill",
@@ -1034,6 +1026,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0020 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $191.39. Realized $-1.00."
+    },
+    {
+      "ts": "2026-11-25T08:34:37-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1714,6 +1714,17 @@
           "decision": "reject",
           "reasoning": "CME FedWatch ~95.3-95.9% for a 25bp hike at Dec 8-9, with ~4% for 50bp (which would resolve this market No). Market ask 0.94 is roughly fair. Bear case: a surprise 50bp hike or hold on weak data; Fed speakers (Williams) still hawkish.",
           "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632"
+        },
+        {
+          "ts": "2026-11-25T08:34:37-05:00",
+          "question": "Will Bitcoin dip to $55,000 in November?",
+          "outcome": "Yes",
+          "estProb": 0.36,
+          "mktProb": 0.4035,
+          "edge": -0.0529,
+          "decision": "reject",
+          "reasoning": "BTC ~$58.7k (-8% 7d) needs a ~6.3% drop to touch $55k by Nov 30. With ~3% daily vol over ~5 days, touch probability is roughly 35-38%. Market Yes 0.4175 is slightly rich but within noise. Bear case: downtrend continues and a cascade hits $55k; bull case for No: support holds near 58.5k.",
+          "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-november-2026"
         }
       ],
       "fills": [
@@ -1770,7 +1781,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T08:34:14-05:00",
+          "ts": "2026-11-25T08:34:37-05:00",
           "equity": 196.7016
         }
       ],
@@ -1781,10 +1792,20 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-25T08:34:14-05:00",
+        "ts": "2026-11-25T08:34:37-05:00",
         "candidates": 10,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Will Bitcoin dip to $55,000 in November?",
+            "outcome": "Yes",
+            "est": 0.36,
+            "mkt": 0.4035,
+            "edge": -0.0529,
+            "decision": "reject",
+            "reason": "edge -0.053 < 0.08"
+          }
+        ],
+        "taken": [],
         "packet": "pc-20261125-0834"
       },
       "rules": [
