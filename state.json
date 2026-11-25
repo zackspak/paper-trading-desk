@@ -460,14 +460,6 @@
   },
   "journal": [
     {
-      "ts": "2026-11-24T20:40:23-05:00",
-      "type": "fill",
-      "kind": "fill",
-      "author": "simulator",
-      "agent": "simulator",
-      "text": "Paper fill SNOWCALL $10 @ 2.3505399e-12 (quote in $9.9997 out $9.9503, impact 0.49%, plus 1% haircut $0.149). Source: gmgn order quote (read-only; --from is Token Program, not a user wallet). Exits: -25% / +50% / 24h. A-strict would_fill=True."
-    },
-    {
       "ts": "2026-11-24T20:40:17-05:00",
       "type": "note",
       "kind": "note",
@@ -1098,6 +1090,14 @@
       "author": "maker",
       "agent": "maker",
       "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92."
+    },
+    {
+      "ts": "2026-11-25T14:08:32-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 1 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1484,12 +1484,12 @@
       "name": "Polymarket research picks (paper)",
       "status": "running",
       "startBalance": 200.0,
-      "equity": 202.0282,
-      "cash": 159.1232,
+      "equity": 201.843,
+      "cash": 148.9766,
       "realizedPnl": 0.0,
-      "unrealizedPnl": 2.0282,
+      "unrealizedPnl": 1.843,
       "realizedToday": 0.0,
-      "feesPaid": 0.88683,
+      "feesPaid": 1.03449,
       "open": [
         {
           "slug": "will-pp-win-the-most-seats-in-the-2026-spanish-general-election",
@@ -1534,20 +1534,20 @@
           "estProb": 0.5,
           "mktProb": 0.24,
           "url": "https://polymarket.com/event/2026-taiwanese-local-elections-party-winner"
+        },
+        {
+          "slug": "will-the-democratic-progressive-party-dpp-win-the-most-head-of-local-government-elections-in-the-2026-taiwan-local-elections",
+          "question": "Will the Democratic Progressive Party (DPP) win the most head of local government elections in the 2026 Taiwan local elections?",
+          "outcome": "No",
+          "shares": 14.19,
+          "cost": 10.1466,
+          "mark": 0.702,
+          "estProb": 0.8,
+          "mktProb": 0.702,
+          "url": "https://polymarket.com/event/2026-taiwanese-local-elections-party-winner"
         }
       ],
       "picks": [
-        {
-          "ts": "2026-11-24T18:38:10-05:00",
-          "question": "Will Chiang Wan-an win the next Taipei Mayor election?",
-          "outcome": "Yes",
-          "estProb": 0.52,
-          "mktProb": 0.635,
-          "edge": -0.1315,
-          "decision": "reject",
-          "reasoning": "Final pre-blackout polls are split: TVBS 46-44 Chiang, ETtoday Chiang ahead, two other polls have Shen ahead (one by 5). Dead heat with a lead that shrank from 28 pts in May. Incumbent edge and 10% undecided keep me near a coin flip, slightly Chiang. Bear case: momentum clearly toward Shen, so this Yes could be overpriced.",
-          "url": "https://polymarket.com/event/taipei-mayor-election-winner-20260813125857100"
-        },
         {
           "ts": "2026-11-24T18:38:10-05:00",
           "question": "Will Kuomintang (KMT) win the most head of local government elections in the 2026 Taiwan local elections?",
@@ -1866,6 +1866,17 @@
           "decision": "reject",
           "reasoning": "Nov 25 coverage is mixed: reports say the June US-Iran memorandum is stalled/expired and strikes have resumed, while Iran says ceasefire implementation depends on US adherence. Resolution depends on the market rules, which I have not matched to this coverage. Est Yes 88% vs market 93.5%: no edge on Yes. Bear case: a formal collapse of the ceasefire before Nov 30.",
           "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963"
+        },
+        {
+          "ts": "2026-11-25T14:08:32-05:00",
+          "question": "Will the Democratic Progressive Party (DPP) win the most head of local government elections in the 2026 Taiwan local elections?",
+          "outcome": "No",
+          "estProb": 0.8,
+          "mktProb": 0.702,
+          "edge": 0.0849,
+          "decision": "buy",
+          "reasoning": "Pre-election forecasts put the DPP around 8 of 22 county/city seats vs KMT 11 (or KMT+allies 14). The DPP would need to win nearly every toss-up (New Taipei, Keelung, Hsinchu County) plus flips to lead. Est No (DPP does not win most) 80% vs market ~70%. Bear case: a late DPP surge, a tie, or resolution wording that counts seats differently (party vs coalition).",
+          "url": "https://polymarket.com/event/2026-taiwanese-local-elections-party-winner"
         }
       ],
       "fills": [
@@ -1908,6 +1919,16 @@
           "usd": 10.0,
           "fee": 0.375,
           "url": "https://polymarket.com/event/2026-taiwanese-local-elections-party-winner"
+        },
+        {
+          "ts": "2026-11-25T14:08:32-05:00",
+          "question": "Will the Democratic Progressive Party (DPP) win the most head of local government elections in the 2026 Taiwan local elections?",
+          "outcome": "No",
+          "price": 0.7046,
+          "shares": 14.19,
+          "usd": 10.0,
+          "fee": 0.14766,
+          "url": "https://polymarket.com/event/2026-taiwanese-local-elections-party-winner"
         }
       ],
       "closed": [],
@@ -1922,8 +1943,8 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T14:08:13-05:00",
-          "equity": 202.0282
+          "ts": "2026-11-25T14:08:33-05:00",
+          "equity": 201.843
         }
       ],
       "stats": {
@@ -1933,21 +1954,23 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-25T13:37:25-05:00",
-        "candidates": 10,
+        "ts": "2026-11-25T14:08:32-05:00",
+        "candidates": 11,
         "picks": [
           {
-            "q": "Israel x Iran ceasefire continues through November 30?",
-            "outcome": "Yes",
-            "est": 0.88,
-            "mkt": 0.935,
-            "edge": -0.06,
-            "decision": "reject",
-            "reason": "edge -0.060 < 0.08"
+            "q": "Will the Democratic Progressive Party (DPP) win the most head of local government elections in the 2026 Taiwan local elections?",
+            "outcome": "No",
+            "est": 0.8,
+            "mkt": 0.702,
+            "edge": 0.0849,
+            "decision": "buy",
+            "reason": ""
           }
         ],
-        "taken": [],
-        "packet": "pc-20261125-1337"
+        "taken": [
+          "Will the Democratic Progressive Party (DPP) win the most head of local government elections in the 2026 Taiwan local elections? No 14.19@0.705"
+        ],
+        "packet": "pc-20261125-1408"
       },
       "rules": [
         "Paper only. Markets resolving in 1-30 days with real volume; at most 2 new picks per cycle.",
