@@ -440,14 +440,6 @@
   },
   "journal": [
     {
-      "ts": "2026-11-24T18:37:36-05:00",
-      "type": "note",
-      "kind": "note",
-      "author": "maker",
-      "agent": "maker",
-      "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92. daily stop (today realized $-39.08)"
-    },
-    {
       "ts": "2026-11-24T18:38:02-05:00",
       "type": "note",
       "kind": "note",
@@ -1078,6 +1070,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0026 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $191.36. Realized $-3.94."
+    },
+    {
+      "ts": "2026-11-25T11:43:05-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1464,10 +1464,10 @@
       "name": "Polymarket research picks (paper)",
       "status": "running",
       "startBalance": 200.0,
-      "equity": 197.6339,
+      "equity": 197.8124,
       "cash": 159.1232,
       "realizedPnl": 0.0,
-      "unrealizedPnl": -2.3661,
+      "unrealizedPnl": -2.1876,
       "realizedToday": 0.0,
       "feesPaid": 0.88683,
       "open": [
@@ -1488,7 +1488,7 @@
           "outcome": "Yes",
           "shares": 35.71,
           "cost": 10.0708,
-          "mark": 0.23,
+          "mark": 0.235,
           "estProb": 0.45,
           "mktProb": 0.27,
           "url": "https://polymarket.com/event/bank-of-canada-decision-in-december-20260908230600011"
@@ -1824,6 +1824,17 @@
           "decision": "reject",
           "reasoning": "CME FedWatch on Nov 25 shows ~97.4-97.8% for a 25bp hike and ~2.2% for a hold. Market Yes 0.0535 is a bit above that; I add a little for surprise risk. Bear case: weak data or a market shock leads the Fed to hold.",
           "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632"
+        },
+        {
+          "ts": "2026-11-25T11:43:05-05:00",
+          "question": "Another Fed rate hike in 2026?",
+          "outcome": "Yes",
+          "estProb": 0.97,
+          "mktProb": 0.944,
+          "edge": 0.0235,
+          "decision": "reject",
+          "reasoning": "CME FedWatch ~97.8% for a 25bp hike at the Dec 8-9 meeting, and further hikes priced for Jan. Any December hike makes this Yes. Market 0.945 is slightly below; edge small. Bear case: Fed holds in December and stays on hold for the rest of 2026.",
+          "url": "https://polymarket.com/event/another-fed-rate-hike-in-2026"
         }
       ],
       "fills": [
@@ -1880,8 +1891,8 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T11:42:41-05:00",
-          "equity": 197.6339
+          "ts": "2026-11-25T11:43:06-05:00",
+          "equity": 197.8124
         }
       ],
       "stats": {
@@ -1891,10 +1902,20 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-25T11:42:41-05:00",
+        "ts": "2026-11-25T11:43:05-05:00",
         "candidates": 11,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Another Fed rate hike in 2026?",
+            "outcome": "Yes",
+            "est": 0.97,
+            "mkt": 0.944,
+            "edge": 0.0235,
+            "decision": "reject",
+            "reason": "edge +0.024 < 0.08"
+          }
+        ],
+        "taken": [],
         "packet": "pc-20261125-1142"
       },
       "rules": [
