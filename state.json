@@ -444,14 +444,6 @@
   },
   "journal": [
     {
-      "ts": "2026-11-24T19:04:28-05:00",
-      "type": "note",
-      "kind": "note",
-      "author": "maker",
-      "agent": "maker",
-      "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92. daily stop (today realized $-39.08)"
-    },
-    {
       "ts": "2026-11-24T19:04:51-05:00",
       "type": "note",
       "kind": "note",
@@ -1082,6 +1074,14 @@
       "author": "maker",
       "agent": "maker",
       "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92."
+    },
+    {
+      "ts": "2026-11-25T12:11:42-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1839,6 +1839,17 @@
           "decision": "reject",
           "reasoning": "CME FedWatch ~97.8% for a 25bp hike at the Dec 8-9 meeting, and further hikes priced for Jan. Any December hike makes this Yes. Market 0.945 is slightly below; edge small. Bear case: Fed holds in December and stays on hold for the rest of 2026.",
           "url": "https://polymarket.com/event/another-fed-rate-hike-in-2026"
+        },
+        {
+          "ts": "2026-11-25T12:11:42-05:00",
+          "question": "Will there be no change in Fed interest rates after the December 2026 meeting?",
+          "outcome": "Yes",
+          "estProb": 0.04,
+          "mktProb": 0.0555,
+          "edge": -0.0185,
+          "decision": "reject",
+          "reasoning": "FedWatch (CME futures ZQZ26) on Nov 25 shows ~2-8% no-change for the Dec 9 meeting, with a 25bp hike heavily priced after PCE. My est for Yes (no change) is 4%, vs market 5.8%: no edge on Yes. Bear case: a surprise hold if data or Fed communication shifts sharply before Dec 9.",
+          "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632"
         }
       ],
       "fills": [
@@ -1895,7 +1906,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T12:11:19-05:00",
+          "ts": "2026-11-25T12:11:42-05:00",
           "equity": 197.7759
         }
       ],
@@ -1906,21 +1917,21 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-25T11:43:05-05:00",
+        "ts": "2026-11-25T12:11:42-05:00",
         "candidates": 11,
         "picks": [
           {
-            "q": "Another Fed rate hike in 2026?",
+            "q": "Will there be no change in Fed interest rates after the December 2026 meeting?",
             "outcome": "Yes",
-            "est": 0.97,
-            "mkt": 0.944,
-            "edge": 0.0235,
+            "est": 0.04,
+            "mkt": 0.0555,
+            "edge": -0.0185,
             "decision": "reject",
-            "reason": "edge +0.024 < 0.08"
+            "reason": "edge -0.018 < 0.08"
           }
         ],
         "taken": [],
-        "packet": "pc-20261125-1142"
+        "packet": "pc-20261125-1211"
       },
       "rules": [
         "Paper only. Markets resolving in 1-30 days with real volume; at most 2 new picks per cycle.",
