@@ -400,14 +400,6 @@
   },
   "journal": [
     {
-      "ts": "2026-11-24T16:52:29-05:00",
-      "type": "fill",
-      "kind": "fill",
-      "author": "simulator",
-      "agent": "simulator",
-      "text": "Paper fill FIONA $10 @ 3.2810344e-09 (quote in $9.9997 out $9.9802, impact 0.20%, plus 1% haircut $0.120). Source: gmgn order quote (read-only; --from is Token Program, not a user wallet). Exits: -25% / +50% / 24h. A-strict would_fill=False."
-    },
-    {
       "ts": "2026-11-24T16:52:26-05:00",
       "type": "note",
       "kind": "note",
@@ -1038,6 +1030,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0021 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $190.75. Realized $-1.00."
+    },
+    {
+      "ts": "2026-11-25T09:04:13-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1729,6 +1729,17 @@
           "decision": "reject",
           "reasoning": "BTC ~$58.7k (-8% 7d) needs a ~6.3% drop to touch $55k by Nov 30. With ~3% daily vol over ~5 days, touch probability is roughly 35-38%. Market Yes 0.4175 is slightly rich but within noise. Bear case: downtrend continues and a cascade hits $55k; bull case for No: support holds near 58.5k.",
           "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-november-2026"
+        },
+        {
+          "ts": "2026-11-25T09:04:13-05:00",
+          "question": "Israel x Iran ceasefire continues through November 30?",
+          "outcome": "Yes",
+          "estProb": 0.9,
+          "mktProb": 0.935,
+          "edge": -0.04,
+          "decision": "reject",
+          "reasoning": "Market 0.935 Yes. Coverage says the June truce memorandum fell apart and the US-Iran conflict is a 'frozen conflict' with blockade in place; resolution depends on the market's specific ceasefire definition, which I could not confirm beyond the rules excerpt. Bear case: renewed strikes before Nov 30 resolve No. Estimate slightly below market, no edge.",
+          "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963"
         }
       ],
       "fills": [
@@ -1785,7 +1796,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T09:03:53-05:00",
+          "ts": "2026-11-25T09:04:13-05:00",
           "equity": 196.9793
         }
       ],
@@ -1796,10 +1807,20 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-25T09:03:52-05:00",
+        "ts": "2026-11-25T09:04:13-05:00",
         "candidates": 10,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Israel x Iran ceasefire continues through November 30?",
+            "outcome": "Yes",
+            "est": 0.9,
+            "mkt": 0.935,
+            "edge": -0.04,
+            "decision": "reject",
+            "reason": "edge -0.040 < 0.08"
+          }
+        ],
+        "taken": [],
         "packet": "pc-20261125-0903"
       },
       "rules": [
