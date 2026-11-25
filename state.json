@@ -674,6 +674,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0009 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $200.22. Realized $4.63."
+    },
+    {
+      "ts": "2026-11-24T19:04:58-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 2 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1122,6 +1130,28 @@
           "decision": "reject",
           "reasoning": "KMT holds 15 of 22 seats; PollTrack poll-lead map (Nov 17) has DPP 9, KMT 7, 5 unpolled and 1 independent, with the unpolled seats largely rural/eastern/outlying where KMT is strong. DPP needs a big swing to out-seat KMT. Bear case: a national DPP wave (DPP preferred 43% vs 27%) could flip several seats.",
           "url": "https://polymarket.com/event/2026-taiwanese-local-elections-party-winner"
+        },
+        {
+          "ts": "2026-11-24T19:04:58-05:00",
+          "question": "Will Bitcoin dip to $52,500 in November?",
+          "outcome": "Yes",
+          "estProb": 0.09,
+          "mktProb": 0.105,
+          "edge": -0.0226,
+          "decision": "reject",
+          "reasoning": "BTC closed ~$59.8-60.0k on Nov 24 (low 59.2k), so $52,500 is ~12% below with about 6 days left. Rough touch probability at ~3% daily vol is ~10%, fat tails included. Market 0.105 is about fair, no edge. Bear case: a sharp liquidation or geopolitical shock (Hormuz) could extend the Nov 23-24 selloff.",
+          "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-november-2026"
+        },
+        {
+          "ts": "2026-11-24T19:04:58-05:00",
+          "question": "US announces end of Iranian blockade by December 15, 2026?",
+          "outcome": "Yes",
+          "estProb": 0.04,
+          "mktProb": 0.075,
+          "edge": -0.04,
+          "decision": "reject",
+          "reasoning": "Trump said Tuesday no talks are underway or planned and the blockade continues; Iran demands lifting it before talks, while Qatar tries to revive negotiations. An official end announcement by Dec 15 would need a fast deal. Market 0.075 is slightly high but no edge on Yes. Bear case: sudden Qatar-brokered breakthrough.",
+          "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080"
         }
       ],
       "fills": [],
@@ -1137,7 +1167,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T19:04:35-05:00",
+          "ts": "2026-11-24T19:04:58-05:00",
           "equity": 200.0
         }
       ],
@@ -1148,10 +1178,29 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T19:04:35-05:00",
+        "ts": "2026-11-24T19:04:58-05:00",
         "candidates": 12,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Will Bitcoin dip to $52,500 in November?",
+            "outcome": "Yes",
+            "est": 0.09,
+            "mkt": 0.105,
+            "edge": -0.0226,
+            "decision": "reject",
+            "reason": "edge -0.023 < 0.08"
+          },
+          {
+            "q": "US announces end of Iranian blockade by December 15, 2026?",
+            "outcome": "Yes",
+            "est": 0.04,
+            "mkt": 0.075,
+            "edge": -0.04,
+            "decision": "reject",
+            "reason": "edge -0.040 < 0.08"
+          }
+        ],
+        "taken": [],
         "packet": "pc-20261124-1904"
       },
       "rules": [
