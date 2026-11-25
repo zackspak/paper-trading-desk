@@ -3,7 +3,7 @@
   "paper": true,
   "mode": "paper",
   "evaluation": "A risky profile, clock restarted 2026-11-24 ET (A-strict shadowed); B/C running, Grok-only",
-  "updatedAt": "2026-11-25T09:04:11-05:00",
+  "updatedAt": "2026-11-25T09:41:47-05:00",
   "timezone": "America/New_York",
   "note": "Paper ledger is empty because no paper fills were found in existing journals. Live trades were not copied. Nothing here is a live book.",
   "agents": [
@@ -12,8 +12,8 @@
       "name": "Coordinator",
       "model": "Grok Bot",
       "role": "Orchestrate cycles, tally independent votes, journal, digest to Zack. Does not pick tokens and does not overrule a reject.",
-      "status": "idle",
-      "lastAction": "c0021: risky top-N. 0 paper fill(s), 12 skipped/rejected."
+      "status": "awaiting",
+      "lastAction": "c0022: scan written to c0022-20261125-094147-scan.json."
     },
     {
       "id": "scout",
@@ -21,15 +21,15 @@
       "model": "Grok (Scout seat)",
       "role": "Scan public lists, apply numeric prefilters, build a FACTS packet with data_ts and source per metric.",
       "status": "idle",
-      "lastAction": "c0021: screened 71 unique, 59 prefilter/rank-outs, 12 scored (risky; top 2-4 at decide)."
+      "lastAction": "c0022: screened 64 unique, 52 prefilter/rank-outs, 12 scored (risky; top 2-4 at decide)."
     },
     {
       "id": "risk",
       "name": "Risk",
       "model": "Grok (Risk / Skeptic seat)",
       "role": "Score the fixed checklist, write the bear case, first veto.",
-      "status": "idle",
-      "lastAction": "c0021: bear cases applied."
+      "status": "awaiting",
+      "lastAction": "Advisory bear cases welcome; not a veto."
     },
     {
       "id": "simulator",
@@ -37,7 +37,7 @@
       "model": "Grok (Simulator seat)",
       "role": "Paper marks and fills from fresh size-specific quotes only. Never invent a fill.",
       "status": "idle",
-      "lastAction": "c0021: 0 paper fill(s); book equity $190.75."
+      "lastAction": "c0022: marks/exits checked; no new fill at scan."
     },
     {
       "id": "social",
@@ -45,7 +45,7 @@
       "model": "Grok (Social seat)",
       "role": "Label NARRATIVE (X, KOL, meme heat) separately. runner_score is not a fact and cannot clear a hard gate.",
       "status": "idle",
-      "lastAction": "c0021: not woken; narrative cannot pass a gate."
+      "lastAction": "c0022: not woken; narrative cannot pass a gate."
     },
     {
       "id": "jev",
@@ -77,7 +77,7 @@
       "model": "human",
       "role": "Final approver. Morning journal review by default; can pause anytime. Live remains a separate explicit approval.",
       "status": "awaiting_review",
-      "lastAction": "Paper test running (Grok-only). Morning digest ~8 AM ET."
+      "lastAction": "Paper test running (Grok-only). Morning digest ~8 AM ET; pause anytime."
     }
   ],
   "rules": [
@@ -96,7 +96,7 @@
   ],
   "paperLedger": {
     "startBalance": 200.0,
-    "balance": 190.7462,
+    "balance": 190.1589,
     "cash": 139.0048,
     "currency": "USD",
     "open": [
@@ -180,7 +180,7 @@
       }
     ],
     "realizedPnl": -0.9952,
-    "unrealizedPnl": -8.2586,
+    "unrealizedPnl": -8.8459,
     "trades": [
       {
         "ts": "2026-11-24T16:52:27-05:00",
@@ -393,20 +393,12 @@
         "equity": 190.7462
       },
       {
-        "ts": "2026-11-25T09:04:11-05:00",
-        "equity": 190.7462
+        "ts": "2026-11-25T09:41:47-05:00",
+        "equity": 190.1589
       }
     ]
   },
   "journal": [
-    {
-      "ts": "2026-11-24T16:52:26-05:00",
-      "type": "note",
-      "kind": "note",
-      "author": "coordinator",
-      "agent": "coordinator",
-      "text": "c0003 decide (risky): 4 paper fill(s), 8 skipped/rejected after score/quotes. Equity $200.00. Realized $0.00."
-    },
     {
       "ts": "2026-11-24T17:01:02-05:00",
       "type": "note",
@@ -1038,6 +1030,14 @@
       "author": "researcher",
       "agent": "researcher",
       "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
+    },
+    {
+      "ts": "2026-11-25T09:41:21-05:00",
+      "type": "observe",
+      "kind": "observe",
+      "author": "scout",
+      "agent": "scout",
+      "text": "c0022 scan: 64 unique names, 52 prefilter/rank-outs, 0 deep hard rejects, 12 scored candidates (risky profile; Coordinator will take top 2-4)."
     }
   ],
   "postsReviewed": [
@@ -1097,7 +1097,7 @@
       "chatgpt",
       "jev"
     ],
-    "updatedAt": "2026-11-25T09:04:11-05:00",
+    "updatedAt": "2026-11-25T09:41:47-05:00",
     "strategyA": {
       "restartedAt": "2026-11-24T16:50:17-05:00",
       "restartReason": "Zack asked for riskier paper rules so trades actually happen; strict profile kept as shadow",
@@ -1123,272 +1123,376 @@
   "pipeline": {
     "scanned": [
       {
-        "symbol": "ROCKET",
-        "note": "candidate"
+        "symbol": "NUNYA",
+        "note": "trending this cycle"
       },
       {
-        "symbol": "Singularity",
-        "note": "candidate"
+        "symbol": "FRANK",
+        "note": "trending this cycle"
       },
       {
-        "symbol": "JIMMY",
-        "note": "candidate"
+        "symbol": "PnL",
+        "note": "trending this cycle"
       },
       {
-        "symbol": "HOPE",
-        "note": "candidate"
+        "symbol": "NODIVERSIFY",
+        "note": "trending this cycle"
       },
       {
-        "symbol": "UKRAINU",
-        "note": "candidate"
+        "symbol": "3sat",
+        "note": "trending this cycle"
       },
       {
-        "symbol": "HOGE",
-        "note": "candidate"
-      },
-      {
-        "symbol": "MCAT",
-        "note": "candidate"
-      },
-      {
-        "symbol": "Slingoor",
-        "note": "candidate"
-      },
-      {
-        "symbol": "Cinnamoroll",
-        "note": "candidate"
-      },
-      {
-        "symbol": "CI",
-        "note": "candidate"
-      },
-      {
-        "symbol": "TANGENT",
-        "note": "candidate"
-      },
-      {
-        "symbol": "DCTY",
-        "note": "candidate"
-      },
-      {
-        "symbol": "WIF",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "mihao",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "GROKIA",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "CLAUDIA",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "Pokémon",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "Dog",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "JaoJiu",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "cCAT",
-        "note": "rejected at prefilter or deep"
+        "symbol": "Marian",
+        "note": "trending this cycle"
       },
       {
         "symbol": "MEME",
-        "note": "rejected at prefilter or deep"
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "Cue",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "Chudism",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "FRANK",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "Z3RO",
+        "note": "trending this cycle"
       },
       {
         "symbol": "Pompom",
-        "note": "rejected at prefilter or deep"
+        "note": "trending this cycle"
       },
       {
-        "symbol": "THE500",
-        "note": "rejected at prefilter or deep"
+        "symbol": "hacked",
+        "note": "trending this cycle"
       },
       {
         "symbol": "Billie",
-        "note": "rejected at prefilter or deep"
+        "note": "trending this cycle"
       },
       {
-        "symbol": "Helipaid",
-        "note": "rejected at prefilter or deep"
+        "symbol": "KYM",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "Lore",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "JOE",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "ANSEM",
+        "note": "trending this cycle"
       },
       {
         "symbol": "FIONA",
-        "note": "rejected at prefilter or deep"
+        "note": "trending this cycle"
       },
       {
-        "symbol": "BASKET",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "PILOTUS",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "USAID",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "Mogmas",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "PERRO",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "Solchan",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "ALLOC",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "Pompom",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "INUF",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "HELICAT",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "duh",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "HEYOS",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "BB",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "Max",
-        "note": "rejected at prefilter or deep"
-      },
-      {
-        "symbol": "REV",
-        "note": "rejected at prefilter or deep"
+        "symbol": "COAL",
+        "note": "trending this cycle"
       },
       {
         "symbol": "4CHAN",
-        "note": "rejected at prefilter or deep"
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "Max",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "mihao",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "RI",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "JIMMY",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "INUF",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "BASKET",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "DCTY",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "GROKIA",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "PERRO",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "JaoJiu",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "Helipaid",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "MCAT",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "Ukrainu",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "FLOAT",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "GEORGE",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "Huss",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "NIO",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "duh",
+        "note": "trending this cycle"
+      },
+      {
+        "symbol": "AMD",
+        "note": "trending this cycle"
       }
     ],
     "scored": [
       {
         "symbol": "ROCKET",
-        "note": "score 89.58"
-      },
-      {
-        "symbol": "Singularity",
-        "note": "score 87.28"
+        "note": "risky score 89.56"
       },
       {
         "symbol": "JIMMY",
-        "note": "score 86.88"
+        "note": "risky score 86.41"
       },
       {
-        "symbol": "HOPE",
-        "note": "score 84.74"
-      },
-      {
-        "symbol": "UKRAINU",
-        "note": "score 84.52"
-      },
-      {
-        "symbol": "HOGE",
-        "note": "score 82.88"
+        "symbol": "Teddy",
+        "note": "risky score 83.72"
       },
       {
         "symbol": "MCAT",
-        "note": "score 82.38"
+        "note": "risky score 81.65"
       },
       {
-        "symbol": "Slingoor",
-        "note": "score 81.74"
+        "symbol": "BASKET",
+        "note": "risky score 80.06"
       },
       {
-        "symbol": "Cinnamoroll",
-        "note": "score 81.71"
+        "symbol": "FIONA",
+        "note": "risky score 79.64"
       },
       {
-        "symbol": "CI",
-        "note": "score 80.68"
+        "symbol": "Chudism",
+        "note": "risky score 79.5"
+      },
+      {
+        "symbol": "ZELENSKY",
+        "note": "risky score 78.82"
+      },
+      {
+        "symbol": "NODIVERSIFY",
+        "note": "risky score 78.78"
       },
       {
         "symbol": "TANGENT",
-        "note": "score 80.22"
+        "note": "risky score 78.76"
       },
       {
-        "symbol": "DCTY",
-        "note": "score 78.23"
+        "symbol": "4CHAN",
+        "note": "risky score 77.74"
+      },
+      {
+        "symbol": "JaoJiu",
+        "note": "risky score 77.61"
       }
     ],
     "vetoed": [
       {
-        "symbol": "ROCKET",
-        "note": "max open positions already 6"
+        "symbol": "ANSEM",
+        "note": "impersonation symbol ANSEM"
       },
       {
-        "symbol": "Singularity",
-        "note": "max open positions already 6"
+        "symbol": "mihao",
+        "note": "rug_ratio 1.000 > 0.5 (risky cap)"
       },
       {
-        "symbol": "JIMMY",
-        "note": "max open positions already 6"
+        "symbol": "GROKIA",
+        "note": "impersonation symbol GROKIA"
+      },
+      {
+        "symbol": "AMD",
+        "note": "rug_ratio 0.980 > 0.5 (risky cap)"
+      },
+      {
+        "symbol": "CLAUDIA",
+        "note": "off-limits (CLAUDIA/DARK); rug_ratio 0.980 > 0.5 (risky cap)"
+      },
+      {
+        "symbol": "ANSEM ",
+        "note": "impersonation symbol ANSEM"
       },
       {
         "symbol": "HOPE",
-        "note": "max open positions already 6"
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 76.08)"
       },
       {
-        "symbol": "UKRAINU",
-        "note": "max open positions already 6"
+        "symbol": "THE500",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 75.96)"
       },
       {
-        "symbol": "HOGE",
-        "note": "max open positions already 6"
-      },
-      {
-        "symbol": "MCAT",
-        "note": "max open positions already 6"
+        "symbol": "MEME",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 75.87)"
       },
       {
         "symbol": "Slingoor",
-        "note": "max open positions already 6"
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 74.0)"
+      },
+      {
+        "symbol": "Pompom",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 73.82)"
       },
       {
         "symbol": "Cinnamoroll",
-        "note": "max open positions already 6"
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 73.43)"
       },
       {
         "symbol": "CI",
-        "note": "max open positions already 6"
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 73.2)"
       },
       {
-        "symbol": "TANGENT",
-        "note": "max open positions already 6"
+        "symbol": "SOLCHAN",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 72.89)"
+      },
+      {
+        "symbol": "Pompom",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 72.86)"
+      },
+      {
+        "symbol": "Cue",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 72.74)"
+      },
+      {
+        "symbol": "Huss",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 71.67)"
+      },
+      {
+        "symbol": "COAL",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 71.03)"
+      },
+      {
+        "symbol": "Helipaid",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 71.01)"
+      },
+      {
+        "symbol": "HEYOS",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 71.0)"
+      },
+      {
+        "symbol": "3sat",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 70.91)"
+      },
+      {
+        "symbol": "Max",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 69.58)"
+      },
+      {
+        "symbol": "Z3RO",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 69.47)"
+      },
+      {
+        "symbol": "Marian",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 68.87)"
+      },
+      {
+        "symbol": "PERRO",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 68.62)"
+      },
+      {
+        "symbol": "PATRICK",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 67.29)"
+      },
+      {
+        "symbol": "bon",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 65.7)"
+      },
+      {
+        "symbol": "Billie",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 65.63)"
+      },
+      {
+        "symbol": "PnL",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 65.56)"
       },
       {
         "symbol": "DCTY",
-        "note": "max open positions already 6"
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 65.44)"
+      },
+      {
+        "symbol": "NUNYA",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 65.39)"
+      },
+      {
+        "symbol": "FRANK",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 65.21)"
+      },
+      {
+        "symbol": "Rings",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 64.88)"
+      },
+      {
+        "symbol": "GEORGE",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 63.56)"
+      },
+      {
+        "symbol": "FRANK",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 62.6)"
+      },
+      {
+        "symbol": "Ukrainu",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 61.45)"
+      },
+      {
+        "symbol": "duh",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 60.96)"
+      },
+      {
+        "symbol": "INUF",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 60.01)"
+      },
+      {
+        "symbol": "WASTED",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 59.64)"
+      },
+      {
+        "symbol": "MooHan",
+        "note": "passed risky hard filter but ranked below top 12 for deep-check (score 58.26)"
       }
     ],
     "paperTraded": [
@@ -2039,9 +2143,9 @@
       "name": "Solana memecoin (paper)",
       "status": "running",
       "startBalance": 200.0,
-      "equity": 190.7462,
+      "equity": 190.1589,
       "realizedPnl": -0.9952,
-      "unrealizedPnl": -8.2586,
+      "unrealizedPnl": -8.8459,
       "open": [
         {
           "sym": "Huss",
