@@ -472,14 +472,6 @@
   },
   "journal": [
     {
-      "ts": "2026-11-24T21:41:39-05:00",
-      "type": "note",
-      "kind": "note",
-      "author": "coordinator",
-      "agent": "coordinator",
-      "text": "c0014 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $195.58. Realized $-1.00."
-    },
-    {
       "ts": "2026-11-24T21:41:46-05:00",
       "type": "note",
       "kind": "note",
@@ -1110,6 +1102,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0034 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $190.84. Realized $-3.94."
+    },
+    {
+      "ts": "2026-11-25T15:39:40-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "maker",
+      "agent": "maker",
+      "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92."
     }
   ],
   "postsReviewed": [
@@ -1496,10 +1496,10 @@
       "name": "Polymarket research picks (paper)",
       "status": "running",
       "startBalance": 200.0,
-      "equity": 201.6057,
+      "equity": 200.9662,
       "cash": 148.9766,
       "realizedPnl": 0.0,
-      "unrealizedPnl": 1.6057,
+      "unrealizedPnl": 0.9662,
       "realizedToday": 0.0,
       "feesPaid": 1.03449,
       "open": [
@@ -1509,7 +1509,7 @@
           "outcome": "Yes",
           "shares": 13.15,
           "cost": 10.1139,
-          "mark": 0.745,
+          "mark": 0.755,
           "estProb": 0.87,
           "mktProb": 0.755,
           "url": "https://polymarket.com/event/spain-general-election-winner"
@@ -1520,7 +1520,7 @@
           "outcome": "Yes",
           "shares": 35.71,
           "cost": 10.0708,
-          "mark": 0.26,
+          "mark": 0.24,
           "estProb": 0.45,
           "mktProb": 0.27,
           "url": "https://polymarket.com/event/bank-of-canada-decision-in-december-20260908230600011"
@@ -1553,7 +1553,7 @@
           "outcome": "No",
           "shares": 14.19,
           "cost": 10.1466,
-          "mark": 0.7095,
+          "mark": 0.7055,
           "estProb": 0.8,
           "mktProb": 0.702,
           "url": "https://polymarket.com/event/2026-taiwanese-local-elections-party-winner"
@@ -1955,8 +1955,8 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T15:05:32-05:00",
-          "equity": 201.6057
+          "ts": "2026-11-25T15:39:41-05:00",
+          "equity": 200.9662
         }
       ],
       "stats": {
@@ -2104,23 +2104,21 @@
         }
       ],
       "lastCycle": {
-        "ts": "2026-11-25T15:05:24-05:00",
+        "ts": "2026-11-25T15:39:40-05:00",
         "quoted": [],
         "fills": [],
         "expired": 0,
         "settled": [],
         "skipped": [
-          "btc-updown-15m-1795636800: spread 0.01 has no room inside",
-          "btc-updown-15m-1795639500: pair 0.5+0.5 > 0.99",
-          "btc-updown-15m-1795638600: pair 0.5+0.5 > 0.99",
-          "btc-updown-15m-1795637700: spread 0.01 has no room inside",
+          "btc-updown-15m-1795641300: spread 0.01 has no room inside",
+          "btc-updown-15m-1795640400: pair 0.5+0.5 > 0.99",
+          "btc-updown-15m-1795639500: spread 0.01 has no room inside",
           "eth-updown-15m-1795639500: spread 0.01 has no room inside",
-          "eth-updown-15m-1795637700: spread 0.01 has no room inside",
-          "eth-updown-15m-1795638600: pair 0.5+0.5 > 0.99",
-          "eth-updown-15m-1795636800: spread 0.01 has no room inside",
-          "btc-updown-1h-1795636800: pair 0.47+0.53 > 0.99",
-          "sol-updown-15m-1795639500: pair 0.5+0.5 > 0.99",
-          "sol-updown-15m-1795638600: halt-risk cap: equity $160.92 + worst-case $-9.60 = $151.32 would breach halt line $160.33 (start/peak minus $40)"
+          "eth-updown-15m-1795641300: pair 0.5+0.5 > 0.99",
+          "eth-updown-15m-1795640400: pair 0.5+0.5 > 0.99",
+          "btc-updown-1h-1795636800: spread 0.01 has no room inside",
+          "sol-updown-15m-1795641300: pair 0.5+0.5 > 0.99",
+          "sol-updown-15m-1795640400: halt-risk cap: equity $160.92 + worst-case $-10.00 = $150.92 would breach halt line $160.33 (start/peak minus $40)"
         ]
       },
       "equitySeries": [
@@ -2153,7 +2151,7 @@
           "equity": 160.92
         },
         {
-          "ts": "2026-11-25T15:05:24-05:00",
+          "ts": "2026-11-25T15:39:40-05:00",
           "equity": 160.92
         }
       ],
@@ -2191,238 +2189,13 @@
       "equity": 190.8434,
       "realizedPnl": -3.9362,
       "unrealizedPnl": -5.2204,
-      "open": [
-        {
-          "sym": "LUNO",
-          "mint": "EVbsBwxqdbMqadwAsVZ6KP9SJiaNmLSHAAb4W2mUpump",
-          "size_usd": 10.0,
-          "tokens": 29512469818.0,
-          "entry_px": 3.3993151646973416e-10,
-          "entry_ts": "2026-11-24T16:52:28-05:00",
-          "stop_px": 2.549486373523006e-10,
-          "tp_px": 5.098972747046012e-10,
-          "time_stop": "2026-11-25T16:52:28-05:00",
-          "fees_entry_usd": 0.1371,
-          "cycle_id": "c0003"
-        },
-        {
-          "sym": "HOGE",
-          "mint": "FVzqGqRmr4UH1Fif6dewmwbJ1p4YUZCu8dcw4Efopump",
-          "size_usd": 10.0,
-          "tokens": 14831826530.0,
-          "entry_px": 6.742285078491947e-10,
-          "entry_ts": "2026-11-24T17:04:19-05:00",
-          "stop_px": 5.05671380886896e-10,
-          "tp_px": 1.011342761773792e-09,
-          "time_stop": "2026-11-25T17:04:19-05:00",
-          "fees_entry_usd": 0.1101,
-          "cycle_id": "c0004"
-        },
-        {
-          "sym": "PVE",
-          "mint": "648M9UwRw6HanDewbFcLsmU2k7xkDNMutuVnxqKYpump",
-          "size_usd": 10.0,
-          "tokens": 3898265009942.0,
-          "entry_px": 2.5651840125022134e-12,
-          "entry_ts": "2026-11-24T17:04:19-05:00",
-          "stop_px": 1.92388800937666e-12,
-          "tp_px": 3.84777601875332e-12,
-          "time_stop": "2026-11-25T17:04:19-05:00",
-          "fees_entry_usd": 0.2409,
-          "cycle_id": "c0004"
-        },
-        {
-          "sym": "Fsjal",
-          "mint": "FdKfeV9K5npaRwxgGgBf4k7Hb3gZSnhqX7QPMSNgpump",
-          "size_usd": 10.0,
-          "tokens": 4032096697482.0,
-          "entry_px": 2.4800992486725054e-12,
-          "entry_ts": "2026-11-24T20:40:22-05:00",
-          "stop_px": 1.860074436504379e-12,
-          "tp_px": 3.720148873008758e-12,
-          "time_stop": "2026-11-25T20:40:22-05:00",
-          "fees_entry_usd": -0.4404,
-          "cycle_id": "c0012"
-        },
-        {
-          "sym": "SNOWCALL",
-          "mint": "6mGPu7Zemz4vawJ1bm4JkF7BfQqBjzFchznaXtVZpump",
-          "size_usd": 10.0,
-          "tokens": 4254233626192.0,
-          "entry_px": 2.3505398924108583e-12,
-          "entry_ts": "2026-11-24T20:40:23-05:00",
-          "stop_px": 1.7629049193081437e-12,
-          "tp_px": 3.5258098386162873e-12,
-          "time_stop": "2026-11-25T20:40:23-05:00",
-          "fees_entry_usd": 0.1495,
-          "cycle_id": "c0012"
-        },
-        {
-          "sym": "FIONA",
-          "mint": "B34nXKzCgsJb9ChLuSHPRpXLE3WFSWyeT8Cqkzzmpump",
-          "size_usd": 10.0,
-          "tokens": 3939074443.0,
-          "entry_px": 2.542262271228673e-09,
-          "entry_ts": "2026-11-25T10:03:22-05:00",
-          "stop_px": 1.9066967034215046e-09,
-          "tp_px": 3.813393406843009e-09,
-          "time_stop": "2026-11-26T10:03:22-05:00",
-          "fees_entry_usd": 0.1145,
-          "cycle_id": "c0023"
-        }
-      ],
+      "open": 6,
       "trades": 14,
-      "note": "Side strategy. Risky profile since 2026-11-24 (clock restarted); A-strict is a shadow score only. Book is paperLedger / ledger.jsonl.",
-      "profile": "risky",
-      "shadow": "A-strict",
-      "cash": 136.0638,
-      "openCount": 6,
-      "tradeList": [
-        {
-          "ts": "2026-11-24T16:52:27-05:00",
-          "symbol": "Huss",
-          "mint": "CUg7AzWL5p8imZVqqdjEPgRhUsXAkBMW5JxkSJ9fpump",
-          "side": "buy",
-          "size": 10.0,
-          "pnl": null,
-          "status": "open",
-          "reason": "paper fill after risky hard gates + score 84.0 + fresh quote (impact 1.61% < 3%); Risk vote advisory=reject"
-        },
-        {
-          "ts": "2026-11-24T16:52:28-05:00",
-          "symbol": "LUNO",
-          "mint": "EVbsBwxqdbMqadwAsVZ6KP9SJiaNmLSHAAb4W2mUpump",
-          "side": "buy",
-          "size": 10.0,
-          "pnl": null,
-          "status": "open",
-          "reason": "paper fill after risky hard gates + score 82.31 + fresh quote (impact 0.37% < 3%); Risk vote advisory=reject"
-        },
-        {
-          "ts": "2026-11-24T16:52:28-05:00",
-          "symbol": "Singularity",
-          "mint": "7R4MP6VX7n3RMNhL9zsk5Zu5ibZvwq8npUYnRq7epump",
-          "side": "buy",
-          "size": 10.0,
-          "pnl": null,
-          "status": "open",
-          "reason": "paper fill after risky hard gates + score 82.24 + fresh quote (impact 2.25% < 3%); Risk vote advisory=reject"
-        },
-        {
-          "ts": "2026-11-24T16:52:29-05:00",
-          "symbol": "FIONA",
-          "mint": "B34nXKzCgsJb9ChLuSHPRpXLE3WFSWyeT8Cqkzzmpump",
-          "side": "buy",
-          "size": 10.0,
-          "pnl": null,
-          "status": "open",
-          "reason": "paper fill after risky hard gates + score 82.13 + fresh quote (impact 0.20% < 3%); Risk vote advisory=reject"
-        },
-        {
-          "ts": "2026-11-24T17:04:19-05:00",
-          "symbol": "HOGE",
-          "mint": "FVzqGqRmr4UH1Fif6dewmwbJ1p4YUZCu8dcw4Efopump",
-          "side": "buy",
-          "size": 10.0,
-          "pnl": null,
-          "status": "open",
-          "reason": "paper fill after risky hard gates + score 83.08 + fresh quote (impact 0.10% < 3%); Risk vote advisory=pass"
-        },
-        {
-          "ts": "2026-11-24T17:04:19-05:00",
-          "symbol": "PVE",
-          "mint": "648M9UwRw6HanDewbFcLsmU2k7xkDNMutuVnxqKYpump",
-          "side": "buy",
-          "size": 10.0,
-          "pnl": null,
-          "status": "open",
-          "reason": "paper fill after risky hard gates + score 78.71 + fresh quote (impact 1.41% < 3%); Risk vote advisory=reject"
-        },
-        {
-          "ts": "2026-11-24T18:10:02-05:00",
-          "symbol": "Singularity",
-          "mint": "7R4MP6VX7n3RMNhL9zsk5Zu5ibZvwq8npUYnRq7epump",
-          "side": "sell",
-          "size": 10.0,
-          "pnl": 4.6278,
-          "status": "closed",
-          "reason": "take-profit 51.33% >= +50%"
-        },
-        {
-          "ts": "2026-11-24T18:11:14-05:00",
-          "symbol": "Singularity",
-          "mint": "7R4MP6VX7n3RMNhL9zsk5Zu5ibZvwq8npUYnRq7epump",
-          "side": "buy",
-          "size": 10.0,
-          "pnl": null,
-          "status": "open",
-          "reason": "paper fill after risky hard gates + score 85.68 + fresh quote (impact 2.07% < 3%); Risk vote advisory=pass"
-        },
-        {
-          "ts": "2026-11-24T20:39:27-05:00",
-          "symbol": "FIONA",
-          "mint": "B34nXKzCgsJb9ChLuSHPRpXLE3WFSWyeT8Cqkzzmpump",
-          "side": "sell",
-          "size": 10.0,
-          "pnl": -2.6439,
-          "status": "closed",
-          "reason": "stop -25.40% <= -25%"
-        },
-        {
-          "ts": "2026-11-24T20:39:29-05:00",
-          "symbol": "Singularity",
-          "mint": "7R4MP6VX7n3RMNhL9zsk5Zu5ibZvwq8npUYnRq7epump",
-          "side": "sell",
-          "size": 10.0,
-          "pnl": -2.9791,
-          "status": "closed",
-          "reason": "stop -28.89% <= -25%"
-        },
-        {
-          "ts": "2026-11-24T20:40:22-05:00",
-          "symbol": "Fsjal",
-          "mint": "FdKfeV9K5npaRwxgGgBf4k7Hb3gZSnhqX7QPMSNgpump",
-          "side": "buy",
-          "size": 10.0,
-          "pnl": null,
-          "status": "open",
-          "reason": "paper fill after risky hard gates + score 84.22 + fresh quote (impact 0.00% < 3%); Risk vote advisory=pass"
-        },
-        {
-          "ts": "2026-11-24T20:40:23-05:00",
-          "symbol": "SNOWCALL",
-          "mint": "6mGPu7Zemz4vawJ1bm4JkF7BfQqBjzFchznaXtVZpump",
-          "side": "buy",
-          "size": 10.0,
-          "pnl": null,
-          "status": "open",
-          "reason": "paper fill after risky hard gates + score 81.83 + fresh quote (impact 0.49% < 3%); Risk vote advisory=pass"
-        },
-        {
-          "ts": "2026-11-25T10:02:23-05:00",
-          "symbol": "Huss",
-          "mint": "CUg7AzWL5p8imZVqqdjEPgRhUsXAkBMW5JxkSJ9fpump",
-          "side": "sell",
-          "size": 10.0,
-          "pnl": -2.941,
-          "status": "closed",
-          "reason": "stop -28.64% <= -25%"
-        },
-        {
-          "ts": "2026-11-25T10:03:22-05:00",
-          "symbol": "FIONA",
-          "mint": "B34nXKzCgsJb9ChLuSHPRpXLE3WFSWyeT8Cqkzzmpump",
-          "side": "buy",
-          "size": 10.0,
-          "pnl": null,
-          "status": "open",
-          "reason": "paper fill after risky hard gates + score 85.38 + fresh quote (impact 0.14% < 3%); Risk vote advisory=pass"
-        }
-      ]
+      "note": "Side strategy since 2026-11-24; reads paperLedger (run_cycle.py, unchanged)."
     }
   },
   "benchmarks": {
-    "asOf": "2026-11-25T15:05:29-05:00",
+    "asOf": "2026-11-25T15:39:45-05:00",
     "note": "Read-only public data. Benchmarks are context, not targets; their size, speed and rebate tiers are out of reach for a $200 paper book.",
     "rows": [
       {
@@ -2430,13 +2203,13 @@
         "name": "mo-money",
         "kind": "polymarket",
         "style": "crypto up/down maker, 5m-1d",
-        "asOf": "2026-11-25T15:05:25-05:00",
-        "pnlAll": 557951.44,
-        "volumeAll": 34572667.65,
+        "asOf": "2026-11-25T15:39:41-05:00",
+        "pnlAll": 558100.68,
+        "volumeAll": 34585361.59,
         "rankPnl": 376,
-        "pnlMonth": 105981.56,
+        "pnlMonth": 106405.11,
         "monthLabel": "leaderboard month window",
-        "pnl30d": 112503.32,
+        "pnl30d": 112758.81,
         "pnl30dFrom": "2026-10-26T20:00:00-04:00",
         "makerRebateAll": 63571.64,
         "feesPaidAll": -62767.43,
@@ -2447,13 +2220,13 @@
         "name": "almach",
         "kind": "polymarket",
         "style": "short crypto markets bot",
-        "asOf": "2026-11-25T15:05:26-05:00",
-        "pnlAll": 468750.64,
-        "volumeAll": 33360944.09,
-        "rankPnl": 453,
-        "pnlMonth": 103553.55,
+        "asOf": "2026-11-25T15:39:42-05:00",
+        "pnlAll": 468036.82,
+        "volumeAll": 33372415.64,
+        "rankPnl": 454,
+        "pnlMonth": 103598.81,
         "monthLabel": "leaderboard month window",
-        "pnl30d": 112665.53,
+        "pnl30d": 112240.61,
         "pnl30dFrom": "2026-10-26T20:00:00-04:00",
         "makerRebateAll": 62024.42,
         "feesPaidAll": -53908.55,
@@ -2464,11 +2237,11 @@
         "name": "RN1",
         "kind": "polymarket",
         "style": "sports market-maker",
-        "asOf": "2026-11-25T15:05:27-05:00",
-        "pnlAll": 13530803.39,
-        "volumeAll": 1552113794.3,
+        "asOf": "2026-11-25T15:39:43-05:00",
+        "pnlAll": 13524323.31,
+        "volumeAll": 1552285936.82,
         "rankPnl": 4,
-        "pnlMonth": 267260.31,
+        "pnlMonth": 254383.15,
         "monthLabel": "leaderboard month window",
         "pnl30d": 382183.01,
         "pnl30dFrom": "2026-10-26T20:00:00-04:00",
@@ -2481,11 +2254,11 @@
         "name": "ohioism",
         "kind": "polymarket",
         "style": "5m/15m crypto bot (sells a course)",
-        "asOf": "2026-11-25T15:05:27-05:00",
-        "pnlAll": 107351.24,
-        "volumeAll": 9353400.98,
+        "asOf": "2026-11-25T15:39:44-05:00",
+        "pnlAll": 107462.23,
+        "volumeAll": 9357076.53,
         "rankPnl": 1889,
-        "pnlMonth": 18007.77,
+        "pnlMonth": 18266.29,
         "monthLabel": "leaderboard month window",
         "pnl30d": 13848.07,
         "pnl30dFrom": "2026-10-26T20:00:00-04:00",
@@ -2498,10 +2271,10 @@
         "name": "Growi HF vault",
         "kind": "hyperliquid_vault",
         "style": "automated mean-reversion perps vault",
-        "asOf": "2026-11-25T15:05:28-05:00",
-        "pnlAll": 1565982.42,
-        "pnl30d": -1373594.98,
-        "accountValue": 10376920.09,
+        "asOf": "2026-11-25T15:39:44-05:00",
+        "pnlAll": 1565573.35,
+        "pnl30d": -1374004.05,
+        "accountValue": 10376560.53,
         "apr": -0.0997,
         "source": "api.hyperliquid.xyz/info vaultDetails"
       }
@@ -2509,7 +2282,7 @@
   },
   "sideGame": {
     "source": "predictions/picks.jsonl (Zack's manual picks routine)",
-    "asOf": "2026-11-25T15:05:29-05:00",
+    "asOf": "2026-11-25T15:39:45-05:00",
     "rows": null,
     "note": "Waiting: no picks file yet."
   },
