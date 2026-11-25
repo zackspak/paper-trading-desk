@@ -392,14 +392,6 @@
   },
   "journal": [
     {
-      "ts": "2026-11-24T16:36:23-05:00",
-      "type": "note",
-      "kind": "note",
-      "author": "maker",
-      "agent": "maker",
-      "text": "Strategy B: 3 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $200.00."
-    },
-    {
       "ts": "2026-11-24T16:38:41-05:00",
       "type": "note",
       "kind": "note",
@@ -1030,6 +1022,14 @@
       "author": "maker",
       "agent": "maker",
       "text": "Strategy B: 1 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92."
+    },
+    {
+      "ts": "2026-11-25T08:05:21-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 1 estimate(s) logged, 0 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1699,6 +1699,17 @@
           "decision": "reject",
           "reasoning": "BTC ~$59.06k on Nov 25; touching $55k needs about -7% within ~5 days. With implied vol ~57% annualized (~3%/day), a barrier-touch estimate is ~35%; record November spot-ETF outflows and a weak $60k hold tilt slightly down, but a rebound toward $62-64k is plausible. Bear case: PCE/GDP data on Nov 25 could squeeze shorts and kill the dip; thin Thanksgiving liquidity cuts both ways.",
           "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-november-2026"
+        },
+        {
+          "ts": "2026-11-25T08:05:21-05:00",
+          "question": "Will the Fed increase interest rates by 25 bps after the December 2026 meeting?",
+          "outcome": "Yes",
+          "estProb": 0.95,
+          "mktProb": 0.935,
+          "edge": 0.0094,
+          "decision": "reject",
+          "reasoning": "CME FedWatch ~95.3-95.9% for a 25bp hike at Dec 8-9, with ~4% for 50bp (which would resolve this market No). Market ask 0.94 is roughly fair. Bear case: a surprise 50bp hike or hold on weak data; Fed speakers (Williams) still hawkish.",
+          "url": "https://polymarket.com/event/fed-decision-in-december-20260729232808632"
         }
       ],
       "fills": [
@@ -1755,7 +1766,7 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T08:04:59-05:00",
+          "ts": "2026-11-25T08:05:21-05:00",
           "equity": 196.7016
         }
       ],
@@ -1766,21 +1777,21 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T23:40:23-05:00",
+        "ts": "2026-11-25T08:05:21-05:00",
         "candidates": 10,
         "picks": [
           {
-            "q": "Will Bitcoin dip to $55,000 in November?",
+            "q": "Will the Fed increase interest rates by 25 bps after the December 2026 meeting?",
             "outcome": "Yes",
-            "est": 0.34,
-            "mkt": 0.3045,
-            "edge": 0.0329,
+            "est": 0.95,
+            "mkt": 0.935,
+            "edge": 0.0094,
             "decision": "reject",
-            "reason": "edge +0.033 < 0.08"
+            "reason": "edge +0.009 < 0.08"
           }
         ],
         "taken": [],
-        "packet": "pc-20261124-2340"
+        "packet": "pc-20261125-0805"
       },
       "rules": [
         "Paper only. Markets resolving in 1-30 days with real volume; at most 2 new picks per cycle.",
