@@ -710,6 +710,14 @@
       "author": "coordinator",
       "agent": "coordinator",
       "text": "c0010 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $197.61. Realized $4.63."
+    },
+    {
+      "ts": "2026-11-24T19:37:50-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "researcher",
+      "agent": "researcher",
+      "text": "Strategy C: 2 estimate(s) logged, 1 paper pick(s) taken."
     }
   ],
   "postsReviewed": [
@@ -1096,13 +1104,25 @@
       "name": "Polymarket research picks (paper)",
       "status": "running",
       "startBalance": 200.0,
-      "equity": 200.0,
-      "cash": 200.0,
+      "equity": 199.8143,
+      "cash": 189.8861,
       "realizedPnl": 0.0,
-      "unrealizedPnl": 0.0,
+      "unrealizedPnl": -0.1857,
       "realizedToday": 0.0,
-      "feesPaid": 0.0,
-      "open": [],
+      "feesPaid": 0.11993,
+      "open": [
+        {
+          "slug": "will-pp-win-the-most-seats-in-the-2026-spanish-general-election",
+          "question": "Will PP win the most seats in the 2026 Spanish general election?",
+          "outcome": "Yes",
+          "shares": 13.15,
+          "cost": 10.1139,
+          "mark": 0.755,
+          "estProb": 0.87,
+          "mktProb": 0.755,
+          "url": "https://polymarket.com/event/spain-general-election-winner"
+        }
+      ],
       "picks": [
         {
           "ts": "2026-11-24T16:38:47-05:00",
@@ -1180,9 +1200,42 @@
           "decision": "reject",
           "reasoning": "Trump said Tuesday no talks are underway or planned and the blockade continues; Iran demands lifting it before talks, while Qatar tries to revive negotiations. An official end announcement by Dec 15 would need a fast deal. Market 0.075 is slightly high but no edge on Yes. Bear case: sudden Qatar-brokered breakthrough.",
           "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080"
+        },
+        {
+          "ts": "2026-11-24T19:37:50-05:00",
+          "question": "Packers vs. Rams: O/U 44.5",
+          "outcome": "Under",
+          "estProb": 0.52,
+          "mktProb": 0.515,
+          "edge": -0.0125,
+          "decision": "reject",
+          "reasoning": "Total opened 46.5 and has dropped to 44.5 with Rams missing Nacua and Adams plus linemen and Packers possibly without Jacobs. Covered stadium, 68F, 3 mph wind, so weather is neutral. The line has already moved for the injuries, so Under is only a hair better than a coin flip. Bear case: banged-up defenses and garbage-time scoring push it Over.",
+          "url": "https://polymarket.com/event/nfl-gb-la-2026-11-26"
+        },
+        {
+          "ts": "2026-11-24T19:37:50-05:00",
+          "question": "Will PP win the most seats in the 2026 Spanish general election?",
+          "outcome": "Yes",
+          "estProb": 0.87,
+          "mktProb": 0.755,
+          "edge": 0.1009,
+          "decision": "buy",
+          "reasoning": "Final pre-blackout polls (Nov 23) give PP ~31-32% vs PSOE ~29% and PP roughly 128-133 seats, a lead of 12-20 seats; PP+Vox 187-196 vs 176 needed. PSOE is closing the gap. Spanish polling error is usually smaller than a 3-pt lead, so I put PP finishing first at about 87%. Bear case: late PSOE momentum (gap already narrowed 12 seats in one poll) and tactical voting.",
+          "url": "https://polymarket.com/event/spain-general-election-winner"
         }
       ],
-      "fills": [],
+      "fills": [
+        {
+          "ts": "2026-11-24T19:37:50-05:00",
+          "question": "Will PP win the most seats in the 2026 Spanish general election?",
+          "outcome": "Yes",
+          "price": 0.76,
+          "shares": 13.15,
+          "usd": 9.99,
+          "fee": 0.11993,
+          "url": "https://polymarket.com/event/spain-general-election-winner"
+        }
+      ],
       "closed": [],
       "brier": {
         "n": 0,
@@ -1195,8 +1248,8 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-24T19:37:23-05:00",
-          "equity": 200.0
+          "ts": "2026-11-24T19:37:50-05:00",
+          "equity": 199.8143
         }
       ],
       "stats": {
@@ -1206,10 +1259,31 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-24T19:37:23-05:00",
+        "ts": "2026-11-24T19:37:50-05:00",
         "candidates": 12,
-        "settled": [],
-        "picks": [],
+        "picks": [
+          {
+            "q": "Packers vs. Rams: O/U 44.5",
+            "outcome": "Under",
+            "est": 0.52,
+            "mkt": 0.515,
+            "edge": -0.0125,
+            "decision": "reject",
+            "reason": "edge -0.013 < 0.08"
+          },
+          {
+            "q": "Will PP win the most seats in the 2026 Spanish general election?",
+            "outcome": "Yes",
+            "est": 0.87,
+            "mkt": 0.755,
+            "edge": 0.1009,
+            "decision": "buy",
+            "reason": ""
+          }
+        ],
+        "taken": [
+          "Will PP win the most seats in the 2026 Spanish general election? Yes 13.15@0.760"
+        ],
         "packet": "pc-20261124-1937"
       },
       "rules": [
