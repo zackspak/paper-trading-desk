@@ -480,14 +480,6 @@
   },
   "journal": [
     {
-      "ts": "2026-11-24T22:40:06-05:00",
-      "type": "note",
-      "kind": "note",
-      "author": "coordinator",
-      "agent": "coordinator",
-      "text": "c0016 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $193.90. Realized $-1.00."
-    },
-    {
       "ts": "2026-11-24T22:40:14-05:00",
       "type": "note",
       "kind": "note",
@@ -1118,6 +1110,14 @@
       "author": "maker",
       "agent": "maker",
       "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92."
+    },
+    {
+      "ts": "2026-11-25T17:11:34-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "maker",
+      "agent": "maker",
+      "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92."
     }
   ],
   "postsReviewed": [
@@ -1504,10 +1504,10 @@
       "name": "Polymarket research picks (paper)",
       "status": "running",
       "startBalance": 200.0,
-      "equity": 200.7278,
+      "equity": 200.6201,
       "cash": 148.9766,
       "realizedPnl": 0.0,
-      "unrealizedPnl": 0.7278,
+      "unrealizedPnl": 0.6201,
       "realizedToday": 0.0,
       "feesPaid": 1.03449,
       "open": [
@@ -1550,7 +1550,7 @@
           "outcome": "No",
           "shares": 40.0,
           "cost": 10.375,
-          "mark": 0.285,
+          "mark": 0.28,
           "estProb": 0.5,
           "mktProb": 0.24,
           "url": "https://polymarket.com/event/2026-taiwanese-local-elections-party-winner"
@@ -1561,7 +1561,7 @@
           "outcome": "No",
           "shares": 14.19,
           "cost": 10.1466,
-          "mark": 0.7185,
+          "mark": 0.725,
           "estProb": 0.8,
           "mktProb": 0.702,
           "url": "https://polymarket.com/event/2026-taiwanese-local-elections-party-winner"
@@ -1963,8 +1963,8 @@
           "equity": 200.0
         },
         {
-          "ts": "2026-11-25T16:35:13-05:00",
-          "equity": 200.7278
+          "ts": "2026-11-25T17:11:35-05:00",
+          "equity": 200.6201
         }
       ],
       "stats": {
@@ -1974,11 +1974,11 @@
         "winRate": null
       },
       "lastCycle": {
-        "ts": "2026-11-25T16:07:49-05:00",
+        "ts": "2026-11-25T16:35:21-05:00",
         "candidates": 0,
         "settled": [],
         "picks": [],
-        "packet": "pc-20261125-1607"
+        "packet": "pc-20261125-1635"
       },
       "rules": [
         "Paper only. Markets resolving in 1-30 days with real volume; at most 2 new picks per cycle.",
@@ -2112,18 +2112,24 @@
         }
       ],
       "lastCycle": {
-        "ts": "2026-11-25T16:35:13-05:00",
+        "ts": "2026-11-25T17:11:34-05:00",
         "quoted": [],
         "fills": [],
         "expired": 0,
         "settled": [],
         "skipped": [
-          "btc-updown-15m-1795642200: spread 0.01 has no room inside",
+          "btc-updown-15m-1795647600: pair 0.5+0.5 > 0.99",
+          "btc-updown-15m-1795646700: spread 0.01 has no room inside",
           "btc-updown-15m-1795644900: spread 0.01 has no room inside",
-          "btc-updown-15m-1795644000: spread 0.01 has no room inside",
-          "btc-updown-15m-1795643100: spread 0.01 has no room inside",
-          "eth-updown-15m-1795644900: pair 0.5+0.5 > 0.99",
-          "eth-updown-15m-1795644000: halt-risk cap: equity $160.92 + worst-case $-9.80 = $151.12 would breach halt line $160.33 (start/peak minus $40)"
+          "btc-updown-15m-1795645800: spread 0.01 has no room inside",
+          "eth-updown-15m-1795644900: spread 0.01 has no room inside",
+          "eth-updown-15m-1795647600: pair 0.5+0.5 > 0.99",
+          "eth-updown-15m-1795646700: pair 0.5+0.5 > 0.99",
+          "eth-updown-15m-1795645800: pair 0.5+0.5 > 0.99",
+          "btc-updown-1h-1795644000: pair 0.32+0.68 > 0.99",
+          "sol-updown-15m-1795646700: pair 0.5+0.5 > 0.99",
+          "sol-updown-15m-1795647600: pair 0.5+0.5 > 0.99",
+          "xrp-updown-15m-1795646700: pair 0.5+0.5 > 0.99"
         ]
       },
       "equitySeries": [
@@ -2156,7 +2162,7 @@
           "equity": 160.92
         },
         {
-          "ts": "2026-11-25T16:35:13-05:00",
+          "ts": "2026-11-25T17:11:34-05:00",
           "equity": 160.92
         }
       ],
@@ -2200,7 +2206,7 @@
     }
   },
   "benchmarks": {
-    "asOf": "2026-11-25T16:35:17-05:00",
+    "asOf": "2026-11-25T17:11:39-05:00",
     "note": "Read-only public data. Benchmarks are context, not targets; their size, speed and rebate tiers are out of reach for a $200 paper book.",
     "rows": [
       {
@@ -2208,16 +2214,16 @@
         "name": "mo-money",
         "kind": "polymarket",
         "style": "crypto up/down maker, 5m-1d",
-        "asOf": "2026-11-25T16:35:13-05:00",
-        "pnlAll": 559110.8,
-        "volumeAll": 34600998.47,
+        "asOf": "2026-11-25T17:11:35-05:00",
+        "pnlAll": 558100.04,
+        "volumeAll": 34615398.38,
         "rankPnl": 376,
-        "pnlMonth": 107182.96,
+        "pnlMonth": 106125.5,
         "monthLabel": "leaderboard month window",
-        "pnl30d": 112758.81,
+        "pnl30d": 113680.57,
         "pnl30dFrom": "2026-10-26T20:00:00-04:00",
         "makerRebateAll": 63571.64,
-        "feesPaidAll": -62778.04,
+        "feesPaidAll": -62779.71,
         "source": "data-api.polymarket.com /v2/leaderboard, /v2/user-pnl, /v2/user-stats"
       },
       {
@@ -2225,16 +2231,16 @@
         "name": "almach",
         "kind": "polymarket",
         "style": "short crypto markets bot",
-        "asOf": "2026-11-25T16:35:14-05:00",
-        "pnlAll": 470116.26,
-        "volumeAll": 33383549.95,
+        "asOf": "2026-11-25T17:11:36-05:00",
+        "pnlAll": 469512.45,
+        "volumeAll": 33397029.77,
         "rankPnl": 453,
-        "pnlMonth": 105247.8,
+        "pnlMonth": 104898.7,
         "monthLabel": "leaderboard month window",
         "pnl30d": 114107.91,
         "pnl30dFrom": "2026-10-26T20:00:00-04:00",
         "makerRebateAll": 62024.42,
-        "feesPaidAll": -53910.12,
+        "feesPaidAll": -53913.21,
         "source": "data-api.polymarket.com /v2/leaderboard, /v2/user-pnl, /v2/user-stats"
       },
       {
@@ -2242,16 +2248,16 @@
         "name": "RN1",
         "kind": "polymarket",
         "style": "sports market-maker",
-        "asOf": "2026-11-25T16:35:15-05:00",
-        "pnlAll": 13524323.29,
-        "volumeAll": 1552501670.15,
+        "asOf": "2026-11-25T17:11:37-05:00",
+        "pnlAll": 13527158.64,
+        "volumeAll": 1552851263.08,
         "rankPnl": 4,
-        "pnlMonth": 256260.14,
+        "pnlMonth": 266581.98,
         "monthLabel": "leaderboard month window",
-        "pnl30d": 365757.48,
+        "pnl30d": 368690.27,
         "pnl30dFrom": "2026-10-26T20:00:00-04:00",
         "makerRebateAll": 1298747.13,
-        "feesPaidAll": -1483979.88,
+        "feesPaidAll": -1483988.61,
         "source": "data-api.polymarket.com /v2/leaderboard, /v2/user-pnl, /v2/user-stats"
       },
       {
@@ -2259,16 +2265,16 @@
         "name": "ohioism",
         "kind": "polymarket",
         "style": "5m/15m crypto bot (sells a course)",
-        "asOf": "2026-11-25T16:35:16-05:00",
-        "pnlAll": 107388.84,
-        "volumeAll": 9360595.12,
-        "rankPnl": 1890,
-        "pnlMonth": 18129.66,
+        "asOf": "2026-11-25T17:11:37-05:00",
+        "pnlAll": 107338.46,
+        "volumeAll": 9362860.55,
+        "rankPnl": 1891,
+        "pnlMonth": 18103.87,
         "monthLabel": "leaderboard month window",
-        "pnl30d": 13953.11,
+        "pnl30d": 13876.37,
         "pnl30dFrom": "2026-10-26T20:00:00-04:00",
         "makerRebateAll": 5745.17,
-        "feesPaidAll": -59557.06,
+        "feesPaidAll": -59563.5,
         "source": "data-api.polymarket.com /v2/leaderboard, /v2/user-pnl, /v2/user-stats"
       },
       {
@@ -2276,18 +2282,18 @@
         "name": "Growi HF vault",
         "kind": "hyperliquid_vault",
         "style": "automated mean-reversion perps vault",
-        "asOf": "2026-11-25T16:35:17-05:00",
-        "pnlAll": 1586501.55,
-        "pnl30d": -1353075.84,
-        "accountValue": 10397488.73,
-        "apr": -0.0982,
+        "asOf": "2026-11-25T17:11:38-05:00",
+        "pnlAll": 1559953.08,
+        "pnl30d": -1379624.32,
+        "accountValue": 10370945.26,
+        "apr": -0.1001,
         "source": "api.hyperliquid.xyz/info vaultDetails"
       }
     ]
   },
   "sideGame": {
     "source": "predictions/picks.jsonl (Zack's manual picks routine)",
-    "asOf": "2026-11-25T16:35:17-05:00",
+    "asOf": "2026-11-25T17:11:39-05:00",
     "rows": null,
     "note": "Waiting: no picks file yet."
   },
