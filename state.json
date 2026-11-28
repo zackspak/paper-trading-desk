@@ -3,7 +3,7 @@
   "paper": true,
   "mode": "paper",
   "evaluation": "A halted at -$60 drawdown — wait for Zack; B/C may still run",
-  "updatedAt": "2026-11-28T08:40:28-05:00",
+  "updatedAt": "2026-11-28T08:40:33-05:00",
   "timezone": "America/New_York",
   "note": "Paper ledger is empty because no paper fills were found in existing journals. Live trades were not copied. Nothing here is a live book.",
   "agents": [
@@ -13,7 +13,7 @@
       "model": "Grok Bot",
       "role": "Orchestrate cycles, tally independent votes, journal, digest to Zack. Does not pick tokens and does not overrule a reject.",
       "status": "idle",
-      "lastAction": "c0116: scan written to c0116-20261128-084028-scan.json."
+      "lastAction": "c0116: risky top-N. 0 paper fill(s), 0 skipped/rejected."
     },
     {
       "id": "scout",
@@ -29,7 +29,7 @@
       "model": "Grok (Risk / Skeptic seat)",
       "role": "Score the fixed checklist, write the bear case, first veto.",
       "status": "idle",
-      "lastAction": "c0116: no hard-filter survivors; Risk not woken."
+      "lastAction": "c0116: not woken; no mechanical survivors."
     },
     {
       "id": "simulator",
@@ -37,7 +37,7 @@
       "model": "Grok (Simulator seat)",
       "role": "Paper marks and fills from fresh size-specific quotes only. Never invent a fill.",
       "status": "idle",
-      "lastAction": "c0116: marks/exits checked; no new fill at scan."
+      "lastAction": "c0116: 0 paper fill(s); book equity $141.95."
     },
     {
       "id": "social",
@@ -77,7 +77,7 @@
       "model": "human",
       "role": "Final approver. Morning journal review by default; can pause anytime. Live remains a separate explicit approval.",
       "status": "awaiting_review",
-      "lastAction": "Paper test running (Grok-only). Morning digest ~8 AM ET; pause anytime."
+      "lastAction": "Paper test running (Grok-only). Morning digest ~8 AM ET."
     }
   ],
   "rules": [
@@ -96,7 +96,7 @@
   ],
   "paperLedger": {
     "startBalance": 200.0,
-    "balance": 141.9547,
+    "balance": 141.9493,
     "cash": 112.1669,
     "currency": "USD",
     "open": [
@@ -141,7 +141,7 @@
       }
     ],
     "realizedPnl": -57.8331,
-    "unrealizedPnl": -0.2122,
+    "unrealizedPnl": -0.2176,
     "trades": [
       {
         "ts": "2026-11-24T16:52:27-05:00",
@@ -1560,28 +1560,16 @@
         "equity": 143.0449
       },
       {
-        "ts": "2026-11-28T08:40:28-05:00",
-        "equity": 141.9547
+        "ts": "2026-11-28T08:40:33-05:00",
+        "equity": 141.9493
+      },
+      {
+        "ts": "2026-11-28T08:40:33-05:00",
+        "equity": 141.9493
       }
     ]
   },
   "journal": [
-    {
-      "ts": "2026-11-27T15:03:05-05:00",
-      "type": "note",
-      "kind": "note",
-      "author": "coordinator",
-      "agent": "coordinator",
-      "text": "c0097 decide (risky): 0 paper fill(s), 12 skipped/rejected after score/quotes. Equity $157.67. Realized $-42.25."
-    },
-    {
-      "ts": "2026-11-27T15:03:17-05:00",
-      "type": "note",
-      "kind": "note",
-      "author": "maker",
-      "agent": "maker",
-      "text": "Strategy B: 0 market(s) quoted, 0 paper fill(s), 0 quote(s) expired unfilled, 0 settled. Equity $160.92."
-    },
     {
       "ts": "2026-11-27T15:40:17-05:00",
       "type": "observe",
@@ -2205,6 +2193,22 @@
       "author": "scout",
       "agent": "scout",
       "text": "c0116 scan: 0 unique names, 0 prefilter/rank-outs, 0 deep hard rejects, 0 scored candidates (risky profile; Coordinator will take top 2-4). Errors: evaluation halted; no new scans for entries Evaluation is halted."
+    },
+    {
+      "ts": "2026-11-28T08:40:30-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "coordinator",
+      "agent": "coordinator",
+      "text": "c0116: halted; no new paper entries."
+    },
+    {
+      "ts": "2026-11-28T08:40:30-05:00",
+      "type": "note",
+      "kind": "note",
+      "author": "coordinator",
+      "agent": "coordinator",
+      "text": "c0116 decide (risky): 0 paper fill(s), 0 skipped/rejected after score/quotes. Equity $141.95. Realized $-57.83."
     }
   ],
   "postsReviewed": [
@@ -2264,7 +2268,7 @@
       "chatgpt",
       "jev"
     ],
-    "updatedAt": "2026-11-28T08:40:28-05:00",
+    "updatedAt": "2026-11-28T08:40:33-05:00",
     "strategyA": {
       "restartedAt": "2026-11-24T16:50:17-05:00",
       "restartReason": "Zack asked for riskier paper rules so trades actually happen; strict profile kept as shadow",
@@ -2285,7 +2289,7 @@
         "timeStopHours": 24
       },
       "status": "halted",
-      "haltReason": "A drawdown 62.67 hit $60 fail line"
+      "haltReason": "A drawdown 62.68 hit $60 fail line"
     }
   },
   "pipeline": {
@@ -3000,9 +3004,9 @@
       "name": "Solana memecoin (paper)",
       "status": "halted",
       "startBalance": 200.0,
-      "equity": 141.9547,
+      "equity": 141.9493,
       "realizedPnl": -57.8331,
-      "unrealizedPnl": -0.2122,
+      "unrealizedPnl": -0.2176,
       "open": [
         {
           "sym": "HBHC",
